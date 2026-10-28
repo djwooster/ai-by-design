@@ -1,36 +1,29 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ai-bydesign.dev
 
-## Getting Started
+The site for AI by Design: the founding-member pre-sale of *Ship Your App with Claude Code*, a Stripe shop, a free App Store checklist and a blog. The spec is `docs/build-prompt.md`.
 
-First, run the development server:
+## Run it
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
+npx tsc --noEmit   # type check
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Where things live
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Content:** typed files in `lib/content/`. Pages only render it.
+  - `offer.ts`: prices, launch date, founding spots, the Skool checkout URL, the guarantee
+  - `home.ts`: homepage sections and their order
+  - `products.ts`, `posts.ts`, `ads.ts` (unlisted `/go/[slug]` pages), `site.ts` (nav, footer, links)
+- **Design tokens:** `app/globals.css`. Components use semantic names (`bg-canvas`, `text-fg-secondary`, `border-line`, `bg-accent`) and never raw colors. `.theme-paper` switches a section to warm paper.
+- **Components:** `components/ui/` (primitives) and `components/layout/` (header, footer, sections).
+- **Design system page:** `/design` (internal, noindex).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Common changes
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Prices:** `foundingPrice`, `launchPrice` and `priceRoadmap` in `lib/content/offer.ts`.
+- **Founding spots:** set `foundingSpots.remaining` to the real number from Skool. While it's `null` the site doesn't show a count.
+- **Skool checkout:** set `checkoutUrl`. Every "Become a founding member" button reads it.
+- **FocusMode status:** one config value, `in_review` or `approved` (added with the proof section in stage 3). Flip it only after Apple approves.
