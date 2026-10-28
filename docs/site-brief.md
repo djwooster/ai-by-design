@@ -1,22 +1,20 @@
 # ai-bydesign.dev — Site Brief
 
-Oct 26, 2026 · DJ Wooster. Copied from the Notion brief on Oct 28 (written for djwooster.com, now moved here). **The "Decisions since the brief" section wins wherever it differs from the text below.**
+Oct 26, 2026 · DJ Wooster. Copied from the Notion brief on Oct 28 (written for djwooster.com, now moved here). **`docs/build-prompt.md` is the source of truth and wins over everything in this file.** The "Decisions since the brief" section below matches it; the original brief text after that is background, and its prices, checkout and section order are out of date.
 
-## Decisions since the brief (Oct 28)
+## Decisions since the brief (Oct 28, updated to match the build prompt)
 
-- **Two sites.** ai-bydesign.dev is the school: the course, DJ's own members platform, the build and template library, the shop, the free checklist and the blog. It matches DJ's YouTube and Skool name, so video viewers land on one brand. djwooster.com is the person: credentials, shipped products as proof, writing and Work with me. It's parked (showing the product design portfolio) and gets refined later.
-- **Community stays in Skool**, possibly for good. DJ's own platform covers the course player and progress, the build and template library, purchases and downloads.
-- **Founding offer:** $195 founding price (full price $495), 150 founding spots. These replace the earlier $249 early bird.
-- **Live calls with DJ, three times a week, start Jan 1, 2027.** Q&A, members' app reviews, and live builds, all recorded into the course.
-- **Course format:** self-paced, launching as soon as the pre-sale validates the idea.
-- **Refund wording:** "Founding-member guarantee: if the course doesn't launch, you get every dollar back. Once it does, you have 14 days to ask for a full refund, no questions asked."
-- **What members build (5 projects):**
-  1. A luxury art gallery website
-  2. A productivity mobile app (iOS)
-  3. A dashboard web app
-  4. A two-sided marketplace
-  5. A Chrome extension
-- **Reference:** futuredesigner.io (Kyle Skelly) for page structure and section order, offer shape, depth of content (48 lessons, 8+ hours) and the "not just a course, a whole platform" framing. DJ and Claude design our own system; nothing is copied.
+- **Source of truth:** `docs/build-prompt.md`, the Phase 1 build prompt from Notion.
+- **Two sites.** ai-bydesign.dev is the school: the founding-member pre-sale, the Stripe shop, the free checklist and the blog. It matches DJ's YouTube and Skool name, so video viewers land on one brand. djwooster.com is the person, separate, and links here.
+- **No custom members platform.** The course, its checkout and the community all live in Skool. Every "Become a founding member" button links to the Skool checkout. Stripe is for the shop only.
+- **Founding offer:** $99 for the first 150 founding members. $249 at launch on Jan 1, 2027, rising as the course grows. The price roadmap is public.
+- **Live calls with DJ, twice a week, from Jan 1, 2027.** Q&A, members' app reviews and live builds, all recorded.
+- **Course format:** self-paced, in Skool.
+- **What members build:** one productivity iOS app, designed, built and shipped to the App Store with Claude Code, following the AI by Design Method (Vision → Design → Build → Test → Ship → Launch).
+- **Refund wording:** "If the course doesn't launch, you get every dollar back. Once it does, you have 14 days to ask for a full refund, no questions asked."
+- **Proof:** FocusMode, RE-IQ and Coast Gallery (not SourceIQ; SourceIQ appears only as a `/go/` demand test).
+- **Design system:** decided in the build prompt (dark-first, Geist, sea-blue accent, Swiss numerals, isometric Method stack).
+- **Reference:** futuredesigner.io (Kyle Skelly) for page structure, offer shape and depth of content. DJ and Claude design our own system; nothing is copied.
 - **SEO and AIO matter.** The long, structured course page and the blog should be built to rank and to be cited by LLMs.
 - **Reusable work** from djwooster.com sits in `../djwooster/themes/brand/`:
   - `components/landing/`: BuildLive (Claude Code building an iPhone app), LaunchMoment (App Store review to Get), LiveCall, IsoSteps and IPhone
