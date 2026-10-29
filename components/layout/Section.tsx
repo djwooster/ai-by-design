@@ -1,5 +1,5 @@
 import { Reveal } from "@/components/motion/Reveal";
-import { AccentText } from "@/components/ui/AccentText";
+import { WordsIn } from "@/components/motion/WordsIn";
 import { Container } from "@/components/ui/Container";
 import { Pill } from "@/components/ui/Pill";
 import { cx } from "@/lib/cx";
@@ -36,19 +36,21 @@ export function Section({
     <section id={id} className={cx("scroll-mt-20", light && "theme-light", className)}>
       <Container className="py-24 md:py-36">
         {hasHeader && (
-          <Reveal className={cx("max-w-[60rem]", center && "mx-auto text-center")}>
-            {badge && <Pill>{badge}</Pill>}
+          <div className={cx("max-w-[60rem]", center && "mx-auto text-center")}>
+            {badge && (
+              <Reveal>
+                <Pill>{badge}</Pill>
+              </Reveal>
+            )}
             {title && (
-              <h2 className={cx("text-title text-fg", badge && "mt-6")}>
-                <AccentText text={title} accent={accent} />
-              </h2>
+              <WordsIn lines={[title]} accent={accent} delay={0.1} className={cx("text-title text-fg", badge && "mt-6")} />
             )}
             {lede && (
-              <p className={cx("mt-6 max-w-[36rem] text-lede text-fg-secondary", center && "mx-auto")}>
-                {lede}
-              </p>
+              <Reveal delay={0.35}>
+                <p className={cx("mt-6 max-w-[36rem] text-lede text-fg-secondary", center && "mx-auto")}>{lede}</p>
+              </Reveal>
             )}
-          </Reveal>
+          </div>
         )}
         {children && <div className={cx(hasHeader && "mt-16 md:mt-20")}>{children}</div>}
       </Container>

@@ -1,6 +1,6 @@
 import { WhyNowImage } from "@/components/home/WhyNowImage";
 import { Reveal } from "@/components/motion/Reveal";
-import { AccentText } from "@/components/ui/AccentText";
+import { WordsIn } from "@/components/motion/WordsIn";
 import { Container } from "@/components/ui/Container";
 import { Pill } from "@/components/ui/Pill";
 import { whyNow } from "@/lib/content/home";
@@ -16,13 +16,7 @@ export function WhyNow() {
         <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16">
           <Reveal>
             <Pill>{whyNow.badge}</Pill>
-            <h2 className="mt-6 text-title text-fg">
-              {whyNow.title.map((line) => (
-                <span key={line} className="block">
-                  <AccentText text={line} accent={whyNow.accent} />
-                </span>
-              ))}
-            </h2>
+            <WordsIn lines={[...whyNow.title]} accent={whyNow.accent} delay={0.1} className="mt-6 text-title text-fg" />
             <p className="mt-6 max-w-[28rem] text-lede text-fg-secondary">{whyNow.body}</p>
 
             <dl className="mt-10 max-w-[28rem] border-t border-line">

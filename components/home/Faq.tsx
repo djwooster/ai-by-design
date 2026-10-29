@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/motion/Reveal";
+import { WordsIn } from "@/components/motion/WordsIn";
 import { Accordion } from "@/components/ui/Accordion";
 import { Container } from "@/components/ui/Container";
 import { Pill } from "@/components/ui/Pill";
@@ -13,7 +14,7 @@ export function Faq() {
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-16">
           <Reveal>
             <Pill>{faqSection.badge}</Pill>
-            <h2 className="mt-6 text-title text-fg">{faqSection.title}</h2>
+            <WordsIn lines={[faqSection.title]} delay={0.1} className="mt-6 text-title text-fg" />
           </Reveal>
           <Reveal delay={0.06}>
             <Accordion

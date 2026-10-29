@@ -3,7 +3,6 @@ import { Curriculum } from "@/components/home/Curriculum";
 import { Faq } from "@/components/home/Faq";
 import { FinalCta } from "@/components/home/FinalCta";
 import { Fit } from "@/components/home/Fit";
-import { Guarantee } from "@/components/home/Guarantee";
 import { Hero } from "@/components/home/Hero";
 import { Instructor } from "@/components/home/Instructor";
 import { Live } from "@/components/home/Live";
@@ -22,7 +21,6 @@ const sections: Record<HomeSectionId, () => React.ReactNode> = {
   proof: Proof,
   instructor: Instructor,
   offer: Offer,
-  guarantee: Guarantee,
   fit: Fit,
   faq: Faq,
   checklist: Checklist,

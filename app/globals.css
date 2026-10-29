@@ -24,6 +24,8 @@
   --gray: #b7babb;
   --blue: #1f5e98;
   --white: #ffffff;
+  /* Claude Code's own orange, only where the page names Claude Code (6.0:1 on the base). */
+  --claude: #d97757;
   --smoke: #edeeee;
 
   --bg: var(--air-black);
@@ -171,6 +173,13 @@
   --ease-glide: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-press: cubic-bezier(0.3, 0, 0.2, 1);
   --animate-rise: rise 400ms var(--ease-glide) both;
+  --animate-blink: blink 1.06s step-end infinite;
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
 
   @keyframes rise {
     from {

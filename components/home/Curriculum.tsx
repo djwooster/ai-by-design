@@ -1,6 +1,7 @@
 import { Spot, type SpotName } from "@/components/illustrations/Spot";
-import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
-import { AccentText } from "@/components/ui/AccentText";
+import { DrawLine } from "@/components/motion/DrawLine";
+import { Reveal } from "@/components/motion/Reveal";
+import { WordsIn } from "@/components/motion/WordsIn";
 import { Container } from "@/components/ui/Container";
 import { CTAButton } from "@/components/ui/CTAButton";
 import { Pill } from "@/components/ui/Pill";
@@ -16,7 +17,9 @@ const lessonCount = phases.reduce(
 
 /**
  * The whole syllabus on one screen, nothing to click: the heading stays put on
- * the left while every phase, module and lesson lists down the right.
+ * the left while every phase, module and lesson lists down the right. Each
+ * phase glides in from the right as it reaches the viewport, its modules a
+ * beat behind, and the hairline under it draws itself in.
  */
 export function Curriculum() {
   return (
@@ -26,9 +29,7 @@ export function Curriculum() {
           <div>
             <Reveal className="lg:sticky lg:top-28">
               <Pill>{curriculum.badge}</Pill>
-              <h2 className="mt-6 text-title text-fg">
-                <AccentText text={curriculum.title} accent={curriculum.accent} />
-              </h2>
+              <WordsIn lines={[curriculum.title]} accent={curriculum.accent} delay={0.1} className="mt-6 text-title text-fg" />
               <p className="mt-6 max-w-[26rem] text-lede text-fg-secondary">{curriculum.lede}</p>
               <dl className="mt-10 grid grid-cols-3 gap-4 border-t border-line pt-6">
                 {(
@@ -49,43 +50,46 @@ export function Curriculum() {
             </Reveal>
           </div>
 
-          <Stagger as="ol" className="border-t border-line">
+          <ol>
+            <DrawLine />
             {phases.map((phase, index) => (
-              <StaggerItem
-                key={phase.id}
-                as="li"
-                className="grid grid-cols-[4.5rem_minmax(0,1fr)] gap-x-5 border-b border-line py-8 sm:grid-cols-[6rem_minmax(0,1fr)] sm:gap-x-8"
-              >
-                <div className="text-fg-secondary">
-                  <Spot name={phase.id as SpotName} />
-                </div>
-                <div>
-                  <div className="flex items-baseline gap-3">
-                    <span className="font-mono text-ui-sm text-fg-muted">{phaseNumber(index)}</span>
-                    <h3 className="text-heading font-semibold text-fg">{phase.name}</h3>
+              <li key={phase.id}>
+                <Reveal
+                  from="right"
+                  className="grid grid-cols-[4.5rem_minmax(0,1fr)] gap-x-5 py-8 sm:grid-cols-[6rem_minmax(0,1fr)] sm:gap-x-8"
+                >
+                  <div className="text-fg-secondary">
+                    <Spot name={phase.id as SpotName} />
                   </div>
-                  <p className="mt-1 text-ui text-fg-secondary">{phase.description}</p>
+                  <div>
+                    <div className="flex items-baseline gap-3">
+                      <span className="font-mono text-ui-sm text-fg-muted">{phaseNumber(index)}</span>
+                      <h3 className="text-heading font-semibold text-fg">{phase.name}</h3>
+                    </div>
+                    <p className="mt-1 text-ui text-fg-secondary">{phase.description}</p>
 
-                  <ul className="mt-5 space-y-4">
-                    {phase.modules.map((module) => (
-                      <li key={module.number}>
-                        <div className="flex items-baseline justify-between gap-4">
-                          <p className="text-ui font-medium text-fg">
-                            <span className="mr-2.5 font-mono text-ui-sm font-normal text-fg-muted">
-                              {moduleNumber(module.number)}
-                            </span>
-                            {module.title}
-                          </p>
-                          <span className="shrink-0 text-ui-sm text-fg-muted">{module.lessons.length} lessons</span>
-                        </div>
-                        <p className="mt-1 pl-8 text-ui-sm text-fg-muted">{module.lessons.join(" · ")}</p>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </StaggerItem>
+                    <ul className="mt-5 space-y-4">
+                      {phase.modules.map((module, i) => (
+                        <Reveal as="li" key={module.number} from="right" delay={0.15 + i * 0.08}>
+                          <div className="flex items-baseline justify-between gap-4">
+                              <p className="text-ui font-medium text-fg">
+                                <span className="mr-2.5 font-mono text-ui-sm font-normal text-fg-muted">
+                                  {moduleNumber(module.number)}
+                                </span>
+                                {module.title}
+                              </p>
+                              <span className="shrink-0 text-ui-sm text-fg-muted">{module.lessons.length} lessons</span>
+                            </div>
+                          <p className="mt-1 pl-8 text-ui-sm text-fg-muted">{module.lessons.join(" · ")}</p>
+                        </Reveal>
+                      ))}
+                    </ul>
+                  </div>
+                </Reveal>
+                <DrawLine delay={0.1} />
+              </li>
             ))}
-          </Stagger>
+          </ol>
         </div>
       </Container>
     </section>

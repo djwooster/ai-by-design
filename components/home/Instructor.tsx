@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/motion/Reveal";
+import { WordsIn } from "@/components/motion/WordsIn";
 import { Container } from "@/components/ui/Container";
 import { Pill } from "@/components/ui/Pill";
 import { SmartLink } from "@/components/ui/SmartLink";
@@ -13,7 +14,7 @@ export function Instructor() {
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal>
             <Pill>{instructor.badge}</Pill>
-            <h2 className="mt-6 text-title text-fg">{instructor.name}</h2>
+            <WordsIn lines={[instructor.name]} delay={0.1} className="mt-6 text-title text-fg" />
             <p className="mt-2 text-lede text-fg-muted">{instructor.role}</p>
             <p className="mt-6 max-w-[32rem] text-lede text-fg-secondary">{instructor.bio}</p>
 

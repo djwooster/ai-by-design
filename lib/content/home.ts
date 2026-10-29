@@ -11,7 +11,6 @@ export type HomeSectionId =
   | "proof"
   | "instructor"
   | "offer"
-  | "guarantee"
   | "fit"
   | "faq"
   | "checklist"
@@ -25,7 +24,6 @@ export const homeSections: HomeSectionId[] = [
   "proof",
   "instructor",
   "offer",
-  "guarantee",
   "fit",
   "faq",
   "checklist",

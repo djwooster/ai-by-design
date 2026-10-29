@@ -1,7 +1,8 @@
 import { BuildMorph } from "@/components/hero/BuildMorph";
 import { GeoIcon } from "@/components/icons/GeoIcon";
-import { DictatedText } from "@/components/motion/DictatedText";
 import { Reveal } from "@/components/motion/Reveal";
+import { TypedText } from "@/components/motion/TypedText";
+import { WordsIn } from "@/components/motion/WordsIn";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { CTAButton } from "@/components/ui/CTAButton";
@@ -27,14 +28,18 @@ export function Hero() {
               {hero.badge}
             </Pill>
           </Reveal>
-          <Reveal delay={0.08}>
-            <h1 className="mt-7 text-hero text-fg">
-              <span className="block">{hero.headline[0]}</span>
-              <span className="block text-fg-secondary">{hero.headline[1]}</span>
-            </h1>
-          </Reveal>
-          <DictatedText text={hero.subline} delay={0.4} className="mt-7 max-w-[36rem] text-lede text-fg-secondary" />
-          <Reveal delay={0.55} className="mt-9 flex flex-col items-center gap-3 sm:flex-row">
+          <WordsIn
+            as="h1"
+            variant="fall"
+            delay={0.15}
+            lines={[hero.headline[0], { text: hero.headline[1].replace("Claude Code", "✻ Claude Code"), className: "text-fg-secondary" }]}
+            accent="✻ Claude Code"
+            accentClassName="text-(--claude)"
+            label={hero.headline.join(" ")}
+            className="mt-7 text-hero text-fg"
+          />
+          <TypedText text={hero.subline} delay={0.9} className="mt-7 max-w-[36rem] text-lede text-fg-secondary" />
+          <Reveal delay={1.15} className="mt-9 flex flex-col items-center gap-3 sm:flex-row">
             <CTAButton placement="hero" size="lg" withPrice />
             <ButtonLink href="#intro" variant="secondary" size="lg">
               <GeoIcon name="video" size={18} />
@@ -42,12 +47,12 @@ export function Hero() {
               <span className="text-fg-muted">{hero.videoLength}</span>
             </ButtonLink>
           </Reveal>
-          <Reveal delay={0.65}>
+          <Reveal delay={1.3}>
             <p className="mt-6 text-ui-sm text-fg-muted">{hero.trust.join(" · ")}</p>
           </Reveal>
         </div>
 
-        <Reveal delay={0.3} className="mt-16 md:mt-20">
+        <Reveal delay={1.0} className="mt-16 md:mt-20">
           <CourseWindow />
         </Reveal>
       </Container>

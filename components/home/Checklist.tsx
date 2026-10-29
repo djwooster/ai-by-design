@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { EmailCapture } from "@/components/forms/EmailCapture";
 import { Reveal } from "@/components/motion/Reveal";
-import { AccentText } from "@/components/ui/AccentText";
+import { WordsIn } from "@/components/motion/WordsIn";
 import { Container } from "@/components/ui/Container";
 import { Pill } from "@/components/ui/Pill";
 import { checklist } from "@/lib/content/home";
@@ -14,9 +14,7 @@ export function Checklist() {
           <div className="grid grid-cols-1 items-center gap-10 rounded-[28px] border border-line bg-surface p-8 md:p-14 lg:grid-cols-2 lg:gap-16">
             <div>
               <Pill>{checklist.badge}</Pill>
-              <h2 className="mt-6 text-title text-fg">
-                <AccentText text={checklist.title} accent={checklist.accent} />
-              </h2>
+              <WordsIn lines={[checklist.title]} accent={checklist.accent} delay={0.1} className="mt-6 text-title text-fg" />
               <p className="mt-5 max-w-[28rem] text-lede text-fg-secondary">{checklist.body}</p>
             </div>
             <div>
