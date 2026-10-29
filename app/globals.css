@@ -86,9 +86,9 @@
 
 @theme {
   /* Type scale. Headlines are bold and Swiss: heavy, tight tracking, tight leading. */
-  --text-hero: clamp(2.75rem, 1.5rem + 5.4vw, 6rem);
-  --text-hero--line-height: 0.95;
-  --text-hero--letter-spacing: -0.045em;
+  --text-hero: clamp(1.875rem, 1.6rem + 1.2vw, 2.25rem);
+  --text-hero--line-height: 1.05;
+  --text-hero--letter-spacing: -0.035em;
   --text-hero--font-weight: 800;
 
   --text-display: clamp(2.25rem, 1.4rem + 3.6vw, 4.5rem);

@@ -32,7 +32,7 @@ const colors = [
 ];
 
 const type = [
-  { name: "Hero", className: "text-hero", spec: "96px max · 800 · −0.045em" },
+  { name: "Hero", className: "text-hero", spec: "36px max · 800 · −0.035em" },
   { name: "Display", className: "text-display", spec: "72px max · 800 · −0.04em" },
   { name: "Title", className: "text-title", spec: "44px max · 700 · −0.035em" },
   { name: "Heading", className: "text-heading", spec: "20px · 600 · −0.02em" },

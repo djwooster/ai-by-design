@@ -168,8 +168,8 @@ No gradients, no glows, no decorative color.
 **Type:**
 - Geist Sans for everything; Geist Mono, with tabular numbers, for labels, metadata, prices and
   numbers.
-- Headlines are bold and Swiss: Geist at 700–900 weight, tight tracking (about -0.04em), large
-  on desktop (up to about 96px for the hero), tight line height.
+- Headlines are bold and Swiss: Geist at 700–900 weight, tight tracking (about -0.04em), tight
+  line height. The hero headline is 36px max (DJ, Oct 28; the original prompt said up to 96px).
 - **Swiss numerals as a motif:** each section is anchored by a huge bold number (`01`, `02`…)
   set in the grid.
 - Spec-sheet labels: 11px Geist Mono, uppercase, tracked about 0.12em, e.g.
