@@ -22,7 +22,7 @@ export const site = {
 
   nav: [
     { label: "Method", href: "/#method" },
-    { label: "Curriculum", href: "/#curriculum" },
+    { label: "Pricing", href: "/#offer" },
     { label: "Shop", href: "/shop" },
     { label: "Blog", href: "/blog" },
   ] satisfies NavLink[],
@@ -34,7 +34,6 @@ export const site = {
       title: "Course",
       links: [
         { label: "The Method", href: "/#method" },
-        { label: "Curriculum", href: "/#curriculum" },
         { label: "Founding offer", href: "/#offer" },
         { label: "FAQ", href: "/#faq" },
       ],

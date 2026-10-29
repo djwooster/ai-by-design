@@ -1,5 +1,4 @@
 import { Checklist } from "@/components/home/Checklist";
-import { Curriculum } from "@/components/home/Curriculum";
 import { Faq } from "@/components/home/Faq";
 import { FinalCta } from "@/components/home/FinalCta";
 import { Fit } from "@/components/home/Fit";
@@ -18,7 +17,6 @@ import { homeSchema } from "@/lib/seo/schema";
 const sections: Record<HomeSectionId, () => React.ReactNode> = {
   "why-now": WhyNow,
   method: Method,
-  curriculum: Curriculum,
   live: Live,
   proof: Proof,
   instructor: Instructor,

@@ -1,6 +1,7 @@
 /**
- * The AI by Design Method: six phases, in order. The curriculum is grouped by
- * phase, so modules live here with the phase they belong to.
+ * The AI by Design Method: six phases, in order. Each phase's modules and
+ * lessons live with it; the homepage shows its outcomes, and llms.txt lists
+ * the full syllabus.
  */
 export type Module = {
   number: number;
@@ -11,12 +12,10 @@ export type Module = {
 export type Phase = {
   id: "vision" | "design" | "build" | "test" | "ship" | "launch";
   name: string;
-  /** One line, for the curriculum. */
+  /** One line on what you do in the phase. */
   description: string;
-  /** What you'll have at the end of the phase: the Method card's title. */
-  outcome: string;
-  /** Two sentences on that outcome, for the Method card. */
-  body: string;
+  /** What you'll have at the end of the phase: the Method card's bullets. */
+  outcomes: string[];
   modules: Module[];
 };
 
@@ -26,8 +25,11 @@ export const phases: Phase[] = [
     id: "vision",
     name: "Vision",
     description: "Decide what to build, who it's for and what done looks like, before anything else.",
-    outcome: "A one-page brief",
-    body: "The app, who it's for and what version 1 includes, on a single page. Every later phase, and every prompt, points back to it.",
+    outcomes: [
+      "An app idea you'd use every day",
+      "A version 1 small enough to finish",
+      "A one-page brief every prompt points back to",
+    ],
     modules: [
       {
         number: 1,
@@ -40,8 +42,10 @@ export const phases: Phase[] = [
     id: "design",
     name: "Design",
     description: "Shape every screen before Claude Code writes a line.",
-    outcome: "Every screen, designed",
-    body: "The screens your first version needs, plus a small design system of colors, type and components. Claude Code builds from it instead of guessing.",
+    outcomes: [
+      "Every screen of version 1, designed",
+      "A design system Claude Code can follow",
+    ],
     modules: [
       {
         number: 2,
@@ -59,8 +63,11 @@ export const phases: Phase[] = [
     id: "build",
     name: "Build",
     description: "Build the app with Claude Code, screen by screen, from your designs.",
-    outcome: "A working iPhone app",
-    body: "Your designs, built screen by screen with Claude Code, with data, sign-in and subscriptions in place. It runs on your phone.",
+    outcomes: [
+      "A project and CLAUDE.md that keep Claude Code on track",
+      "Your core screens, built from your designs",
+      "Data, sign-in and subscriptions that work",
+    ],
     modules: [
       {
         number: 4,
@@ -83,8 +90,10 @@ export const phases: Phase[] = [
     id: "test",
     name: "Test",
     description: "Put it on real phones with TestFlight and fix what breaks.",
-    outcome: "A TestFlight build on real phones",
-    body: "Your app on your phone and a few testers' phones, with their feedback and crash reports turned into fixes.",
+    outcomes: [
+      "Your app on real phones through TestFlight",
+      "Tester feedback turned into fixes",
+    ],
     modules: [
       {
         number: 7,
@@ -97,8 +106,11 @@ export const phases: Phase[] = [
     id: "ship",
     name: "Ship",
     description: "Prepare the listing and submit it to App Review.",
-    outcome: "Your app in App Review",
-    body: "A complete App Store listing, from screenshots to privacy details, submitted to Apple. And a plan for whichever answer comes back.",
+    outcomes: [
+      "An App Store listing that sells the app",
+      "Your app submitted to App Review",
+      "A plan for whichever answer comes back",
+    ],
     modules: [
       {
         number: 8,
@@ -111,8 +123,11 @@ export const phases: Phase[] = [
     id: "launch",
     name: "Launch",
     description: "Put it in front of people and keep it growing.",
-    outcome: "Your first users",
-    body: "A launch plan, an App Store page that works like a landing page, and the habit of shipping updates from what users tell you.",
+    outcomes: [
+      "A launch-day plan",
+      "Your first users",
+      "The habit of shipping updates",
+    ],
     modules: [
       {
         number: 9,

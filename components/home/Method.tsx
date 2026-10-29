@@ -1,75 +1,68 @@
 import { PhaseDiagram } from "@/components/illustrations/PhaseDiagram";
 import { PhaseImage } from "@/components/illustrations/PhaseImage";
-import { Section } from "@/components/layout/Section";
-import { Stagger, StaggerItem } from "@/components/motion/Reveal";
+import { Marquee } from "@/components/motion/Marquee";
+import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
+import { Container } from "@/components/ui/Container";
 import { method } from "@/lib/content/home";
 import { phaseNumber, phases } from "@/lib/content/method";
 import { phaseImages } from "@/lib/content/phaseImages";
 
-/** A small "+" registration mark, centered on a grid intersection. */
-function Plus({ className }: { className: string }) {
-  return (
-    <svg
-      aria-hidden
-      viewBox="0 0 14 14"
-      className={`pointer-events-none absolute size-3.5 -translate-x-1/2 -translate-y-1/2 text-fg-muted ${className}`}
-    >
-      <path d="M7 0v14M0 7h14" stroke="currentColor" strokeWidth="1" />
-    </svg>
-  );
-}
-
 /*
- * The Method on a slightly lifted dark section: six cards joined by hairlines
- * into one sheet, with registration marks at the corners, each holding a node diagram
- * that draws itself in as the card scrolls into view.
+ * The Method: a short title and three plain lines, then the six phases as
+ * tall cards drifting past in a marquee. Each card names its phase, shows its
+ * scene, and lists what you'll have when it's done.
  */
 export function Method() {
   return (
-    <Section id="method" className="bg-surface" badge={method.badge} title={method.title} accent={method.accent} lede={method.lede}>
-      <div className="relative">
-        <Stagger
-          as="ol"
-          className="grid grid-cols-1 gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-3"
-        >
+    <section id="method" className="scroll-mt-20 py-24 md:py-36">
+      <Container>
+        <Reveal>
+          <h2 className="text-heading font-medium text-fg">{method.title}</h2>
+          <p className="mt-6 max-w-[48rem] text-lede text-fg-secondary">
+            {method.lines.map((line) => (
+              <span key={line} className="md:block">
+                {line}{" "}
+              </span>
+            ))}
+          </p>
+        </Reveal>
+      </Container>
+
+      <Stagger className="mt-14 md:mt-20">
+        <Marquee label="The six phases of the Method" className="px-4 sm:px-6 lg:px-8 xl:pl-[calc(50vw-35.5rem)]">
           {phases.map((phase, index) => {
             const image = phaseImages[phase.id];
             return (
               <StaggerItem
                 key={phase.id}
-                as="li"
-                className="flex flex-col bg-canvas px-8 pt-10 pb-9"
-                style={{ "--bg": "var(--surface-2)" } as React.CSSProperties}
+                className="flex min-h-[440px] w-[300px] shrink-0 flex-col rounded-2xl border border-line bg-surface p-6 sm:w-[340px] md:min-h-[480px]"
               >
-                {image ? (
-                  <div className="-mx-4 -mt-4">
+                <h3 className="text-ui text-fg">
+                  <span className="mr-2 font-mono text-ui-sm text-fg-muted">{phaseNumber(index)}</span>
+                  {phase.name}
+                </h3>
+                <div className="my-auto py-6">
+                  {image ? (
                     <PhaseImage src={image} />
-                  </div>
-                ) : (
-                  <div className="flex aspect-[4/3] items-center">
-                    <div className="mx-auto w-full max-w-[240px] text-fg-muted">
+                  ) : (
+                    <div className="mx-auto w-full max-w-[220px] text-fg-muted">
                       <PhaseDiagram phase={phase.id} />
                     </div>
-                  </div>
-                )}
-                <p className="mt-6 font-mono text-ui-sm text-fg-muted">
-                  {phaseNumber(index)} · {phase.name}
-                </p>
-                <h3 className="mt-1.5 text-heading font-medium text-fg">{phase.outcome}</h3>
-                <p className="mt-2 text-ui text-fg-secondary">{phase.body}</p>
+                  )}
+                </div>
+                <ul className="space-y-2">
+                  {phase.outcomes.map((outcome) => (
+                    <li key={outcome} className="flex gap-2.5 text-ui-sm text-fg-secondary">
+                      <span aria-hidden className="mt-[7px] size-1 shrink-0 rounded-full bg-fg-muted" />
+                      {outcome}
+                    </li>
+                  ))}
+                </ul>
               </StaggerItem>
             );
           })}
-        </Stagger>
-
-        {/* Registration marks at the sheet's corners and, on large screens, where the cards meet. */}
-        {["top-0 left-0", "top-0 left-full", "top-full left-0", "top-full left-full"].map((at) => (
-          <Plus key={at} className={at} />
-        ))}
-        {["top-0 left-1/3", "top-0 left-2/3", "top-1/2 left-0", "top-1/2 left-1/3", "top-1/2 left-2/3", "top-1/2 left-full", "top-full left-1/3", "top-full left-2/3"].map((at) => (
-          <Plus key={at} className={`hidden lg:block ${at}`} />
-        ))}
-      </div>
-    </Section>
+        </Marquee>
+      </Stagger>
+    </section>
   );
 }

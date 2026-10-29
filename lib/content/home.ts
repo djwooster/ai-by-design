@@ -6,7 +6,6 @@
 export type HomeSectionId =
   | "why-now"
   | "method"
-  | "curriculum"
   | "live"
   | "proof"
   | "instructor"
@@ -19,7 +18,6 @@ export type HomeSectionId =
 export const homeSections: HomeSectionId[] = [
   "why-now",
   "method",
-  "curriculum",
   "live",
   "proof",
   "instructor",
@@ -50,17 +48,13 @@ export const whyNow = {
 } as const;
 
 export const method = {
-  badge: "The AI by Design Method",
-  title: "Six phases, idea to App Store.",
-  accent: "App Store",
-  lede: "You build one productivity app of your own, one phase at a time. Each phase ends with something real in your hands. Here's what you'll be holding.",
-};
-
-export const curriculum = {
-  badge: "Curriculum",
-  title: "Everything, in the order you'll need it.",
-  accent: "in the order",
-  lede: "Self-paced lessons in Skool, grouped by the six phases of the Method. Nothing hidden behind a click.",
+  title: "The AI by Design Method",
+  /** Three lines, read in order: the problem, what the Method does, where you end up. */
+  lines: [
+    "Most app ideas stall somewhere between the design and the App Store.",
+    "The Method breaks the trip into six phases, each one built with Claude Code.",
+    "Every phase ends with something real in your hands. The last ends with your app in review.",
+  ],
 };
 
 export const live = {

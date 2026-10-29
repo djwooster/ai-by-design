@@ -14,7 +14,7 @@ export type AccordionItem = {
   content: React.ReactNode;
 };
 
-/** Hairline rows that open in place. Used for the curriculum and the FAQ. */
+/** Hairline rows that open in place. Used for the FAQ. */
 export function Accordion({
   items,
   defaultOpen = [],
