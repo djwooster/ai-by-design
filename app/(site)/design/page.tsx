@@ -6,8 +6,14 @@ import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { Grid } from "@/components/ui/Container";
 import { CTAButton } from "@/components/ui/CTAButton";
-import { Input } from "@/components/ui/Input";
+import { MotionDemo } from "@/components/design/MotionDemo";
+import { EmailCapture } from "@/components/forms/EmailCapture";
+import { GeoIcon, iconNames } from "@/components/icons/GeoIcon";
+import { MethodScroll } from "@/components/signature/MethodScroll";
+import { GAP, MethodStack } from "@/components/signature/MethodStack";
+import { Accordion } from "@/components/ui/Accordion";
 import { SpecLabel } from "@/components/ui/SpecLabel";
+import { phases } from "@/lib/content/method";
 
 /** Internal: the tokens and components in one place. Not linked, not indexed. */
 export const metadata: Metadata = {
@@ -133,11 +139,8 @@ export default function DesignPage() {
             </div>
           </div>
           <div className="col-span-4 md:col-span-6">
-            <SpecLabel>Input</SpecLabel>
-            <div className="mt-4 flex gap-2">
-              <Input type="email" placeholder="you@example.com" aria-label="Email" />
-              <Button variant="secondary">Send it</Button>
-            </div>
+            <SpecLabel>Email capture · source + tag</SpecLabel>
+            <EmailCapture className="mt-4" source="design" tag="app-store-checklist" />
           </div>
           <div className="col-span-4 md:col-span-6">
             <SpecLabel>Card</SpecLabel>
@@ -147,10 +150,65 @@ export default function DesignPage() {
               <p className="mt-1 text-ui text-fg-secondary">Multifamily asset-management dashboard.</p>
             </Card>
           </div>
+          <div className="col-span-4 md:col-span-12">
+            <SpecLabel>Accordion</SpecLabel>
+            <Accordion
+              className="mt-4"
+              defaultOpen={["m2"]}
+              items={phases.slice(1, 3).flatMap((phase) =>
+                phase.modules.map((module) => ({
+                  id: `m${module.number}`,
+                  title: module.title,
+                  meta: `Module ${String(module.number).padStart(2, "0")} · ${phase.name} · ${module.lessons.length} lessons`,
+                  content: (
+                    <ol className="space-y-1.5">
+                      {module.lessons.map((lesson) => (
+                        <li key={lesson}>{lesson}</li>
+                      ))}
+                    </ol>
+                  ),
+                })),
+              )}
+            />
+          </div>
         </Grid>
       </Section>
 
-      <Section paper numeral="04" label="Paper" title="Warm paper, used sparingly.">
+      <Section paper numeral="04" label="Method stack" title="Six layers, one per phase.">
+        <Grid className="gap-y-10">
+          <div className="col-span-4 md:col-span-3">
+            <SpecLabel>Collapsed</SpecLabel>
+            <MethodStack phases={phases} gap={GAP.collapsed} compact className="mt-4 max-w-[200px]" />
+          </div>
+          <div className="col-span-4 md:col-span-3">
+            <SpecLabel>Compact · active 03</SpecLabel>
+            <MethodStack phases={phases} active={2} compact className="mt-4 max-w-[200px]" />
+          </div>
+          <div className="col-span-4 md:col-span-6">
+            <SpecLabel>Labelled</SpecLabel>
+            <MethodStack phases={phases} active={0} className="mt-4 max-w-[420px]" />
+          </div>
+        </Grid>
+        <div className="mt-20 border-t border-line pt-10">
+          <SpecLabel>Scroll · the homepage showpiece</SpecLabel>
+          <MethodScroll phases={phases} />
+        </div>
+      </Section>
+
+      <Section numeral="05" label="Icons" title="Circles, arcs and lines.">
+        <Grid className="gap-y-8">
+          {iconNames.map((name) => (
+            <div key={name} className="col-span-1 flex flex-col items-start gap-3 md:col-span-2">
+              <span className="flex size-14 items-center justify-center rounded-lg border border-line bg-surface text-fg">
+                <GeoIcon name={name} size={24} />
+              </span>
+              <SpecLabel>{name}</SpecLabel>
+            </div>
+          ))}
+        </Grid>
+      </Section>
+
+      <Section paper numeral="06" label="Paper" title="Warm paper, used sparingly.">
         <Grid className="gap-y-8">
           <div className="col-span-4 md:col-span-6">
             <p className="text-body text-fg-secondary">
@@ -173,8 +231,9 @@ export default function DesignPage() {
         </Grid>
       </Section>
 
-      <Section numeral="05" label="Motion" title="Graceful, then quiet.">
-        <dl className="divide-y divide-line border-y border-line">
+      <Section numeral="07" label="Motion" title="Graceful, then quiet.">
+        <MotionDemo />
+        <dl className="mt-10 divide-y divide-line border-y border-line">
           {motion.map(([name, spec]) => (
             <div key={name} className="grid grid-cols-4 gap-x-4 py-4 md:grid-cols-12 md:gap-x-6">
               <SpecLabel as="dt" className="col-span-4 md:col-span-3">

@@ -1,4 +1,5 @@
 import { Container, Grid } from "@/components/ui/Container";
+import { Numeral } from "@/components/ui/Numeral";
 import { RegMark } from "@/components/ui/RegMark";
 import { SpecLabel } from "@/components/ui/SpecLabel";
 import { cx } from "@/lib/cx";
@@ -36,14 +37,7 @@ export function Section({
           <RegMark className="top-0 left-full" />
           {(numeral || label || title) && (
             <Grid className="gap-y-6">
-              {numeral && (
-                <p
-                  aria-hidden
-                  className="col-span-4 font-sans text-numeral text-fg"
-                >
-                  {numeral}
-                </p>
-              )}
+              {numeral && <Numeral value={numeral} className="col-span-4" />}
               <div className={numeral ? "col-span-4 md:col-span-8" : "col-span-4 md:col-span-12"}>
                 {label && <SpecLabel>{label}</SpecLabel>}
                 {title && <h2 className="mt-4 max-w-[20ch] text-title text-fg">{title}</h2>}

@@ -16,11 +16,15 @@ const sizes: Record<ButtonSize, string> = {
   lg: "h-11 px-5 text-ui",
 };
 
-/** Small, tight buttons with a brief physical press. Stage 2 swaps the press for a Motion spring. */
+/**
+ * Small, tight buttons with a brief physical press: they go down fast (80ms)
+ * and settle back slower (220ms), like a real switch. Pure CSS, so buttons stay
+ * server components.
+ */
 export function buttonStyles(variant: ButtonVariant = "primary", size: ButtonSize = "md") {
   return cx(
     "inline-flex shrink-0 select-none items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium tracking-[-0.01em]",
-    "transition-[background-color,border-color,color,transform] duration-150 ease-press active:scale-[0.97]",
+    "transition-[background-color,border-color,color,transform] duration-220 ease-glide active:scale-[0.965] active:duration-80 active:ease-press",
     "disabled:pointer-events-none disabled:opacity-50",
     variants[variant],
     sizes[size],
