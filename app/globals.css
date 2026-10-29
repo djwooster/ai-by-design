@@ -5,24 +5,23 @@
  * colors. `.theme-paper` swaps the same names for the light sections, so a
  * full light theme later is one more block like it.
  *
- * Palette (Oct 28): graphite #1A202C, ivory #F5F2EB, ocean teal #006D77,
- * terracotta #E07A5F, sage #A3B18A, lavender #6D597A. Each has one job:
+ * Palette (Oct 28): graphite #1A202C, ivory #F5F2EB, deep teal #0C525F (the
+ * accent), sage #A3B18A, lavender #6D597A. Each has one job:
  *   graphite  the dark base        ivory     text and the light sections
- *   terracotta  the one action accent (CTA, links, focus, active stroke)
- *   ocean teal  the active fill (Method layer, selection) and "live" states
+ *   deep teal the one action accent (CTA fill, active Method layer)
  *   sage      secondary text       lavender  "in progress" states (in review, draft)
+ * Ocean teal and terracotta from the reference are defined but unused.
  *
  * Contrast (WCAG AA, checked against --bg, --surface and --surface-2):
  *   text-primary 11.8–14.6 · text-secondary 5.8–7.2 · text-muted 5.5–6.8
- *   accent-fg 5.2–6.4 · positive 5.4–6.7 · info 5.8–7.2 · on-accent on accent 5.5
- *   ivory on the teal fill 5.4
- * Terracotta itself dips to 4.5:1 on --surface-2, so orange text uses
- * --accent-fg, a lighter step. Ocean teal is too dark for text on graphite
- * (2.7:1); it's a fill only, and teal text uses --positive.
+ *   accent-fg 5.2–6.4 · positive 6.6–8.0 · info 5.8–7.2 · ivory on the accent 7.9
+ * Deep teal is 1.9:1 on graphite: a fill only. Teal text, links, focus rings
+ * and the active outline use --accent-fg, a lighter step of the same teal.
  */
 :root {
   --graphite: #1a202c;
   --ivory: #f5f2eb;
+  --deep-teal: #0c525f;
   --ocean-teal: #006d77;
   --terracotta: #e07a5f;
   --sage: #a3b18a;
@@ -38,15 +37,16 @@
   --text-secondary: var(--sage);
   --text-muted: #a3a8b2;
 
-  --accent: var(--terracotta);
-  --accent-fg: #e8896f;
-  --accent-deep: var(--ocean-teal);
-  --on-accent: var(--graphite);
+  --accent: var(--deep-teal);
+  --accent-hover: #106574;
+  --accent-fg: #5aaebb;
+  --accent-deep: var(--deep-teal);
+  --on-accent: var(--ivory);
 
   --paper: var(--ivory);
   --ink: var(--graphite);
 
-  --positive: #5fb3ba;
+  --positive: #9cc3a0;
   --info: #b8a5c6;
   --warning: #e3b868;
   --negative: #f28b82;
@@ -56,8 +56,8 @@
 
 /*
  * Ivory paper sections. Contrast on paper and its surfaces: ink 12.5–14.6 ·
- * secondary 6.0–7.0 · muted 5.1–5.9 · accent-fg 4.9–5.7 · teal and lavender 4.7–5.6.
- * Terracotta buttons keep graphite text (5.5:1); their edge against ivory is softer (2.6:1).
+ * secondary 6.0–7.0 · muted 5.1–5.9 · deep teal 6.7–7.9 · lavender 4.8–5.6.
+ * On ivory the deep teal is strong enough for text and outlines as is.
  */
 .theme-paper {
   --bg: var(--paper);
@@ -70,10 +70,11 @@
   --text-secondary: #4a5263;
   --text-muted: #565d6b;
 
-  --accent-fg: #9c452f;
-  --accent-deep: var(--sage);
+  --accent-hover: #0a4752;
+  --accent-fg: var(--deep-teal);
+  --accent-deep: #c5dcdd;
 
-  --positive: var(--ocean-teal);
+  --positive: #2f5a3a;
   --info: var(--lavender);
   --warning: #7a5a14;
   --negative: #9e3a2e;
@@ -93,6 +94,7 @@
   --color-fg-secondary: var(--text-secondary);
   --color-fg-muted: var(--text-muted);
   --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
   --color-accent-fg: var(--accent-fg);
   --color-accent-deep: var(--accent-deep);
   --color-on-accent: var(--on-accent);
@@ -196,7 +198,7 @@
   }
 
   :focus-visible {
-    outline: 2px solid var(--accent);
+    outline: 2px solid var(--accent-fg);
     outline-offset: 2px;
     border-radius: 2px;
   }

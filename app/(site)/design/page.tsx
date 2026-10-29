@@ -30,12 +30,12 @@ const colors = [
   { token: "--text-primary", note: "#F5F2EB ivory · 14.6:1" },
   { token: "--text-secondary", note: "#A3B18A sage · 7.2:1" },
   { token: "--text-muted", note: "#A3A8B2 · 6.8:1" },
-  { token: "--accent", note: "#E07A5F terracotta · action" },
-  { token: "--accent-fg", note: "#E8896F · orange text · 6.4:1" },
-  { token: "--accent-deep", note: "#006D77 ocean teal · active fill" },
+  { token: "--accent", note: "#0C525F deep teal · action fill" },
+  { token: "--accent-hover", note: "#106574 · button hover" },
+  { token: "--accent-fg", note: "#5AAEBB · teal text, rings · 5.6:1" },
   { token: "--paper", note: "#F5F2EB ivory · light sections" },
   { token: "--lavender", note: "#6D597A · in-progress fill" },
-  { token: "--positive", note: "#5FB3BA teal · live · 6.7:1" },
+  { token: "--positive", note: "#9CC3A0 · live · 8.0:1" },
   { token: "--info", note: "#B8A5C6 lavender · in review · 7.2:1" },
   { token: "--negative", note: "States only · 6.8:1" },
 ];
@@ -80,7 +80,7 @@ export default function DesignPage() {
         lede="Tokens and components for ai-bydesign.dev. Dark first, one accent, hierarchy from scale, weight and tone."
       />
 
-      <Section numeral="01" label="Color" title="Graphite, ivory and one terracotta.">
+      <Section numeral="01" label="Color" title="Graphite, ivory and one deep teal.">
         <Grid className="gap-y-8">
           {colors.map((color) => (
             <Swatch key={color.token} {...color} />
@@ -216,8 +216,8 @@ export default function DesignPage() {
           <div className="col-span-4 md:col-span-6">
             <p className="text-body text-fg-secondary">
               The same semantic tokens, swapped for ivory sections such as the Method or the
-              guarantee. Graphite on ivory is 14.6:1; orange text deepens to #9C452F (5.7:1), and
-              the active fill turns sage.
+              guarantee. Graphite on ivory is 14.6:1; the deep teal works as text at full
+              strength (7.9:1), and the active fill turns a pale teal.
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <CTAButton placement="design-paper" />

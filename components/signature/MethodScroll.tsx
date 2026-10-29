@@ -73,7 +73,7 @@ function MethodPinned({ phases }: { phases: Phase[] }) {
                   ]}
                 />
                 <div className="mt-5 flex items-center gap-3">
-                  <GeoIcon name={phase.id} size={28} className="text-accent" />
+                  <GeoIcon name={phase.id} size={28} className="text-accent-fg" />
                   <h3 className="text-title text-fg">{phase.name}</h3>
                 </div>
                 <p className="mt-4 max-w-[26rem] text-body text-fg-secondary">{phase.description}</p>
@@ -98,7 +98,7 @@ function PhaseTicks({ phases, active }: { phases: Phase[]; active: number }) {
             className={cx(
               "block h-px transition-colors duration-300",
               index <= active ? "bg-fg" : "bg-line-strong",
-              index === active && "bg-accent",
+              index === active && "bg-accent-fg",
             )}
           />
           <SpecLabel

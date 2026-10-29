@@ -48,7 +48,7 @@ function Layer({ index, phase, active, compact }: { index: number; phase: Phase;
       initial={false}
       animate={{ y: active ? -8 : 0 }}
       transition={{ duration: 0.45, ease: ease.glide }}
-      className={cx("transition-colors duration-300", active ? "text-accent" : "text-fg-muted")}
+      className={cx("transition-colors duration-300", active ? "text-accent-fg" : "text-fg-muted")}
     >
       <polygon points={faces.left} className="fill-canvas" {...hairline} />
       <polygon points={faces.right} className="fill-canvas" {...hairline} />

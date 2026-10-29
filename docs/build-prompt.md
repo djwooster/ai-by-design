@@ -150,27 +150,29 @@ typography. Calm and confident; nothing shouts. Hierarchy comes from scale, weig
 later, but ship dark only.
 
 **Tokens (semantic CSS variables; components never hard-code colors):**
-Palette updated Oct 28 (DJ's second reference, replacing the original cream and sea blue and the
-poster palette): graphite `#1A202C`, ivory `#F5F2EB`, ocean teal `#006D77`, terracotta
-`#E07A5F`, sage `#A3B18A`, lavender `#6D597A`. Each color has one job.
+Palette updated Oct 28 (DJ's references, replacing the original cream and sea blue): graphite
+`#1A202C`, ivory `#F5F2EB`, deep teal `#0C525F` (the accent), sage `#A3B18A`, lavender
+`#6D597A`. Each color has one job. Ocean teal `#006D77` and terracotta `#E07A5F` are defined
+but unused.
 - `--bg` `#1A202C` (graphite) · `--surface` `#212836` · `--surface-2` `#29303F`
 - `--border` ivory at 9% opacity · `--border-strong` ivory at 17%
 - `--text-primary` `#F5F2EB` (ivory) · `--text-secondary` `#A3B18A` (sage) · `--text-muted`
   `#A3A8B2`
-- `--accent` `#E07A5F` (terracotta): the one action accent, for fills, rings and strokes ·
-  `--accent-fg` `#E8896F` for orange text · `--on-accent` graphite
-- `--accent-deep` `#006D77` (ocean teal): the active fill (the active Method layer, selection).
-  Too dark for text on graphite; teal text uses `--positive` `#5FB3BA`
+- `--accent` `#0C525F` (deep teal): the one action accent, as a fill (the CTA, the active Method
+  layer, selection) with ivory text (7.9:1) · `--accent-hover` `#106574`
+- `--accent-fg` `#5AAEBB`: the same teal, lighter, for teal text, links, focus rings and the
+  active outline. Deep teal is 1.9:1 on graphite, so it never carries text or lines on dark
+- `--positive` `#9CC3A0` for live states
 - `--info` `#B8A5C6` (lavender, light step) for in-progress states: in review, draft
-- Light sections: `--paper` `#F5F2EB` (ivory) background, graphite text, orange text `#9C452F`,
-  active fill sage, teal and lavender at full strength for states
+- Light sections: `--paper` `#F5F2EB` (ivory) background, graphite text, deep teal at full
+  strength for text and outlines, active fill pale teal `#C5DCDD`
 - `--positive`, `--info`, `--warning`, `--negative`: for states only
 - Meet WCAG AA contrast everywhere. Verify every pairing.
 
-**Color rules:** neutral by default. Terracotta is the only action accent and appears at most
+**Color rules:** neutral by default. Deep teal is the only action accent and appears at most
 once or twice per viewport: the primary CTA, the active Method layer, a link, a focus ring.
-Teal, sage and lavender each keep their single role above. Primary buttons are terracotta with
-graphite text; light text on terracotta fails contrast. No gradients, no glows, no decorative
+Sage and lavender each keep their single role above. Primary buttons are deep teal with ivory
+text. No gradients, no glows, no decorative
 color.
 
 **Type:**
