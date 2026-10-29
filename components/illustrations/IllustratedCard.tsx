@@ -3,7 +3,7 @@ import { cx } from "@/lib/cx";
 
 /**
  * A light card with a spot illustration on top and a title and short note
- * below (references/09 and 10). `blue` makes it the pastel-blue card; `tall`
+ * below (references/09 and 10). `blue` makes it the blue card; `tall`
  * centers the drawing and sets the text at the bottom, for cards in a row.
  */
 export function IllustratedCard({

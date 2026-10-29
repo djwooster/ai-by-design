@@ -13,7 +13,7 @@ import { cx } from "@/lib/cx";
 /*
  * Text on the left; on the right, the story in three illustrated cards that
  * deal onto the table as the section scrolls in: two "then" cards, and the
- * pastel-blue "now" card landing on top (references/09).
+ * blue "now" card landing on top (references/09).
  */
 
 // Where each card rests in the stack on large screens.

@@ -6,19 +6,21 @@
  * sections and the illustrated cards, so a full light theme is one more block.
  *
  * Palette (Oct 28, references/08-palette-neutral-blue.png): Air Black #111111,
- * Black Olive #3A3A3A, Dark Liver #4D4D4D, Gray #B7BABB and one accent, Pastel
- * Blue #B4C7CC. Neutral everywhere; the blue is the only color.
+ * Black Olive #3A3A3A, Dark Liver #4D4D4D, Gray #B7BABB, and one accent: a
+ * bright terminal-cursor blue, #5294FF (DJ: the pastel blue didn't stand out).
+ * Neutral everywhere; the blue is the only color.
  *
  * Contrast (WCAG AA, checked against --bg, --surface and --surface-2):
  *   text-primary 13.7–16.2 · text-secondary 8.2–9.7 · text-muted 5.0–6.0
- *   accent 9.1–10.8 · on-accent on accent 10.8 · positive 9.0–10.7
+ *   accent 5.3–6.3 · on-accent (black) on accent 6.3 · positive 9.0–10.7
+ * White text on the blue fails (3.0:1), so blue buttons and cards use black text.
  */
 :root {
   --air-black: #111111;
   --black-olive: #3a3a3a;
   --dark-liver: #4d4d4d;
   --gray: #b7babb;
-  --pastel-blue: #b4c7cc;
+  --blue: #5294ff;
   --smoke: #edeeee;
 
   --bg: var(--air-black);
@@ -31,9 +33,9 @@
   --text-secondary: var(--gray);
   --text-muted: #8e9192;
 
-  --accent: var(--pastel-blue);
-  --accent-hover: #c6d6da;
-  --accent-fg: var(--pastel-blue);
+  --accent: var(--blue);
+  --accent-hover: #6aa1f9;
+  --accent-fg: var(--blue);
   --accent-deep: var(--black-olive);
   --on-accent: var(--air-black);
 
@@ -62,7 +64,7 @@
   --accent: var(--air-black);
   --accent-hover: #2a2a2a;
   --accent-fg: var(--air-black);
-  --accent-deep: var(--pastel-blue);
+  --accent-deep: var(--blue);
   --on-accent: var(--smoke);
 
   --positive: #2f5a3a;
@@ -74,17 +76,17 @@
   color: var(--text-primary);
 }
 
-/* Pastel blue cards: ink 10.8–12.3 · secondary 6.5–7.4 · muted 4.8–5.5. */
+/* Blue cards and bands: ink 6.3–7.3 · secondary and muted 4.8–5.5. */
 .theme-blue {
-  --bg: var(--pastel-blue);
-  --surface: #c3d3d7;
-  --surface-2: #cbd9dc;
+  --bg: var(--blue);
+  --surface: #6aa1f9;
+  --surface-2: #74a8fa;
   --border: color-mix(in srgb, var(--air-black) 12%, transparent);
   --border-strong: color-mix(in srgb, var(--air-black) 24%, transparent);
 
   --text-primary: var(--air-black);
-  --text-secondary: var(--black-olive);
-  --text-muted: var(--dark-liver);
+  --text-secondary: #2a2a2a;
+  --text-muted: #2a2a2a;
 
   --accent: var(--air-black);
   --accent-hover: #2a2a2a;

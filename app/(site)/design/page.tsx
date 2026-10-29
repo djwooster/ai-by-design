@@ -34,7 +34,7 @@ const colors = [
   { token: "--text-primary", note: "#EDEEEE smoke · 16.2:1" },
   { token: "--text-secondary", note: "#B7BABB gray · 9.7:1" },
   { token: "--text-muted", note: "#8E9192 · 6.0:1" },
-  { token: "--accent", note: "#B4C7CC pastel blue · the one color · 10.8:1" },
+  { token: "--accent", note: "#5294FF blue · the one color · 6.3:1" },
   { token: "--smoke", note: "#EDEEEE · light sections and cards" },
   { token: "--positive", note: "#A9CBB0 · live · 10.7:1" },
 ];
@@ -85,7 +85,7 @@ export default function DesignPage() {
         lede="Tokens and components for ai-bydesign.dev. Dark first, one accent, hierarchy from scale, weight and tone."
       />
 
-      <Section badge="Color" title="Neutral, with one pastel blue.">
+      <Section badge="Color" title="Neutral, with one bright blue.">
         <Grid className="gap-y-8">
           {colors.map((color) => (
             <Swatch key={color.token} {...color} />
@@ -214,7 +214,7 @@ export default function DesignPage() {
         </Grid>
       </Section>
 
-      <Section light badge="Light" title="Smoke and pastel blue, for cards and one section.">
+      <Section light badge="Light" title="Smoke and blue, for cards and one section.">
         <Grid className="gap-y-8">
           <div className="col-span-4 md:col-span-6">
             <p className="text-body text-fg-secondary">

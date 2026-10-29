@@ -6,7 +6,7 @@ Copied from the Notion page "ai-bydesign.dev — Course Site Build Prompt (Phase
 
 These win over the design sections below. References are in `references/` (see its README); Linear's homepage is the bar for "premium".
 
-- **Palette:** `references/08`: Air Black `#111111` base, `#191919`/`#222222` surfaces, Smoke `#EDEEEE` text, Gray `#B7BABB` secondary, and Pastel Blue `#B4C7CC` as the only color (CTA, accent word, one blue card). Light (`.theme-light`) and blue (`.theme-blue`) themes for cards and one section.
+- **Palette:** `references/08`: Air Black `#111111` base, `#191919`/`#222222` surfaces, Smoke `#EDEEEE` text, Gray `#B7BABB` secondary, and a bright terminal-cursor blue `#5294FF` as the only color (CTA, accent word, one blue card), with black text on it. Pastel Blue `#B4C7CC` from the reference didn't stand out enough. Light (`.theme-light`) and blue (`.theme-blue`) themes for cards and one section.
 - **Type:** large, medium-weight (500) headlines with tight tracking, not 700–900 Swiss bold. The hero goes big (about 68px).
 - **No Swiss section numerals** and far fewer mono spec labels. Sections open with a small pill badge, a headline with one accented word and a lede with room under it.
 - **No registration marks or section hairlines.**
