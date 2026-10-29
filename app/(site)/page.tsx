@@ -5,7 +5,7 @@ import { Fit } from "@/components/home/Fit";
 import { Hero } from "@/components/home/Hero";
 import { Instructor } from "@/components/home/Instructor";
 import { Live } from "@/components/home/Live";
-import { Method } from "@/components/home/Method";
+import { Method } from "@/components/home/method/Method";
 import { Offer } from "@/components/home/Offer";
 import { Proof } from "@/components/home/Proof";
 import { WhyNow } from "@/components/home/WhyNow";
