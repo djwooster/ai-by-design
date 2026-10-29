@@ -64,7 +64,7 @@ export function Terminal({
 
       <div className="flex-1 px-5 py-4">
         <div className="flex items-center gap-2 text-fg-muted">
-          <span className="text-accent-fg">✻</span> Claude Code
+          Claude Code
         </div>
 
         <div className="mt-3 rounded-md border border-line-strong px-3 py-2 text-fg">
