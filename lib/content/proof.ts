@@ -46,7 +46,7 @@ export const proof: ProofProduct[] = [
     name: "Coast Gallery",
     kind: "Website",
     summary: "The website for a luxury art gallery in Laguna Beach.",
-    image: null, // [TODO: image]
+    image: { src: "/images/proof/coast-gallery.png", alt: "Coast Gallery's homepage on a laptop: an abstract painting in a sunlit room, under the line \"Work that rises off the wall.\"" },
     href: "https://coast-gallery.vercel.app",
     linkLabel: "coast-gallery.vercel.app",
   },

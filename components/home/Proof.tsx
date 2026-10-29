@@ -24,7 +24,8 @@ export function Proof() {
               <div
                 className={cx(
                   "relative flex items-center justify-center overflow-hidden rounded-xl border border-line bg-surface",
-                  wide ? "aspect-[13/12] md:aspect-[13/6]" : "aspect-[13/12]",
+                  // On phones the wide card keeps the laptop whole.
+                  wide ? "aspect-[3/2] md:aspect-[13/6]" : "aspect-[13/12]",
                 )}
               >
                 {product.image ? (
