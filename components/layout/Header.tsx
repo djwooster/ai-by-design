@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { Suspense } from "react";
+import { DesktopNav, HeaderShell, StaticNav } from "@/components/layout/HeaderChrome";
 import { Container } from "@/components/ui/Container";
 import { CTAButton } from "@/components/ui/CTAButton";
 import { site } from "@/lib/content/site";
@@ -11,22 +13,17 @@ export function Wordmark() {
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-canvas/92 backdrop-blur-md">
+    <HeaderShell>
       <Container className="flex h-14 items-center justify-between gap-4">
         <div className="flex items-center gap-10">
           <Link href="/" aria-label={`${site.name} home`}>
             <Wordmark />
           </Link>
           <nav aria-label="Main" className="hidden items-center gap-7 md:flex">
-            {site.nav.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-ui-sm text-fg-secondary transition-colors duration-150 hover:text-fg"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {/* The active link reads the URL, which can suspend on unknown [slug] pages. */}
+            <Suspense fallback={<StaticNav links={site.nav} />}>
+              <DesktopNav />
+            </Suspense>
           </nav>
         </div>
         <CTAButton placement="header" size="sm" />
@@ -46,6 +43,6 @@ export function Header() {
           ))}
         </Container>
       </nav>
-    </header>
+    </HeaderShell>
   );
 }

@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/motion/Reveal";
+import { SentencesIn } from "@/components/motion/SentencesIn";
 import { WordsIn } from "@/components/motion/WordsIn";
 import { Accordion } from "@/components/ui/Accordion";
 import { Container } from "@/components/ui/Container";
@@ -21,7 +22,7 @@ export function Faq() {
               items={faq.map((item) => ({
                 id: item.id,
                 title: item.question,
-                content: <p className="max-w-[40rem]">{item.answer}</p>,
+                content: <SentencesIn text={item.answer} className="max-w-[40rem]" />,
               }))}
             />
           </Reveal>

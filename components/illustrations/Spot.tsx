@@ -5,7 +5,8 @@ import { cx } from "@/lib/cx";
  * in the spirit of references/09 and 10. Illustrative rather than literal,
  * one idea each. They draw in `currentColor`, and their opaque areas fill
  * with the card's own background, so they work on light and dark cards alike.
- * All on a 160×120 canvas.
+ * All on a 160×120 canvas. A few parts move on hover when the card around
+ * them is a `group` (the Live cards): dots type, the lens sweeps, faces bob.
  */
 
 const paper = "fill-canvas";
@@ -165,9 +166,17 @@ const drawings = {
       <path d="M55 42C55 35.5 68 35.5 68 43C68 48.5 61.5 48 61.5 54" />
       <circle cx="61.5" cy="60" r="1.6" className={ink} stroke="none" />
       <path d="M88 54H124A14 14 0 0 1 138 68V78A14 14 0 0 1 124 92H120L124 104L110 92H88A14 14 0 0 1 74 78V68A14 14 0 0 1 88 54Z" className={paper} />
-      <circle cx="94" cy="73" r="2.6" className={ink} stroke="none" />
-      <circle cx="106" cy="73" r="2.6" className={ink} stroke="none" />
-      <circle cx="118" cy="73" r="2.6" className={ink} stroke="none" />
+      {[94, 106, 118].map((x, i) => (
+        <circle
+          key={x}
+          cx={x}
+          cy="73"
+          r="2.6"
+          stroke="none"
+          className={cx(ink, "[transform-box:fill-box] group-hover:animate-typing")}
+          style={{ animationDelay: `${i * 160}ms` }}
+        />
+      ))}
     </>
   ),
   review: (
@@ -176,10 +185,12 @@ const drawings = {
       <path d="M54 20H70" />
       <rect x="46" y="30" width="32" height="20" rx="3" />
       <path d="M46 58H78M46 66H70M46 74H78" />
-      <circle cx="98" cy="64" r="20" className={paper} />
-      <circle cx="98" cy="64" r="14" strokeOpacity={0.4} />
-      <path d="M90 60H106M90 68H101" />
-      <path d="M112 79L130 97" strokeWidth={5} />
+      <g className="group-hover:animate-sweep">
+        <circle cx="98" cy="64" r="20" className={paper} />
+        <circle cx="98" cy="64" r="14" strokeOpacity={0.4} />
+        <path d="M90 60H106M90 68H101" />
+        <path d="M112 79L130 97" strokeWidth={5} />
+      </g>
       <circle cx="52" cy="40" r="4.5" className={ink} stroke="none" />
     </>
   ),
@@ -187,8 +198,10 @@ const drawings = {
     <>
       <rect x="26" y="18" width="108" height="68" rx="6" className={paper} />
       <path d="M72 86L68 100H92L88 86M56 100H104" />
-      <circle cx="80" cy="52" r="16" className={paper} />
-      <path d="M75 44L89 52L75 60Z" className={ink} />
+      <g className="origin-center [transform-box:fill-box] group-hover:animate-nudge">
+        <circle cx="80" cy="52" r="16" className={paper} />
+        <path d="M75 44L89 52L75 60Z" className={ink} />
+      </g>
       <circle cx="40" cy="31" r="3.5" className={ink} stroke="none" />
       <path d="M140 20Q146 28 140 36M146 14Q155 28 146 42" />
     </>
@@ -197,10 +210,18 @@ const drawings = {
     <>
       <circle cx="40" cy="74" r="12" strokeDasharray="3 4" />
       <circle cx="122" cy="34" r="10" strokeDasharray="3 4" />
-      <Face cx={64} cy={50} r={15} />
-      <Face cx={96} cy={44} r={13} />
-      <Face cx={104} cy={76} r={15} />
-      <Face cx={72} cy={84} r={13} />
+      {(
+        [
+          [64, 50, 15],
+          [96, 44, 13],
+          [104, 76, 15],
+          [72, 84, 13],
+        ] as const
+      ).map(([x, y, r], i) => (
+        <g key={i} className="group-hover:animate-bob" style={{ animationDelay: `${i * 120}ms` }}>
+          <Face cx={x} cy={y} r={r} />
+        </g>
+      ))}
     </>
   ),
 } satisfies Record<string, React.ReactNode>;

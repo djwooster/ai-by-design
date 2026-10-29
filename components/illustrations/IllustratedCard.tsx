@@ -26,7 +26,7 @@ export function IllustratedCard({
   return (
     <div
       className={cx(
-        "flex flex-col rounded-2xl p-6",
+        "group flex flex-col rounded-2xl p-6",
         blue ? "theme-blue" : "theme-light",
         className,
       )}

@@ -1,3 +1,4 @@
+import { FooterWordmark } from "@/components/layout/FooterWordmark";
 import { Wordmark } from "@/components/layout/Header";
 import { Container, Grid } from "@/components/ui/Container";
 import { SmartLink } from "@/components/ui/SmartLink";
@@ -39,6 +40,9 @@ export function Footer() {
           <SpecLabel parts={[offer.course, `Founding · ${offer.foundingSpots.total} spots`]} />
         </Container>
       </div>
+      <Container>
+        <FooterWordmark />
+      </Container>
     </footer>
   );
 }

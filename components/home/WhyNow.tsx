@@ -1,3 +1,4 @@
+import { ThenNow } from "@/components/home/ThenNow";
 import { WhyNowImage } from "@/components/home/WhyNowImage";
 import { Reveal } from "@/components/motion/Reveal";
 import { WordsIn } from "@/components/motion/WordsIn";
@@ -7,7 +8,8 @@ import { whyNow } from "@/lib/content/home";
 
 /**
  * Text on the left; on the right, the outcome: your own app, live on the App
- * Store. Then and now sit under the copy as a two-line comparison.
+ * Store. Then and now sit under the copy as a two-line comparison that
+ * strikes "then" and lights up "now" as it scrolls in.
  */
 export function WhyNow() {
   return (
@@ -19,16 +21,7 @@ export function WhyNow() {
             <WordsIn lines={[...whyNow.title]} accent={whyNow.accent} delay={0.1} className="mt-6 text-title text-fg" />
             <p className="mt-6 max-w-[28rem] text-lede text-fg-secondary">{whyNow.body}</p>
 
-            <dl className="mt-10 max-w-[28rem] border-t border-line">
-              {whyNow.compare.map((row) => (
-                <div key={row.era} className="grid grid-cols-[4.5rem_minmax(0,1fr)] gap-4 border-b border-line py-4">
-                  <dt className={row.era === "Now" ? "text-ui font-medium text-accent-fg" : "text-ui text-fg-muted"}>
-                    {row.era}
-                  </dt>
-                  <dd className={row.era === "Now" ? "text-ui text-fg" : "text-ui text-fg-muted"}>{row.text}</dd>
-                </div>
-              ))}
-            </dl>
+            <ThenNow rows={whyNow.compare} />
           </Reveal>
 
           <Reveal delay={0.1}>

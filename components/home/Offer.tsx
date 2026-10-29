@@ -1,3 +1,4 @@
+import { PriceStrike } from "@/components/home/PriceStrike";
 import { GeoIcon } from "@/components/icons/GeoIcon";
 import { Section } from "@/components/layout/Section";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
@@ -39,13 +40,7 @@ export function Offer() {
               <Badge tone="accent">Founding</Badge>
             </div>
 
-            <div className="mt-8 flex items-end gap-5">
-              <p className="text-hero leading-none text-fg">{formatPrice(offer.foundingPrice)}</p>
-              <div className="pb-1.5">
-                <p className="text-ui text-fg-muted line-through">{formatPrice(offer.launchPrice)}</p>
-                <p className="text-ui-sm text-fg-muted">At launch, Jan 1, 2027</p>
-              </div>
-            </div>
+            <PriceStrike />
             <p className="mt-3 text-ui-sm text-fg-muted">
               {spots.remaining !== null
                 ? `${spots.remaining} of ${spots.total} founding spots left`
