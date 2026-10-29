@@ -1,68 +1,48 @@
-import { PhaseDiagram } from "@/components/illustrations/PhaseDiagram";
-import { PhaseImage } from "@/components/illustrations/PhaseImage";
-import { Marquee } from "@/components/motion/Marquee";
-import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
-import { Container } from "@/components/ui/Container";
+import { PhaseScene } from "@/components/illustrations/PhaseScene";
+import { Section } from "@/components/layout/Section";
+import { Stagger, StaggerItem } from "@/components/motion/Reveal";
 import { method } from "@/lib/content/home";
 import { phaseNumber, phases } from "@/lib/content/method";
-import { phaseImages } from "@/lib/content/phaseImages";
+
+/** A small dot-grid mark for the card's corner; each phase fills in one more row. */
+function DotMark({ filled }: { filled: number }) {
+  return (
+    <svg aria-hidden viewBox="0 0 16 16" className="size-4 text-fg-muted">
+      {Array.from({ length: 16 }, (_, i) => {
+        const row = Math.floor(i / 4);
+        return <circle key={i} cx={2 + (i % 4) * 4} cy={2 + row * 4} r={1} fill="currentColor" opacity={3 - row < filled ? 1 : 0.25} />;
+      })}
+    </svg>
+  );
+}
 
 /*
- * The Method: a short title and three plain lines, then the six phases as
- * tall cards drifting past in a marquee. Each card names its phase, shows its
- * scene, and lists what you'll have when it's done.
+ * The Method: a centered heading, then the six phases as folded-corner cards.
+ * Each names its phase, says what you'll have when it's done, and shows that
+ * thing as a small piece of line-drawn UI.
  */
 export function Method() {
   return (
-    <section id="method" className="scroll-mt-20 py-24 md:py-36">
-      <Container>
-        <Reveal>
-          <h2 className="text-heading font-medium text-fg">{method.title}</h2>
-          <p className="mt-6 max-w-[48rem] text-lede text-fg-secondary">
-            {method.lines.map((line) => (
-              <span key={line} className="md:block">
-                {line}{" "}
-              </span>
-            ))}
-          </p>
-        </Reveal>
-      </Container>
-
-      <Stagger className="mt-14 md:mt-20">
-        <Marquee label="The six phases of the Method" className="px-4 sm:px-6 lg:px-8 xl:pl-[calc(50vw-35.5rem)]">
-          {phases.map((phase, index) => {
-            const image = phaseImages[phase.id];
-            return (
-              <StaggerItem
-                key={phase.id}
-                className="flex min-h-[440px] w-[300px] shrink-0 flex-col rounded-2xl border border-line bg-surface p-6 sm:w-[340px] md:min-h-[480px]"
-              >
-                <h3 className="text-ui text-fg">
-                  <span className="mr-2 font-mono text-ui-sm text-fg-muted">{phaseNumber(index)}</span>
-                  {phase.name}
-                </h3>
-                <div className="my-auto py-6">
-                  {image ? (
-                    <PhaseImage src={image} />
-                  ) : (
-                    <div className="mx-auto w-full max-w-[220px] text-fg-muted">
-                      <PhaseDiagram phase={phase.id} />
-                    </div>
-                  )}
+    <Section id="method" title={method.title} accent={method.accent} lede={method.lede} center>
+      <Stagger as="ol" className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {phases.map((phase, index) => (
+          <StaggerItem key={phase.id} as="li" className="group relative">
+            {/* The folded corner: the card is clipped, and a hairline draws the fold. */}
+            <div className="flex h-full flex-col bg-line p-px [clip-path:polygon(0_0,calc(100%-22px)_0,100%_22px,100%_100%,0_100%)]">
+              <div className="flex flex-1 flex-col bg-surface p-5 [clip-path:polygon(0_0,calc(100%-21.5px)_0,100%_21.5px,100%_100%,0_100%)]">
+                <div className="flex items-start justify-between gap-4 pr-4">
+                  <h3 className="font-mono text-ui-sm uppercase tracking-[0.06em] text-fg">
+                    <span className="text-fg-muted">{phaseNumber(index)}</span> {phase.name}
+                  </h3>
+                  <DotMark filled={Math.ceil(((index + 1) / phases.length) * 4)} />
                 </div>
-                <ul className="space-y-2">
-                  {phase.outcomes.map((outcome) => (
-                    <li key={outcome} className="flex gap-2.5 text-ui-sm text-fg-secondary">
-                      <span aria-hidden className="mt-[7px] size-1 shrink-0 rounded-full bg-fg-muted" />
-                      {outcome}
-                    </li>
-                  ))}
-                </ul>
-              </StaggerItem>
-            );
-          })}
-        </Marquee>
+                <p className="mt-8 text-ui text-fg-secondary">{phase.outcome}</p>
+                <PhaseScene phase={phase.id} className="mt-6" />
+              </div>
+            </div>
+          </StaggerItem>
+        ))}
       </Stagger>
-    </section>
+    </Section>
   );
 }

@@ -29,7 +29,7 @@ export function GET() {
     ...phases.flatMap((phase) => [
       `### ${phase.name}: ${phase.description}`,
       "",
-      `You'll have: ${phase.outcomes.join("; ")}.`,
+      `You'll have: ${phase.outcome}`,
       "",
       ...phase.modules.flatMap((module) => [`- Module ${module.number}, ${module.title}: ${module.lessons.join("; ")}`]),
       "",

@@ -48,13 +48,9 @@ export const whyNow = {
 } as const;
 
 export const method = {
-  title: "The AI by Design Method",
-  /** Three lines, read in order: the problem, what the Method does, where you end up. */
-  lines: [
-    "Most app ideas stall somewhere between the design and the App Store.",
-    "The Method breaks the trip into six phases, each one built with Claude Code.",
-    "Every phase ends with something real in your hands. The last ends with your app in review.",
-  ],
+  title: "Six phases, idea to App Store.",
+  accent: "App Store.",
+  lede: "The AI by Design Method. Every phase ends with something real in your hands, and the last one ends with your app in review.",
 };
 
 export const live = {

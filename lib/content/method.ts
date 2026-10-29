@@ -14,8 +14,8 @@ export type Phase = {
   name: string;
   /** One line on what you do in the phase. */
   description: string;
-  /** What you'll have at the end of the phase: the Method card's bullets. */
-  outcomes: string[];
+  /** What you'll have when the phase is done, in two short sentences: the Method card's text. */
+  outcome: string;
   modules: Module[];
 };
 
@@ -25,11 +25,7 @@ export const phases: Phase[] = [
     id: "vision",
     name: "Vision",
     description: "Decide what to build, who it's for and what done looks like, before anything else.",
-    outcomes: [
-      "An app idea you'd use every day",
-      "A version 1 small enough to finish",
-      "A one-page brief every prompt points back to",
-    ],
+    outcome: "A one-page brief for an app you'd use every day, cut to a version 1 you can finish. Every prompt after this points back to it.",
     modules: [
       {
         number: 1,
@@ -42,10 +38,7 @@ export const phases: Phase[] = [
     id: "design",
     name: "Design",
     description: "Shape every screen before Claude Code writes a line.",
-    outcomes: [
-      "Every screen of version 1, designed",
-      "A design system Claude Code can follow",
-    ],
+    outcome: "Every screen of version 1, designed, and a small design system to go with it. Claude Code builds from it instead of guessing.",
     modules: [
       {
         number: 2,
@@ -63,11 +56,7 @@ export const phases: Phase[] = [
     id: "build",
     name: "Build",
     description: "Build the app with Claude Code, screen by screen, from your designs.",
-    outcomes: [
-      "A project and CLAUDE.md that keep Claude Code on track",
-      "Your core screens, built from your designs",
-      "Data, sign-in and subscriptions that work",
-    ],
+    outcome: "A working iPhone app, built screen by screen from your designs. Data, sign-in and subscriptions included.",
     modules: [
       {
         number: 4,
@@ -90,10 +79,7 @@ export const phases: Phase[] = [
     id: "test",
     name: "Test",
     description: "Put it on real phones with TestFlight and fix what breaks.",
-    outcomes: [
-      "Your app on real phones through TestFlight",
-      "Tester feedback turned into fixes",
-    ],
+    outcome: "Your app on real phones through TestFlight. Testers' feedback and crash reports, turned into fixes.",
     modules: [
       {
         number: 7,
@@ -106,11 +92,7 @@ export const phases: Phase[] = [
     id: "ship",
     name: "Ship",
     description: "Prepare the listing and submit it to App Review.",
-    outcomes: [
-      "An App Store listing that sells the app",
-      "Your app submitted to App Review",
-      "A plan for whichever answer comes back",
-    ],
+    outcome: "A complete App Store listing, submitted to App Review. And a plan for whichever answer comes back.",
     modules: [
       {
         number: 8,
@@ -123,11 +105,7 @@ export const phases: Phase[] = [
     id: "launch",
     name: "Launch",
     description: "Put it in front of people and keep it growing.",
-    outcomes: [
-      "A launch-day plan",
-      "Your first users",
-      "The habit of shipping updates",
-    ],
+    outcome: "Your first users, and an App Store page that works like a landing page. Then the habit of shipping updates.",
     modules: [
       {
         number: 9,
