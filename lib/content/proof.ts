@@ -16,6 +16,8 @@ export type ProofProduct = {
   name: string;
   kind: string;
   summary: string;
+  /** A mock-up in `public/images/proof`, or null until there is one. */
+  image: { src: string; alt: string } | null;
   href: string | null;
   linkLabel?: string;
 };
@@ -27,6 +29,7 @@ export const proof: ProofProduct[] = [
     kind: "iOS app · Web app",
     summary:
       "A focus timer with a Live Activity, voice-first session notes and Pro subscriptions. The web app is live; the iPhone app is in App Store review.",
+    image: { src: "/images/proof/focusmode.png", alt: "FocusMode's Stats screen on an iPhone: a running work timer and a week of focus time" },
     href: null, // [TODO: FocusMode web app or App Store URL]
   },
   {
@@ -34,6 +37,7 @@ export const proof: ProofProduct[] = [
     name: "RE-IQ",
     kind: "Web app",
     summary: "A multifamily asset-management dashboard.",
+    image: null, // [TODO: image]
     href: "https://re-iq.vercel.app",
     linkLabel: "re-iq.vercel.app",
   },
@@ -42,6 +46,7 @@ export const proof: ProofProduct[] = [
     name: "Coast Gallery",
     kind: "Website",
     summary: "The website for a luxury art gallery in Laguna Beach.",
+    image: null, // [TODO: image]
     href: "https://coast-gallery.vercel.app",
     linkLabel: "coast-gallery.vercel.app",
   },
