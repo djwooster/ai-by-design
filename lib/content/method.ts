@@ -13,10 +13,10 @@ export type Phase = {
   name: string;
   /** One line, for the curriculum. */
   description: string;
-  /** Two or three sentences, for the Method cards. */
-  body: string;
-  /** What you'll have at the end of the phase. */
+  /** What you'll have at the end of the phase: the Method card's title. */
   outcome: string;
+  /** Two sentences on that outcome, for the Method card. */
+  body: string;
   modules: Module[];
 };
 
@@ -26,8 +26,8 @@ export const phases: Phase[] = [
     id: "vision",
     name: "Vision",
     description: "Decide what to build, who it's for and what done looks like, before anything else.",
-    body: "Pick one app worth shipping and cut it down to the version you can finish. You leave with a one-page brief that every later phase, and every prompt, points back to.",
-    outcome: "A one-page brief for an app worth shipping",
+    outcome: "A one-page brief",
+    body: "The app, who it's for and what version 1 includes, on a single page. Every later phase, and every prompt, points back to it.",
     modules: [
       {
         number: 1,
@@ -40,8 +40,8 @@ export const phases: Phase[] = [
     id: "design",
     name: "Design",
     description: "Shape every screen before Claude Code writes a line.",
-    body: "Map the flows, then design every screen your first version needs. You turn the look into a small design system, so Claude Code builds what you designed instead of guessing.",
-    outcome: "Every screen designed and a design system",
+    outcome: "Every screen, designed",
+    body: "The screens your first version needs, plus a small design system of colors, type and components. Claude Code builds from it instead of guessing.",
     modules: [
       {
         number: 2,
@@ -59,8 +59,8 @@ export const phases: Phase[] = [
     id: "build",
     name: "Build",
     description: "Build the app with Claude Code, screen by screen, from your designs.",
-    body: "Set up the project and the CLAUDE.md that keeps Claude Code on track, then build one screen at a time from your designs. Data, sign-in and subscriptions come last, once the app feels right.",
     outcome: "A working iPhone app",
+    body: "Your designs, built screen by screen with Claude Code, with data, sign-in and subscriptions in place. It runs on your phone.",
     modules: [
       {
         number: 4,
@@ -83,8 +83,8 @@ export const phases: Phase[] = [
     id: "test",
     name: "Test",
     description: "Put it on real phones with TestFlight and fix what breaks.",
-    body: "Get the app onto real iPhones through TestFlight, yours and a few testers'. You learn to turn their feedback and crash reports into fixes Claude Code can make.",
     outcome: "A TestFlight build on real phones",
+    body: "Your app on your phone and a few testers' phones, with their feedback and crash reports turned into fixes.",
     modules: [
       {
         number: 7,
@@ -97,8 +97,8 @@ export const phases: Phase[] = [
     id: "ship",
     name: "Ship",
     description: "Prepare the listing and submit it to App Review.",
-    body: "Build the App Store listing: screenshots, description, privacy details and review notes. Then submit, and know what to do whichever way App Review answers.",
-    outcome: "Your app submitted to App Review",
+    outcome: "Your app in App Review",
+    body: "A complete App Store listing, from screenshots to privacy details, submitted to Apple. And a plan for whichever answer comes back.",
     modules: [
       {
         number: 8,
@@ -111,8 +111,8 @@ export const phases: Phase[] = [
     id: "launch",
     name: "Launch",
     description: "Put it in front of people and keep it growing.",
-    body: "Put the app in front of the people it was built for, from launch day onward. You set up the simple habits that keep it improving: listening to users, shipping updates, watching what works.",
-    outcome: "A launch plan and your first users",
+    outcome: "Your first users",
+    body: "A launch plan, an App Store page that works like a landing page, and the habit of shipping updates from what users tell you.",
     modules: [
       {
         number: 9,

@@ -52,8 +52,10 @@ export function Method() {
                     </div>
                   </div>
                 )}
-                <p className="mt-6 font-mono text-ui-sm text-fg-muted">{phaseNumber(index)}</p>
-                <h3 className="mt-1 text-heading font-medium text-fg">{phase.name}</h3>
+                <p className="mt-6 font-mono text-ui-sm text-fg-muted">
+                  {phaseNumber(index)} · {phase.name}
+                </p>
+                <h3 className="mt-1.5 text-heading font-medium text-fg">{phase.outcome}</h3>
                 <p className="mt-2 text-ui text-fg-secondary">{phase.body}</p>
               </StaggerItem>
             );

@@ -53,7 +53,7 @@ export const method = {
   badge: "The AI by Design Method",
   title: "Six phases, idea to App Store.",
   accent: "App Store",
-  lede: "You build one productivity app of your own, one phase at a time. Every phase ends with something real in your hands, not notes.",
+  lede: "You build one productivity app of your own, one phase at a time. Each phase ends with something real in your hands. Here's what you'll be holding.",
 };
 
 export const curriculum = {
