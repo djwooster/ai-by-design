@@ -33,7 +33,7 @@ export async function startCheckout(_previous: CheckoutState, form: FormData): P
           price_data: {
             currency: "usd",
             unit_amount: Math.round(product.price * 100),
-            product_data: { name: product.name, description: product.summary.replace("[TODO: copy] ", "") },
+            product_data: { name: product.name, description: product.summary },
           },
         },
       ],

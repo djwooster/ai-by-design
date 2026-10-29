@@ -22,13 +22,13 @@ export const adPages: AdPage[] = [
     label: "Founding members · $99",
     promise: "Ship your app to the App Store. Built with Claude Code.",
     accent: "Claude Code.",
-    subline: "[TODO: copy] Ad subline for the founding-member offer.",
+    subline: "Learn the exact process I used to take FocusMode from idea to App Store review. $99 for the first 150 founding members.",
     cta: { kind: "founding" },
     video: { src: null, length: "[TODO] 2 min" },
     points: [
-      { name: "The Method", body: "[TODO: copy] Six phases, idea to App Store." },
-      { name: "Live calls", body: "[TODO: copy] Twice a week from Jan 1, 2027, all recorded." },
-      { name: "A real app", body: "[TODO: copy] You ship your own productivity app, not a tutorial." },
+      { name: "The Method", body: "Six phases, from idea to App Store. Every one ends with something real." },
+      { name: "Live calls", body: "Twice a week from January 1, 2027. Every call recorded." },
+      { name: "A real app", body: "You build your own productivity app, not a tutorial project." },
     ],
   },
   {

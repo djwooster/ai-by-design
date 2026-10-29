@@ -23,8 +23,8 @@ export default function ThanksPage() {
       <div className="pt-8">
         <CourseBand
           placement="shop-thanks"
-          title="[TODO: copy] Ready to ship the whole app?"
-          body="[TODO: copy] The course takes you from idea to App Store, with two live calls a week."
+          title="Ready to ship the whole app?"
+          body="The course takes you from idea to App Store, phase by phase, with two live calls a week."
         />
       </div>
     </>

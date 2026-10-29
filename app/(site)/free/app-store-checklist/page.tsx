@@ -13,7 +13,7 @@ import { checklistGroups, checklistPage } from "@/lib/content/checklist";
 
 export const metadata: Metadata = {
   title: "Free App Store submission checklist",
-  description: "[TODO: copy] Every step between a finished build and a live App Store listing.",
+  description: "Every step between a finished build and a submitted App Store app. Free, from a designer shipping one right now.",
 };
 
 /** The opt-in: the form beside a page of the checklist, then every section of it. */
@@ -87,8 +87,8 @@ export default function ChecklistPage() {
 
       <CourseBand
         placement="checklist-page"
-        title="[TODO: copy] Want help getting to submit?"
-        body="[TODO: copy] The course walks you through every phase, from idea to App Store."
+        title="Want help getting to the submit button?"
+        body="The course walks you through every phase before it, from the idea to a working app."
       />
     </>
   );

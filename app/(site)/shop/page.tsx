@@ -9,13 +9,13 @@ import { products } from "@/lib/content/products";
 
 export const metadata: Metadata = {
   title: "Shop",
-  description: "[TODO: copy] Playbooks, prompt packs and starter kits for shipping apps with Claude Code.",
+  description: "Playbooks, prompt packs and starter kits for shipping apps with Claude Code, from real builds.",
 };
 
 const steps: { icon: IconName; name: string; body: string }[] = [
-  { icon: "arrow", name: "Pay with Stripe", body: "[TODO: copy] Card, Apple Pay or Google Pay. No account needed." },
-  { icon: "check", name: "Get it instantly", body: "[TODO: copy] The download link lands in your inbox right away." },
-  { icon: "build", name: "Use it on your build", body: "[TODO: copy] Drop it into the project you're shipping." },
+  { icon: "arrow", name: "Pay with Stripe", body: "Checkout runs on Stripe. No account to create." },
+  { icon: "check", name: "Get it instantly", body: "The download link lands in your inbox the moment you pay." },
+  { icon: "build", name: "Use it on your build", body: "Drop it into the project you're shipping today." },
 ];
 
 export default function ShopPage() {
@@ -25,7 +25,7 @@ export default function ShopPage() {
         label="Shop · Instant delivery"
         title="Tools from real builds."
         accent="real builds."
-        lede="[TODO: copy] Everything I use to ship, packaged so you can use it today."
+        lede="The playbooks, prompts and project setups I use to ship my own apps, packaged so you can use them today."
       />
 
       <Container>
@@ -55,8 +55,8 @@ export default function ShopPage() {
       <div className="pt-16 md:pt-20">
         <CourseBand
           placement="shop"
-          title="[TODO: copy] Want the whole process?"
-          body="[TODO: copy] The course takes you from idea to App Store, with two live calls a week."
+          title="Want the whole process?"
+          body="The course takes you from idea to App Store, phase by phase, with two live calls a week."
         />
       </div>
     </>

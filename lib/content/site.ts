@@ -15,7 +15,7 @@ export const site = {
   name: "AI by Design",
   url: "https://ai-bydesign.dev",
   description:
-    "Learn to design, build and ship your own iOS app to the App Store with Claude Code. [TODO: copy]",
+    "Learn to design, build and ship your own iOS app to the App Store with Claude Code, from a designer shipping one right now.",
   author: "DJ Wooster",
   /** Set by hand: Cache Components prerenders pages, so the footer can't read the clock. */
   copyrightYear: 2026,

@@ -21,23 +21,24 @@ export type Product = {
   file: { pathname: string; filename: string };
 };
 
+// [TODO: confirm] Each product's description, includes and specs say what it contains. Check them against the real files.
 export const products: Product[] = [
   {
     slug: "app-store-submission-playbook",
     name: "App Store Submission Playbook",
-    summary: "[TODO: copy] Every step from a finished build to an approved listing.",
+    summary: "Every step from a finished build to a submitted app.",
     description:
-      "[TODO: copy] The playbook I wrote while submitting FocusMode: the accounts, the App Store Connect record, screenshots, privacy details and what to say to the reviewer, in the order you'll need them.",
+      "The playbook I wrote while submitting FocusMode: the accounts, the App Store Connect record, screenshots, privacy details and what to say to the reviewer, in the order you'll need them.",
     priceRange: [19, 39],
     price: null,
     format: "PDF guide",
     icon: "playbook",
     cover: "playbook",
     includes: [
-      { name: "[TODO: copy] Accounts and agreements", note: "[TODO: copy] What to set up before you build" },
-      { name: "[TODO: copy] The App Store Connect record", note: "[TODO: copy] Every field, filled in" },
-      { name: "[TODO: copy] Screenshots and preview", note: "[TODO: copy] Sizes and what reviewers expect" },
-      { name: "[TODO: copy] Privacy and review notes", note: "[TODO: copy] Templates you can copy" },
+      { name: "Accounts and agreements", note: "What to set up before you build" },
+      { name: "The App Store Connect record", note: "Every field, filled in" },
+      { name: "Screenshots and preview", note: "Sizes, and what reviewers expect" },
+      { name: "Privacy and review notes", note: "Templates you can copy" },
     ],
     specs: [
       ["Format", "PDF"],
@@ -48,18 +49,18 @@ export const products: Product[] = [
   {
     slug: "claude-code-prompt-pack",
     name: "Claude Code Prompt and CLAUDE.md Pack",
-    summary: "[TODO: copy] The prompts and project setups DJ uses on real builds.",
+    summary: "The prompts and project setups I use on real builds.",
     description:
-      "[TODO: copy] The CLAUDE.md files, prompts and working agreements behind FocusMode, RE-IQ and Coast Gallery, cleaned up so you can drop them into your own project.",
+      "The CLAUDE.md files, prompts and working agreements behind FocusMode, RE-IQ and Coast Gallery, cleaned up so you can drop them into your own project.",
     priceRange: [19, 49],
     price: null,
     format: "Markdown files",
     icon: "prompt",
     cover: "prompts",
     includes: [
-      { name: "[TODO: copy] CLAUDE.md templates", note: "[TODO: copy] For iOS, web and design-system projects" },
-      { name: "[TODO: copy] Phase prompts", note: "[TODO: copy] One set per phase of the Method" },
-      { name: "[TODO: copy] Review prompts", note: "[TODO: copy] For checking Claude Code's work" },
+      { name: "CLAUDE.md templates", note: "For iOS, web and design-system projects" },
+      { name: "Phase prompts", note: "One set for each phase of the Method" },
+      { name: "Review prompts", note: "For checking Claude Code's work" },
     ],
     specs: [
       ["Format", "Markdown"],
@@ -70,19 +71,19 @@ export const products: Product[] = [
   {
     slug: "react-native-starter-kit",
     name: "React Native and Claude Code Starter Kit",
-    summary: "[TODO: copy] A ready-to-ship app skeleton, set up for Claude Code.",
+    summary: "A ready-to-build app skeleton, set up for Claude Code.",
     description:
-      "[TODO: copy] An Expo app with navigation, design tokens, subscriptions and the App Store build settings already in place, plus the CLAUDE.md that keeps Claude Code inside its lines.",
+      "An Expo app with navigation, design tokens, subscriptions and the App Store build settings already in place, plus the CLAUDE.md that keeps Claude Code inside its lines.",
     priceRange: [49, 149],
     price: null,
     format: "Code repository",
     icon: "kit",
     cover: "kit",
     includes: [
-      { name: "[TODO: copy] The app skeleton", note: "[TODO: copy] Navigation, tokens and screens" },
-      { name: "[TODO: copy] Subscriptions", note: "[TODO: copy] Paywall and purchase flow" },
-      { name: "[TODO: copy] Build settings", note: "[TODO: copy] Ready for TestFlight and review" },
-      { name: "[TODO: copy] CLAUDE.md", note: "[TODO: copy] Rules written for this codebase" },
+      { name: "The app skeleton", note: "Navigation, tokens and screens" },
+      { name: "Subscriptions", note: "Paywall and purchase flow" },
+      { name: "Build settings", note: "Ready for TestFlight and review" },
+      { name: "CLAUDE.md", note: "Rules written for this codebase" },
     ],
     specs: [
       ["Format", "Git repository"],

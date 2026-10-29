@@ -19,7 +19,7 @@ export function EmailCapture({
   source,
   tag,
   cta = "Send me the checklist",
-  success = "[TODO: copy] Check your inbox. The checklist is on its way.",
+  success = "Check your inbox. The checklist is on its way.",
   confirmation,
   className,
 }: {

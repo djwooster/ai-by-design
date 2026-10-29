@@ -33,7 +33,7 @@ export function deliveryEmail({ product, url, days }: { product: string; url: st
       `<h1 style="margin:0 0 16px;font-size:24px;line-height:1.2;font-weight:500;letter-spacing:-0.03em">Thanks for buying ${escape(product)}.</h1>` +
         p(`Here's your download. The link works for ${days} days; reply to this email if it runs out.`) +
         `<p style="margin:24px 0">${button(url, "Download")}</p>` +
-        p("[TODO: copy] A line on how to get the most out of it."),
+        p("Questions, or something not working? Reply to this email. It comes straight to me."),
     ),
     text: `Thanks for buying ${product}.\n\nDownload it here (the link works for ${days} days):\n${url}\n\nReply to this email if it runs out.`,
   };
@@ -42,13 +42,14 @@ export function deliveryEmail({ product, url, days }: { product: string; url: st
 export function checklistEmail({ url }: { url: string | null }): Email {
   const link = url ?? siteUrl("/free/app-store-checklist");
   return {
-    subject: "[TODO: copy] Your App Store submission checklist",
+    subject: "Your App Store submission checklist",
     html: layout(
-      `<h1 style="margin:0 0 16px;font-size:24px;line-height:1.2;font-weight:500;letter-spacing:-0.03em">[TODO: copy] Here's your checklist.</h1>` +
-        p("[TODO: copy] Every step between a finished build and a live App Store listing, in the order you'll need it.") +
+      `<h1 style="margin:0 0 16px;font-size:24px;line-height:1.2;font-weight:500;letter-spacing:-0.03em">Here's your checklist.</h1>` +
+        p("Every step between a finished build and a submitted app, in the order you'll need it. I built it while submitting my own app, FocusMode.") +
         `<p style="margin:24px 0">${button(link, "Get the checklist")}</p>` +
-        p("[TODO: copy] What the next emails in the sequence will cover."),
+        p("Over the next few days I'll send a few short emails on the parts that trip people up most. [TODO: confirm] match the Resend sequence.") +
+        p("Reply anytime. It comes straight to me."),
     ),
-    text: `[TODO: copy] Here's your checklist:\n${link}`,
+    text: `Here's your checklist:\n${link}\n\nEvery step between a finished build and a submitted app, in the order you'll need it. Reply anytime; it comes straight to me.`,
   };
 }

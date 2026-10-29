@@ -3,10 +3,16 @@
 Find every placeholder with `grep -rn "\[TODO" app components lib`.
 
 ## Copy pass
-- [ ] Every `[TODO: copy]` item (hero subline, section copy, product summaries, blog drafts, ad pages)
-- [ ] Founding-member perks that later members won't get (section 08)
+First draft written Oct 29 (find it all with `git show` on the "copy draft" commit). Left for DJ:
+- [ ] Read the draft through and rewrite anything that doesn't sound like you
+- [ ] `[TODO: confirm]`: claims only DJ can make (`grep -rn "TODO: confirm" app components lib`)
+  - Founding perks, and whether founding is one payment or a Skool subscription (`lib/content/home.ts`)
+  - What each shop product contains (`lib/content/products.ts`)
+  - The checklist items and the email sequence (`lib/content/checklist.ts`, `lib/email/templates.ts`)
+- [ ] Lesson titles for every module (`lib/content/method.ts`, still `[TODO: copy] Lesson n`)
+- [ ] The three blog posts: bodies are outlines; they need your real story (`content/blog/`)
 - [ ] SourceIQ demand-test page (`lib/content/ads.ts`)
-- [ ] Legal text for `/privacy`, `/terms`, `/refunds` (`[TODO: legal]`)
+- [ ] Legal text for `/privacy`, `/terms`, `/refunds` (`[TODO: legal]` in `lib/content/legal.ts`)
 
 ## Assets from DJ
 - [ ] Screenshots of FocusMode, RE-IQ and Coast Gallery for the proof cards

@@ -34,7 +34,7 @@ export const hero = {
   badge: "FocusMode is in App Store review",
   headline: ["Ship your app to the App Store.", "Built with Claude Code."],
   subline:
-    "[TODO: copy] I design, build and ship real software with AI. Become a founding member and learn the exact process I'm using to launch FocusMode.",
+    "I design, build and ship real software with AI. My app is in App Store review right now. Become a founding member and learn the exact process I used.",
   videoLength: "[TODO: 0:00]",
   trust: ["Full refund if it doesn't launch", "2 live calls a week", "Starts Jan 1, 2027"],
 };
@@ -54,41 +54,41 @@ export const method = {
   badge: "The AI by Design Method",
   title: "Six phases, idea to App Store.",
   accent: "App Store",
-  lede: "[TODO: copy] You'll build one productivity app of your own, one phase at a time. Each phase ends with something real in your hands.",
+  lede: "You build one productivity app of your own, one phase at a time. Every phase ends with something real in your hands, not notes.",
 };
 
 export const curriculum = {
   badge: "Curriculum",
   title: "Everything, in the order you'll need it.",
   accent: "in the order",
-  lede: "[TODO: copy] Self-paced lessons in Skool, grouped by the six phases of the Method.",
+  lede: "Self-paced lessons in Skool, grouped by the six phases of the Method. Nothing hidden behind a click.",
 };
 
 export const live = {
   badge: "Live calls and community",
   title: "You won't build alone.",
   accent: "alone",
-  lede: "[TODO: copy] From January 1, 2027: two live calls a week with DJ, all recorded, and the community in Skool between them.",
+  lede: "From January 1, 2027: two live calls a week with me, every one recorded, and the community in Skool between them.",
   cards: [
     {
       id: "qa",
       name: "Live Q&A",
-      body: "[TODO: copy] Bring the thing you're stuck on. Leave with the next step.",
+      body: "Bring the thing you're stuck on. Leave with the next step.",
     },
     {
       id: "reviews",
       name: "App reviews",
-      body: "[TODO: copy] Members' apps, reviewed live for design, build quality and App Store readiness.",
+      body: "Your app on the big screen, reviewed for design, build quality and App Store readiness.",
     },
     {
       id: "builds",
       name: "Live builds",
-      body: "[TODO: copy] Watch DJ build with Claude Code in real time, mistakes included.",
+      body: "Watch me build with Claude Code in real time, mistakes included.",
     },
     {
       id: "community",
       name: "The community",
-      body: "[TODO: copy] Ask questions, share progress and get feedback in Skool, any day of the week.",
+      body: "Ask questions, share progress and get feedback in Skool, any day of the week.",
     },
   ],
 } as const;
@@ -104,7 +104,7 @@ export const instructor = {
   badge: "Your instructor",
   name: "DJ Wooster",
   role: "Product designer and builder",
-  bio: "[TODO: copy] I've spent my career designing products for large organizations. Now I build my own with Claude Code, in public, and FocusMode is the one I'm taking to the App Store right now.",
+  bio: "I've spent my career designing products for banks, hospitals, utilities and EdTech platforms serving millions. Now I build my own with Claude Code, in public. FocusMode is the one I'm taking to the App Store right now, and this course is the process I used, written down.",
   experience: [
     { org: "US Bank", note: null },
     { org: "Memorial Sloan Kettering", note: null },
@@ -122,21 +122,21 @@ export const offerSection = {
   steps: [
     {
       name: "Join now",
-      body: "[TODO: copy] Become a founding member for $99. Your price is locked in, and you get in before anyone else.",
+      body: "Become a founding member for $99, before the price goes to $249. [TODO: confirm] one payment, or a Skool subscription?",
     },
     {
       name: "Start January 1, 2027",
-      body: "[TODO: copy] The course opens in Skool, and the two live calls a week begin.",
+      body: "The course opens in Skool and the live calls begin, twice a week.",
     },
     {
       name: "Ship your app",
-      body: "[TODO: copy] Work through the six phases with DJ and the community until your app is on the App Store.",
+      body: "Work through the six phases with me and the community until your app is submitted to the App Store.",
     },
   ],
   perks: [
-    "[TODO: copy] The founding price, locked in for good",
-    "[TODO: copy] A say in the curriculum while it's being built",
-    "[TODO: copy] First access to every new module",
+    "[TODO: confirm] The founding price, kept for as long as you stay",
+    "[TODO: confirm] A say in the curriculum while it's being built",
+    "[TODO: confirm] First access to every new module",
   ],
 };
 
@@ -145,9 +145,9 @@ export const fit = {
   title: "Built for people with an idea and no engineering team.",
   accent: "an idea",
   for: [
-    "[TODO: copy] Designers who want to ship what they design",
-    "[TODO: copy] Aspiring founders with an app idea and no engineering team",
-    "[TODO: copy] Semi-technical builders who have started apps but never shipped one",
+    "Designers who are tired of handing off and want to ship what they design",
+    "Aspiring founders with an app idea and no engineering team",
+    "Semi-technical builders with a folder of half-finished apps and none in the App Store",
   ],
   notFor: [
     "People looking for a no-code, drag-and-drop tool",
@@ -165,11 +165,11 @@ export const checklist = {
   badge: "Free",
   title: "Not ready yet? Get the App Store submission checklist.",
   accent: "checklist",
-  body: "[TODO: copy] Every step between a finished build and a live listing, free in your inbox.",
+  body: "Every step between a finished build and a submitted app, in the order you'll need them. Free, in your inbox.",
 };
 
 export const finalCta = {
-  title: "[TODO: copy] Your app could be next.",
-  accent: "next",
-  body: "[TODO: copy] Join as a founding member and ship it with Claude Code.",
+  title: "Your app could be in review next.",
+  accent: "in review next.",
+  body: "Join as a founding member, follow the Method, and ship it with Claude Code.",
 };

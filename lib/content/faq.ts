@@ -6,22 +6,22 @@ export const faq: Faq[] = [
   {
     id: "code",
     question: "Do I need to know how to code?",
-    answer: "[TODO: copy] No. You need an idea, a Mac and the patience to work through each phase. Claude Code writes the code; the course teaches you to direct it.",
+    answer: "No. You need an idea, a Mac and the patience to work through each phase. Claude Code writes the code; the course teaches you to direct it and to know when it's wrong.",
   },
   {
     id: "mac",
     question: "What do I need to get started?",
-    answer: "[TODO: copy] A Mac, a Claude subscription and an Apple Developer account ($99 a year, paid to Apple) by the time you ship.",
+    answer: "A Mac, a paid Claude plan with Claude Code, and an Apple Developer account ($99 a year, paid to Apple) by the time you submit.",
   },
   {
     id: "start",
     question: "When does the course start?",
-    answer: `[TODO: copy] Founding members join now. The course and the live calls start on January 1, 2027.`,
+    answer: "Founding members join now. The course and the live calls start on January 1, 2027.",
   },
   {
     id: "calls",
     question: "How do the live calls work?",
-    answer: `[TODO: copy] ${offer.liveCallsPerWeek} calls a week in Skool: Q&A, members' app reviews and live builds. Every call is recorded, so you can catch up anytime.`,
+    answer: `${offer.liveCallsPerWeek} calls a week in Skool: Q&A, members' app reviews and live builds. Every call is recorded, so you can catch up anytime.`,
   },
   {
     id: "refund",
@@ -31,6 +31,6 @@ export const faq: Faq[] = [
   {
     id: "app",
     question: "What kind of app will I build?",
-    answer: "[TODO: copy] A productivity iOS app of your own, taken from idea to the App Store, following the same Method DJ used for FocusMode.",
+    answer: "A productivity iOS app of your own idea: a timer, a tracker, a planner, whatever you'd use every day. You take it from idea to App Store submission with the same Method I used for FocusMode.",
   },
 ];

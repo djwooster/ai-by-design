@@ -8,7 +8,7 @@ import { formatDate, posts } from "@/lib/content/posts";
 
 export const metadata: Metadata = {
   title: "Blog",
-  description: "[TODO: copy] Notes on designing, building and shipping apps with Claude Code.",
+  description: "Notes on designing, building and shipping apps with Claude Code.",
 };
 
 /** The newest post as a large card, then the rest as hairline rows. */
@@ -21,7 +21,7 @@ export default function BlogPage() {
         label="Blog"
         title="Notes from the build."
         accent="the build."
-        lede="[TODO: copy] What I learn shipping real apps with Claude Code, written down as I go."
+        lede="What I learn shipping real apps with Claude Code, written down as I go."
       />
       <Container className="pb-24 md:pb-32">
         {latest && (
