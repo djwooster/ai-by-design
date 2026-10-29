@@ -141,7 +141,7 @@ export function BuildMorph({ className, maxHeight }: { className?: string; maxHe
               aria-hidden
               className={cx(
                 "size-1.5 rounded-full transition-colors duration-300",
-                stageOf(scene) === i ? "bg-accent" : "bg-line-strong",
+                stageOf(scene) === i ? "bg-accent-fg" : "bg-line-strong",
               )}
             />
             {label}

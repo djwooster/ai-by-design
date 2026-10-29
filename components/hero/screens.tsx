@@ -138,7 +138,7 @@ export function NotesScreen() {
       <motion.div {...rise} className="mt-5 rounded-2xl border border-accent-fg/40 bg-canvas p-3.5">
         <div className="flex items-center justify-between">
           <span className="flex items-center gap-2 font-mono text-label uppercase text-accent-fg">
-            <span className="size-1.5 rounded-full bg-accent" /> Listening
+            <span className="size-1.5 rounded-full bg-accent-fg" /> Listening
           </span>
           <Waveform />
         </div>
@@ -233,7 +233,7 @@ export function ReviewCard() {
                 )}
               >
                 {state === "past" && <GeoIcon name="check" size={12} />}
-                {state === "now" && <span className="size-1.5 rounded-full bg-accent" />}
+                {state === "now" && <span className="size-1.5 rounded-full bg-accent-fg" />}
               </span>
               <span className={cx("text-ui", state === "next" ? "text-fg-muted" : "text-fg")}>{label}</span>
               {state === "now" && (

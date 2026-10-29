@@ -82,7 +82,7 @@ export function Offer() {
                       aria-hidden
                       className={cx(
                         "relative mt-1.5 size-[11px] shrink-0 rounded-full border",
-                        step.current ? "border-accent bg-accent" : "border-line-strong bg-surface",
+                        step.current ? "border-accent-fg bg-accent-fg" : "border-line-strong bg-surface",
                       )}
                     />
                     <div className="flex flex-1 items-baseline justify-between gap-4">

@@ -23,7 +23,7 @@ export function Hero() {
         <div className="mx-auto flex max-w-[50rem] flex-col items-center text-center">
           <Reveal>
             <Pill>
-              <span aria-hidden className="size-1.5 rounded-full bg-accent" />
+              <span aria-hidden className="size-1.5 rounded-full bg-accent-fg" />
               {hero.badge}
             </Pill>
           </Reveal>

@@ -34,7 +34,8 @@ const colors = [
   { token: "--text-primary", note: "#EDEEEE smoke · 16.2:1" },
   { token: "--text-secondary", note: "#B7BABB gray · 9.7:1" },
   { token: "--text-muted", note: "#8E9192 · 6.0:1" },
-  { token: "--accent", note: "#5294FF blue · the one color · 6.3:1" },
+  { token: "--accent", note: "#1F5E98 blue · fills, white text 6.8:1" },
+  { token: "--accent-fg", note: "#5B9BD8 · blue text, links, rings · 6.4:1" },
   { token: "--smoke", note: "#EDEEEE · light sections and cards" },
   { token: "--positive", note: "#A9CBB0 · live · 10.7:1" },
 ];
