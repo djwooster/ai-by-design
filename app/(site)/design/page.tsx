@@ -9,8 +9,9 @@ import { CTAButton } from "@/components/ui/CTAButton";
 import { MotionDemo } from "@/components/design/MotionDemo";
 import { EmailCapture } from "@/components/forms/EmailCapture";
 import { GeoIcon, iconNames } from "@/components/icons/GeoIcon";
-import { MethodScroll } from "@/components/signature/MethodScroll";
-import { GAP, MethodStack } from "@/components/signature/MethodStack";
+import { IsoPhase } from "@/components/illustrations/IsoPhase";
+import { Stagger, StaggerItem } from "@/components/motion/Reveal";
+import { Pill } from "@/components/ui/Pill";
 import { Accordion } from "@/components/ui/Accordion";
 import { SpecLabel } from "@/components/ui/SpecLabel";
 import { phases } from "@/lib/content/method";
@@ -22,29 +23,29 @@ export const metadata: Metadata = {
 };
 
 const colors = [
-  { token: "--bg", note: "#1A202C graphite · base" },
-  { token: "--surface", note: "#212836 · cards" },
-  { token: "--surface-2", note: "#29303F · raised" },
-  { token: "--border", note: "Ivory 9%" },
-  { token: "--border-strong", note: "Ivory 17%" },
-  { token: "--text-primary", note: "#F5F2EB ivory · 14.6:1" },
-  { token: "--text-secondary", note: "#A3B18A sage · 7.2:1" },
-  { token: "--text-muted", note: "#A3A8B2 · 6.8:1" },
-  { token: "--accent", note: "#0C525F deep teal · action fill" },
-  { token: "--accent-hover", note: "#106574 · button hover" },
-  { token: "--accent-fg", note: "#5AAEBB · teal text, rings · 5.6:1" },
-  { token: "--paper", note: "#F5F2EB ivory · light sections" },
-  { token: "--lavender", note: "#6D597A · in-progress fill" },
-  { token: "--positive", note: "#9CC3A0 · live · 8.0:1" },
-  { token: "--info", note: "#B8A5C6 lavender · in review · 7.2:1" },
-  { token: "--negative", note: "States only · 6.8:1" },
+  { token: "--bg", note: "#05090A vampire black · base" },
+  { token: "--surface", note: "#0E191E chinese black · cards" },
+  { token: "--surface-2", note: "#152429 · raised" },
+  { token: "--border", note: "Platinum 8%" },
+  { token: "--border-strong", note: "Platinum 15%" },
+  { token: "--text-primary", note: "#DFEAE8 platinum · 16.3:1" },
+  { token: "--text-secondary", note: "#BBC9C7 jet stream · 11.7:1" },
+  { token: "--text-muted", note: "#8A9997 · 6.8:1" },
+  { token: "--accent", note: "#5AAEBB teal · the one accent · 7.8:1" },
+  { token: "--accent-hover", note: "#6DBCC8 · button hover" },
+  { token: "--accent-deep", note: "#0C525F deep teal · selection" },
+  { token: "--paper", note: "#DFEAE8 platinum · light section" },
+  { token: "--positive", note: "#9CC3A0 · live · 10.2:1" },
+  { token: "--info", note: "#B8A5C6 · in review · 8.8:1" },
+  { token: "--negative", note: "States only · 8.4:1" },
 ];
 
 const type = [
-  { name: "Hero", className: "text-hero", spec: "36px max · 800 · −0.035em" },
-  { name: "Display", className: "text-display", spec: "72px max · 800 · −0.04em" },
-  { name: "Title", className: "text-title", spec: "44px max · 700 · −0.035em" },
-  { name: "Heading", className: "text-heading", spec: "20px · 600 · −0.02em" },
+  { name: "Hero", className: "text-hero", spec: "68px max · 500 · −0.04em" },
+  { name: "Display", className: "text-display", spec: "56px max · 500 · −0.035em" },
+  { name: "Title", className: "text-title", spec: "48px max · 500 · −0.032em" },
+  { name: "Heading", className: "text-heading", spec: "19px · 500" },
+  { name: "Lede", className: "text-lede", spec: "18px · 1.55" },
   { name: "Body", className: "text-body", spec: "16px · 1.6" },
   { name: "UI", className: "text-ui", spec: "14px" },
   { name: "UI small", className: "text-ui-sm", spec: "13px" },
@@ -75,12 +76,12 @@ export default function DesignPage() {
   return (
     <>
       <PageHeader
-        label="Internal · Design system · Stage 1"
+        label="Internal · Design system"
         title="A precise instrument."
         lede="Tokens and components for ai-bydesign.dev. Dark first, one accent, hierarchy from scale, weight and tone."
       />
 
-      <Section numeral="01" label="Color" title="Graphite, ivory and one deep teal.">
+      <Section badge="Color" title="Cool blacks, platinum and one teal.">
         <Grid className="gap-y-8">
           {colors.map((color) => (
             <Swatch key={color.token} {...color} />
@@ -88,7 +89,7 @@ export default function DesignPage() {
         </Grid>
       </Section>
 
-      <Section numeral="02" label="Type" title="Geist, set bold and tight.">
+      <Section badge="Type" title="Geist, large and quiet.">
         <div className="divide-y divide-line border-y border-line">
           {type.map((style) => (
             <div key={style.name} className="grid grid-cols-4 gap-x-4 gap-y-2 py-6 md:grid-cols-12 md:gap-x-6">
@@ -106,8 +107,10 @@ export default function DesignPage() {
             <SpecLabel className="col-span-4 md:col-span-9" parts={["Module 02", "Build", "6 lessons"]} />
           </div>
           <div className="grid grid-cols-4 gap-x-4 gap-y-2 py-6 md:grid-cols-12 md:gap-x-6">
-            <SpecLabel className="col-span-4 md:col-span-3">Numeral</SpecLabel>
-            <p className="col-span-4 text-numeral text-fg md:col-span-9">04</p>
+            <SpecLabel className="col-span-4 md:col-span-3">Pill badge</SpecLabel>
+            <div className="col-span-4 md:col-span-9">
+              <Pill>FocusMode is in App Store review</Pill>
+            </div>
           </div>
           <div className="grid grid-cols-4 gap-x-4 gap-y-2 py-6 md:grid-cols-12 md:gap-x-6">
             <SpecLabel className="col-span-4 md:col-span-3">Tabular numbers</SpecLabel>
@@ -116,7 +119,7 @@ export default function DesignPage() {
         </div>
       </Section>
 
-      <Section numeral="03" label="Components" title="Small, tight, no shadows.">
+      <Section badge="Components" title="Small, tight, no shadows.">
         <Grid className="gap-y-10">
           <div className="col-span-4 md:col-span-6">
             <SpecLabel>Buttons</SpecLabel>
@@ -177,28 +180,18 @@ export default function DesignPage() {
         </Grid>
       </Section>
 
-      <Section paper numeral="04" label="Method stack" title="Six layers, one per phase.">
-        <Grid className="gap-y-10">
-          <div className="col-span-4 md:col-span-3">
-            <SpecLabel>Collapsed</SpecLabel>
-            <MethodStack phases={phases} gap={GAP.collapsed} compact className="mt-4 max-w-[200px]" />
-          </div>
-          <div className="col-span-4 md:col-span-3">
-            <SpecLabel>Compact · active 03</SpecLabel>
-            <MethodStack phases={phases} active={2} compact className="mt-4 max-w-[200px]" />
-          </div>
-          <div className="col-span-4 md:col-span-6">
-            <SpecLabel>Labelled</SpecLabel>
-            <MethodStack phases={phases} active={0} className="mt-4 max-w-[420px]" />
-          </div>
-        </Grid>
-        <div className="mt-20 border-t border-line pt-10">
-          <SpecLabel>Scroll · the homepage showpiece</SpecLabel>
-          <MethodScroll phases={phases} />
-        </div>
+      <Section badge="Method illustrations" title="One drawing per phase.">
+        <Stagger className="grid grid-cols-2 gap-3 md:grid-cols-3">
+          {phases.map((phase, index) => (
+            <StaggerItem key={phase.id} className="rounded-2xl border border-line bg-surface p-5">
+              <p className="text-heading text-fg">{phase.name}</p>
+              <IsoPhase phase={phase.id} step={index} />
+            </StaggerItem>
+          ))}
+        </Stagger>
       </Section>
 
-      <Section numeral="05" label="Icons" title="Circles, arcs and lines.">
+      <Section badge="Icons" title="Circles, arcs and lines.">
         <Grid className="gap-y-8">
           {iconNames.map((name) => (
             <div key={name} className="col-span-1 flex flex-col items-start gap-3 md:col-span-2">
@@ -211,13 +204,12 @@ export default function DesignPage() {
         </Grid>
       </Section>
 
-      <Section paper numeral="06" label="Paper" title="Warm paper, used sparingly.">
+      <Section paper badge="Paper" title="Platinum, used once or twice a page.">
         <Grid className="gap-y-8">
           <div className="col-span-4 md:col-span-6">
             <p className="text-body text-fg-secondary">
-              The same semantic tokens, swapped for ivory sections such as the Method or the
-              guarantee. Graphite on ivory is 14.6:1; the deep teal works as text at full
-              strength (7.9:1), and the active fill turns a pale teal.
+              The same semantic tokens, swapped for the light section, such as the guarantee.
+              Black on platinum is 16.3:1, and the accent deepens to #0C525F (7.2:1).
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <CTAButton placement="design-paper" />
@@ -235,7 +227,7 @@ export default function DesignPage() {
         </Grid>
       </Section>
 
-      <Section numeral="07" label="Motion" title="Graceful, then quiet.">
+      <Section badge="Motion" title="Graceful, then quiet.">
         <MotionDemo />
         <dl className="mt-10 divide-y divide-line border-y border-line">
           {motion.map(([name, spec]) => (

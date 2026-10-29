@@ -8,6 +8,12 @@ Find every placeholder with `grep -rn "\[TODO" app components lib`.
 - [ ] SourceIQ demand-test page (`lib/content/ads.ts`)
 - [ ] Legal text for `/privacy`, `/terms`, `/refunds` (`[TODO: legal]`)
 
+## Assets from DJ
+- [ ] Screenshots of FocusMode, RE-IQ and Coast Gallery for the proof cards
+- [ ] A photo for the instructor section
+- [ ] Optional: generated background images for the hero and card panels
+- [ ] Check the hero's Claude Code prompts and file names against FocusMode's real build (`components/hero/BuildMorph.tsx`)
+
 ## Config to fill
 - [ ] Skool checkout URL: `offer.checkoutUrl` in `lib/content/offer.ts` (founding CTAs scroll to `#offer` until it's set)
 - [ ] Founding spots remaining: `offer.foundingSpots.remaining` (hidden while null)

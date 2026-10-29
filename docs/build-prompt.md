@@ -2,6 +2,19 @@
 
 Copied from the Notion page "ai-bydesign.dev — Course Site Build Prompt (Phase 1: Design Direction)" on Oct 28, 2026. **This is the source of truth.** It wins over `site-brief.md` wherever they differ.
 
+## Design decisions since the prompt (Oct 28, after review)
+
+These win over the design sections below. References are in `references/` (see its README); Linear's homepage is the bar for "premium".
+
+- **Palette:** cool blacks from `references/04`: background `#05090A`, cards `#0E191E`, text Platinum `#DFEAE8`, secondary Jet Stream `#BBC9C7`, one accent teal `#5AAEBB`, deep teal `#0C525F` for selection. Provisional: DJ will revisit color later.
+- **Type:** large, medium-weight (500) headlines with tight tracking, not 700–900 Swiss bold. The hero goes big (about 68px).
+- **No Swiss section numerals** and far fewer mono spec labels. Sections open with a small pill badge, a headline with one accented word and a lede with room under it.
+- **No registration marks or section hairlines.**
+- **Hero:** split layout. On the right, one surface that morphs: a Claude Code terminal builds a feature, morphs into the iPhone running it, back to the terminal for the next feature, then into App Store review, and keeps cycling while on screen.
+- **The Method and "What you'll build" are one section:** a grid of six cards, one per phase, each with a thin-line isometric drawing that settles in as it scrolls into view. No scroll-pinned stack.
+- **Section patterns:** split (`references/01`), illustrated grid (`02`), three steps (`03`), left/right with an accent word (`05`), card row of realistic UI (`06`).
+- **UI imagery is built in code** for now; DJ may generate background images later.
+
 ## What we're building
 The website for AI by Design, my school for people who want to build and ship their own apps
 with AI: designers, aspiring founders and semi-technical builders who have an idea but haven't

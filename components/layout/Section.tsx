@@ -1,56 +1,56 @@
-import { Container, Grid } from "@/components/ui/Container";
-import { Numeral } from "@/components/ui/Numeral";
-import { RegMark } from "@/components/ui/RegMark";
-import { SpecLabel } from "@/components/ui/SpecLabel";
+import { Reveal } from "@/components/motion/Reveal";
+import { AccentText } from "@/components/ui/AccentText";
+import { Container } from "@/components/ui/Container";
+import { Pill } from "@/components/ui/Pill";
 import { cx } from "@/lib/cx";
 
 /**
- * A homepage section on the Swiss grid: a hairline divider on top with
- * registration marks where it meets the content edges, and an optional huge
- * numeral anchoring the heading. `paper` switches it to the warm light theme.
+ * A homepage section: an optional pill badge, a headline with one accented
+ * word, a lede with room under it, then the section's content. `paper`
+ * switches it to the light theme; `center` centers the heading block.
  */
 export function Section({
   id,
-  numeral,
-  label,
+  badge,
   title,
+  accent,
   lede,
+  center,
   paper,
   className,
   children,
 }: {
   id?: string;
-  numeral?: string;
-  label?: string;
-  title?: React.ReactNode;
+  badge?: string;
+  title?: string;
+  accent?: string;
   lede?: React.ReactNode;
+  center?: boolean;
   paper?: boolean;
   className?: string;
   children?: React.ReactNode;
 }) {
+  const hasHeader = Boolean(badge || title || lede);
+
   return (
-    <section
-      id={id}
-      className={cx("scroll-mt-28 border-t border-line md:scroll-mt-16", paper && "theme-paper", className)}
-    >
-      <Container>
-        <div className="relative py-20 md:py-32">
-          <RegMark className="top-0 left-0" />
-          <RegMark className="top-0 left-full" />
-          {(numeral || label || title) && (
-            <Grid className="gap-y-6">
-              {numeral && <Numeral value={numeral} className="col-span-4" />}
-              <div className={numeral ? "col-span-4 md:col-span-8" : "col-span-4 md:col-span-12"}>
-                {label && <SpecLabel>{label}</SpecLabel>}
-                {title && <h2 className="mt-4 max-w-[20ch] text-title text-fg">{title}</h2>}
-                {lede && <p className="mt-5 max-w-[38rem] text-body text-fg-secondary">{lede}</p>}
-              </div>
-            </Grid>
-          )}
-          {children && (
-            <div className={cx(Boolean(numeral || label || title) && "mt-12 md:mt-20")}>{children}</div>
-          )}
-        </div>
+    <section id={id} className={cx("scroll-mt-20", paper && "theme-paper", className)}>
+      <Container className="py-24 md:py-36">
+        {hasHeader && (
+          <Reveal className={cx("max-w-[44rem]", center && "mx-auto text-center")}>
+            {badge && <Pill>{badge}</Pill>}
+            {title && (
+              <h2 className={cx("text-title text-fg", badge && "mt-6")}>
+                <AccentText text={title} accent={accent} />
+              </h2>
+            )}
+            {lede && (
+              <p className={cx("mt-6 max-w-[36rem] text-lede text-fg-secondary", center && "mx-auto")}>
+                {lede}
+              </p>
+            )}
+          </Reveal>
+        )}
+        {children && <div className={cx(hasHeader && "mt-16 md:mt-20")}>{children}</div>}
       </Container>
     </section>
   );

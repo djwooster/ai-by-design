@@ -1,22 +1,31 @@
-import { Section } from "@/components/layout/Section";
+import { Reveal } from "@/components/motion/Reveal";
 import { Accordion } from "@/components/ui/Accordion";
-import { Grid } from "@/components/ui/Container";
+import { Container } from "@/components/ui/Container";
+import { Pill } from "@/components/ui/Pill";
 import { faq } from "@/lib/content/faq";
+import { faqSection } from "@/lib/content/home";
 
+/** Heading on the left, questions on the right. */
 export function Faq() {
   return (
-    <Section id="faq" numeral="11" label="FAQ" title="Questions, answered.">
-      <Grid>
-        <div className="col-span-4 md:col-span-8 md:col-start-5">
-          <Accordion
-            items={faq.map((item) => ({
-              id: item.id,
-              title: item.question,
-              content: <p className="max-w-[40rem]">{item.answer}</p>,
-            }))}
-          />
+    <section id="faq" className="scroll-mt-20">
+      <Container className="py-24 md:py-36">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:gap-16">
+          <Reveal>
+            <Pill>{faqSection.badge}</Pill>
+            <h2 className="mt-6 text-title text-fg">{faqSection.title}</h2>
+          </Reveal>
+          <Reveal delay={0.06}>
+            <Accordion
+              items={faq.map((item) => ({
+                id: item.id,
+                title: item.question,
+                content: <p className="max-w-[40rem]">{item.answer}</p>,
+              }))}
+            />
+          </Reveal>
         </div>
-      </Grid>
-    </Section>
+      </Container>
+    </section>
   );
 }

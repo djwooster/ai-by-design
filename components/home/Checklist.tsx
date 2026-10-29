@@ -1,39 +1,36 @@
 import Link from "next/link";
 import { EmailCapture } from "@/components/forms/EmailCapture";
-import { GeoIcon } from "@/components/icons/GeoIcon";
-import { Section } from "@/components/layout/Section";
 import { Reveal } from "@/components/motion/Reveal";
-import { Card } from "@/components/ui/Card";
-import { Grid } from "@/components/ui/Container";
-import { SpecLabel } from "@/components/ui/SpecLabel";
+import { AccentText } from "@/components/ui/AccentText";
+import { Container } from "@/components/ui/Container";
+import { Pill } from "@/components/ui/Pill";
 import { checklist } from "@/lib/content/home";
 
 export function Checklist() {
   return (
-    <Section id="checklist">
-      <Reveal>
-        <Card className="p-6 md:p-10">
-          <Grid className="items-center gap-y-8">
-            <div className="col-span-4 md:col-span-6">
-              <div className="flex items-center gap-3">
-                <GeoIcon name="playbook" size={22} className="text-fg-secondary" />
-                <SpecLabel>Free · App Store submission checklist</SpecLabel>
-              </div>
-              <h2 className="mt-5 max-w-[22ch] text-title text-fg">{checklist.title}</h2>
-              <p className="mt-3 max-w-[30rem] text-ui text-fg-secondary">{checklist.body}</p>
+    <section id="checklist" className="scroll-mt-20">
+      <Container className="pb-24 md:pb-36">
+        <Reveal>
+          <div className="grid grid-cols-1 items-center gap-10 rounded-[28px] border border-line bg-surface p-8 md:p-14 lg:grid-cols-2 lg:gap-16">
+            <div>
+              <Pill>{checklist.badge}</Pill>
+              <h2 className="mt-6 text-title text-fg">
+                <AccentText text={checklist.title} accent={checklist.accent} />
+              </h2>
+              <p className="mt-5 max-w-[28rem] text-lede text-fg-secondary">{checklist.body}</p>
             </div>
-            <div className="col-span-4 md:col-span-5 md:col-start-8">
+            <div>
               <EmailCapture source="home" tag="app-store-checklist" />
               <Link
                 href="/free/app-store-checklist"
-                className="mt-4 inline-flex font-mono text-label uppercase text-fg-muted transition-colors duration-150 hover:text-fg"
+                className="mt-5 inline-flex text-ui-sm text-fg-muted transition-colors duration-150 hover:text-fg"
               >
-                What&apos;s in it
+                What&apos;s in it →
               </Link>
             </div>
-          </Grid>
-        </Card>
-      </Reveal>
-    </Section>
+          </div>
+        </Reveal>
+      </Container>
+    </section>
   );
 }

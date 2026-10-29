@@ -1,24 +1,25 @@
-import { Section } from "@/components/layout/Section";
 import { Reveal } from "@/components/motion/Reveal";
+import { AccentText } from "@/components/ui/AccentText";
+import { Container } from "@/components/ui/Container";
 import { CTAButton } from "@/components/ui/CTAButton";
-import { SpecLabel } from "@/components/ui/SpecLabel";
 import { finalCta } from "@/lib/content/home";
 import { formatPrice, offer } from "@/lib/content/offer";
 
 export function FinalCta() {
   return (
-    <Section id="final">
-      <Reveal className="flex flex-col items-start md:items-center md:text-center">
-        <h2 className="max-w-[24ch] text-title">
-          <span className="text-fg">{finalCta.title[0]}</span>{" "}
-          <span className="text-fg-secondary">{finalCta.title[1]}</span>
-        </h2>
-        <CTAButton placement="final" size="lg" className="mt-8" />
-        <SpecLabel
-          className="mt-4"
-          parts={[`${formatPrice(offer.foundingPrice)} founding`, "Full refund if it doesn't launch"]}
-        />
-      </Reveal>
-    </Section>
+    <section id="final" className="border-t border-line">
+      <Container className="py-28 md:py-40">
+        <Reveal className="mx-auto flex max-w-[40rem] flex-col items-center text-center">
+          <h2 className="text-display text-fg">
+            <AccentText text={finalCta.title} accent={finalCta.accent} />
+          </h2>
+          <p className="mt-5 text-lede text-fg-secondary">{finalCta.body}</p>
+          <CTAButton placement="final" size="lg" className="mt-9" />
+          <p className="mt-4 text-ui-sm text-fg-muted">
+            {formatPrice(offer.foundingPrice)} founding · Full refund if it doesn&apos;t launch
+          </p>
+        </Reveal>
+      </Container>
+    </section>
   );
 }

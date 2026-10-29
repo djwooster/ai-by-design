@@ -1,52 +1,56 @@
 import { GeoIcon } from "@/components/icons/GeoIcon";
 import { Section } from "@/components/layout/Section";
-import { Reveal } from "@/components/motion/Reveal";
+import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
 import { Badge } from "@/components/ui/Badge";
-import { Card } from "@/components/ui/Card";
-import { Grid } from "@/components/ui/Container";
 import { CTAButton } from "@/components/ui/CTAButton";
-import { SpecLabel } from "@/components/ui/SpecLabel";
-import { foundingPerks } from "@/lib/content/home";
+import { offerSection } from "@/lib/content/home";
 import { formatPrice, offer } from "@/lib/content/offer";
 import { cx } from "@/lib/cx";
 
+/** Three steps divided by hairlines, then the founding ticket and the price roadmap. */
 export function Offer() {
   const spots = offer.foundingSpots;
 
   return (
-    <Section
-      id="offer"
-      numeral="08"
-      label="Founding offer"
-      title={
-        <>
-          Join early. <span className="text-fg-secondary">Pay the founding price.</span>
-        </>
-      }
-    >
-      <Grid className="gap-y-6">
-        {/* The ticket: price, what's included, the CTA */}
-        <Reveal className="col-span-4 md:col-span-7">
-          <Card className="p-6 md:p-8">
+    <Section id="offer" badge={offerSection.badge} title={offerSection.title} accent={offerSection.accent} center>
+      <Stagger as="ol" className="grid grid-cols-1 md:grid-cols-3">
+        {offerSection.steps.map((step, index) => (
+          <StaggerItem
+            key={step.name}
+            as="li"
+            className={cx(
+              "border-t border-line-strong pt-6 pb-10 md:px-8 md:pb-4",
+              index > 0 && "md:border-l",
+              index === 0 && "md:pl-0",
+            )}
+          >
+            <p className="text-display font-normal leading-none text-fg">{index + 1}</p>
+            <h3 className="mt-6 text-heading text-fg">{step.name}</h3>
+            <p className="mt-2 max-w-[22rem] text-ui text-fg-secondary">{step.body}</p>
+          </StaggerItem>
+        ))}
+      </Stagger>
+
+      <div className="mt-20 grid grid-cols-1 gap-4 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
+        <Reveal>
+          <div className="h-full rounded-2xl border border-line bg-surface p-6 md:p-10">
             <div className="flex items-center justify-between gap-4">
-              <SpecLabel as="span">{offer.course}</SpecLabel>
+              <p className="text-ui text-fg-secondary">{offer.course}</p>
               <Badge tone="accent">Founding</Badge>
             </div>
 
             <div className="mt-8 flex items-end gap-5">
-              <p className="font-mono text-display leading-none text-fg">{formatPrice(offer.foundingPrice)}</p>
-              <div className="pb-1">
-                <p className="font-mono text-ui text-fg-muted line-through decoration-fg-muted">
-                  {formatPrice(offer.launchPrice)}
-                </p>
-                <SpecLabel>At launch, Jan 1, 2027</SpecLabel>
+              <p className="text-hero leading-none text-fg">{formatPrice(offer.foundingPrice)}</p>
+              <div className="pb-1.5">
+                <p className="text-ui text-fg-muted line-through">{formatPrice(offer.launchPrice)}</p>
+                <p className="text-ui-sm text-fg-muted">At launch, Jan 1, 2027</p>
               </div>
             </div>
-            <SpecLabel className="mt-3">
+            <p className="mt-3 text-ui-sm text-fg-muted">
               {spots.remaining !== null
                 ? `${spots.remaining} of ${spots.total} founding spots left`
                 : `For the first ${spots.total} founding members`}
-            </SpecLabel>
+            </p>
 
             <ul className="mt-8 space-y-3 border-t border-line pt-6">
               {offer.includes.map((item) => (
@@ -57,17 +61,17 @@ export function Offer() {
               ))}
             </ul>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
               <CTAButton placement="offer" size="lg" />
-              <SpecLabel as="span">Full refund if it doesn&apos;t launch</SpecLabel>
+              <span className="text-ui-sm text-fg-muted">Full refund if it doesn&apos;t launch</span>
             </div>
-          </Card>
+          </div>
         </Reveal>
 
-        <div className="col-span-4 flex flex-col gap-6 md:col-span-5">
+        <div className="flex flex-col gap-4">
           <Reveal delay={0.06}>
-            <Card>
-              <SpecLabel>Price roadmap</SpecLabel>
+            <div className="rounded-2xl border border-line bg-surface p-6">
+              <p className="text-ui text-fg-secondary">Price roadmap</p>
               <ol className="mt-5">
                 {offer.priceRoadmap.map((step, index) => (
                   <li key={step.label} className="relative flex gap-4 pb-6 last:pb-0">
@@ -78,7 +82,7 @@ export function Offer() {
                       aria-hidden
                       className={cx(
                         "relative mt-1.5 size-[11px] shrink-0 rounded-full border",
-                        step.current ? "border-accent-fg bg-accent" : "border-line-strong bg-surface",
+                        step.current ? "border-accent bg-accent" : "border-line-strong bg-surface",
                       )}
                     />
                     <div className="flex flex-1 items-baseline justify-between gap-4">
@@ -87,7 +91,7 @@ export function Offer() {
                           {step.label}
                           {step.current && <span className="sr-only"> (now)</span>}
                         </p>
-                        <SpecLabel className="mt-0.5">{step.when}</SpecLabel>
+                        <p className="mt-0.5 text-ui-sm text-fg-muted">{step.when}</p>
                       </div>
                       <p className="font-mono text-ui text-fg">
                         {step.price !== null ? formatPrice(step.price) : "↑"}
@@ -96,24 +100,24 @@ export function Offer() {
                   </li>
                 ))}
               </ol>
-            </Card>
+            </div>
           </Reveal>
 
           <Reveal delay={0.12}>
-            <Card>
-              <SpecLabel>Only for founding members</SpecLabel>
+            <div className="rounded-2xl border border-line bg-surface p-6">
+              <p className="text-ui text-fg-secondary">Only for founding members</p>
               <ul className="mt-4 space-y-2.5">
-                {foundingPerks.map((perk) => (
-                  <li key={perk} className="flex gap-3 text-ui text-fg-secondary">
-                    <GeoIcon name="plus" size={16} className="mt-0.5 text-fg-muted" />
+                {offerSection.perks.map((perk) => (
+                  <li key={perk} className="flex gap-3 text-ui text-fg">
+                    <GeoIcon name="plus" size={16} className="mt-0.5 text-accent-fg" />
                     {perk}
                   </li>
                 ))}
               </ul>
-            </Card>
+            </div>
           </Reveal>
         </div>
-      </Grid>
+      </div>
     </Section>
   );
 }

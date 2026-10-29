@@ -1,4 +1,3 @@
-import { Build } from "@/components/home/Build";
 import { Checklist } from "@/components/home/Checklist";
 import { Curriculum } from "@/components/home/Curriculum";
 import { Faq } from "@/components/home/Faq";
@@ -18,7 +17,6 @@ import { homeSections, type HomeSectionId } from "@/lib/content/home";
 const sections: Record<HomeSectionId, () => React.ReactNode> = {
   "why-now": WhyNow,
   method: Method,
-  build: Build,
   curriculum: Curriculum,
   live: Live,
   proof: Proof,

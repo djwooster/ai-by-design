@@ -1,48 +1,50 @@
-import { Section } from "@/components/layout/Section";
 import { Reveal } from "@/components/motion/Reveal";
-import { Grid } from "@/components/ui/Container";
+import { Container } from "@/components/ui/Container";
+import { Pill } from "@/components/ui/Pill";
 import { SmartLink } from "@/components/ui/SmartLink";
-import { SpecLabel } from "@/components/ui/SpecLabel";
 import { instructor } from "@/lib/content/home";
 import { site } from "@/lib/content/site";
 
+/** Split: the story on the left, a large photo panel on the right. */
 export function Instructor() {
   return (
-    <Section id="instructor" numeral="07" label="Your instructor">
-      <Grid className="gap-y-10">
-        <Reveal className="col-span-4 md:col-span-4">
-          {/* [TODO: photo] */}
-          <div className="flex aspect-[4/5] items-end rounded-lg border border-line bg-surface p-4">
-            <SpecLabel>[TODO: photo]</SpecLabel>
-          </div>
-        </Reveal>
+    <section id="instructor" className="scroll-mt-20">
+      <Container className="py-24 md:py-36">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          <Reveal>
+            <Pill>{instructor.badge}</Pill>
+            <h2 className="mt-6 text-title text-fg">{instructor.name}</h2>
+            <p className="mt-2 text-lede text-fg-muted">{instructor.role}</p>
+            <p className="mt-6 max-w-[32rem] text-lede text-fg-secondary">{instructor.bio}</p>
 
-        <Reveal delay={0.08} className="col-span-4 md:col-span-7 md:col-start-6">
-          <h3 className="text-title text-fg">{instructor.name}</h3>
-          <SpecLabel className="mt-3">{instructor.role}</SpecLabel>
-          <p className="mt-6 max-w-[36rem] text-body text-fg-secondary">{instructor.bio}</p>
+            <ul className="mt-10 border-t border-line">
+              {instructor.experience.map((item) => (
+                <li key={item.org} className="flex items-baseline justify-between gap-4 border-b border-line py-3">
+                  <span className="text-ui text-fg">{item.org}</span>
+                  {item.note && <span className="text-ui-sm text-fg-muted">{item.note}</span>}
+                </li>
+              ))}
+            </ul>
 
-          <SpecLabel className="mt-12">Experience</SpecLabel>
-          <ul className="mt-3 border-t border-line">
-            {instructor.experience.map((item) => (
-              <li key={item.org} className="flex items-baseline justify-between gap-4 border-b border-line py-3">
-                <span className="text-ui text-fg">{item.org}</span>
-                {item.note && <SpecLabel as="span">{item.note}</SpecLabel>}
-              </li>
-            ))}
-          </ul>
+            <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2">
+              {site.elsewhere.map((link) => (
+                <SmartLink
+                  key={link.label}
+                  link={link}
+                  className="text-ui-sm text-fg-muted transition-colors duration-150 hover:text-fg"
+                />
+              ))}
+            </div>
+          </Reveal>
 
-          <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2">
-            {site.elsewhere.map((link) => (
-              <SmartLink
-                key={link.label}
-                link={link}
-                className="font-mono text-label uppercase text-fg-muted transition-colors duration-150 hover:text-fg"
-              />
-            ))}
-          </div>
-        </Reveal>
-      </Grid>
-    </Section>
+          <Reveal delay={0.08}>
+            {/* [TODO: photo] */}
+            <div className="flex aspect-[4/5] items-center justify-center rounded-[28px] border border-line bg-surface">
+              <span className="text-ui-sm text-fg-muted">[TODO: photo]</span>
+            </div>
+          </Reveal>
+        </div>
+      </Container>
+    </section>
   );
 }
