@@ -12,7 +12,7 @@ import { ease } from "@/components/motion/tokens";
  */
 export function PhaseImage({ src }: { src: StaticImageData }) {
   return (
-    <div className="relative aspect-[4/3] overflow-hidden [mask-image:radial-gradient(ellipse_at_center,black_55%,transparent_78%)]">
+    <div className="relative aspect-[4/3] overflow-hidden [mask-image:radial-gradient(ellipse_at_center,black_72%,transparent_100%)]">
       <motion.div
         className="absolute inset-0"
         variants={{
