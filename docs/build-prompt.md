@@ -153,21 +153,22 @@ later, but ship dark only.
 Palette updated Oct 28 from DJ's poster reference: deep teal `#2A4343`, teal `#416B66`,
 olive `#646756`, sand `#F1D49A`, burnt orange `#D35E36`, sage `#C0C29D`. (It replaces the
 original near-black, cream and sea-blue palette.)
-- `--bg` `#132020` (teal night) · `--surface` `#1A2C2C` · `--surface-2` `#213535`
+- `--bg` `#161718` (graphite; DJ preferred a charcoal dark to teal) · `--surface` `#1C1E20` ·
+  `--surface-2` `#24272A`
 - `--border` sand at 9% opacity · `--border-strong` sand at 18%
 - `--text-primary` `#F3E5C4` (light sand) · `--text-secondary` `#C0C29D` (sage) ·
   `--text-muted` `#A6A98B`
 - `--accent` `#D35E36` (burnt orange) for fills, rings and strokes · `--accent-fg` `#E8845E`
   for orange text (burnt orange is 4.3:1 on the background, just short for small text) ·
-  `--accent-deep` `#2A4343` · `--on-accent` `#0D1616`
-- Light sections: `--paper` `#F1D49A` (sand) background, `--ink` `#132020` text, orange text
+  `--accent-deep` `#2A4343` · `--on-accent` `#111213`
+- Light sections: `--paper` `#F1D49A` (sand) background, `--ink` `#161718` text, orange text
   `#933716`, active fill sage
 - `--positive`, `--negative`, `--warning`: for states only
 - Meet WCAG AA contrast everywhere. Verify every pairing.
 
 **Color rules:** neutral by default. Burnt orange is the only accent and appears at most once
 or twice per viewport: the primary CTA, the active Method layer, a link, a focus ring. Primary
-buttons are burnt orange with near-black (`#0D1616`) text; light text on orange fails contrast.
+buttons are burnt orange with near-black (`#111213`) text; light text on orange fails contrast.
 No gradients, no glows, no decorative color.
 
 **Type:**
