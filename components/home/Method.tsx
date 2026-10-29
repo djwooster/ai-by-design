@@ -1,4 +1,4 @@
-import { IsoPhase } from "@/components/illustrations/IsoPhase";
+import { Spot, type SpotName } from "@/components/illustrations/Spot";
 import { Section } from "@/components/layout/Section";
 import { Stagger, StaggerItem } from "@/components/motion/Reveal";
 import { method } from "@/lib/content/home";
@@ -19,8 +19,8 @@ export function Method() {
               <h3 className="text-title leading-none text-fg">{phase.name}</h3>
               <span className="font-mono text-ui-sm text-fg-muted">{phaseNumber(index)}</span>
             </div>
-            <div className="mx-auto my-6 w-full max-w-[260px]">
-              <IsoPhase phase={phase.id} step={index} />
+            <div className="mx-auto my-8 w-[72%] max-w-[240px] text-fg-secondary transition-colors duration-300 group-hover:text-fg">
+              <Spot name={phase.id as SpotName} />
             </div>
             <p className="mt-auto text-ui text-fg-secondary">{phase.outcome}</p>
           </StaggerItem>

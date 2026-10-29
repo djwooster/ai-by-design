@@ -37,15 +37,21 @@ export const hero = {
   headline: ["Ship your app to the App Store.", "Built with Claude Code."],
   subline:
     "[TODO: copy] I design, build and ship real software with AI. Become a founding member and learn the exact process I'm using to launch FocusMode.",
-  shipped: ["FocusMode", "RE-IQ", "Coast Gallery"],
+  videoLength: "[TODO: 0:00]",
+  trust: ["Full refund if it doesn't launch", "2 live calls a week", "Starts Jan 1, 2027"],
 };
 
 export const whyNow = {
   badge: "Why now",
-  before: "Two years ago, shipping an iOS app meant learning Swift or hiring a developer for $20K+.",
-  after: "Now a designer with Claude Code can ship one in weeks. I just did.",
+  title: "Shipping an app used to take a team. Now it takes weeks.",
   accent: "weeks",
-};
+  body: "Two years ago, shipping an iOS app meant learning Swift or hiring a developer for $20K+. Now a designer with Claude Code can ship one in weeks. I just did.",
+  cards: [
+    { spot: "learn-code", era: "Then", title: "Learn Swift first", note: "[TODO: copy] Months of tutorials before your first screen" },
+    { spot: "hire-dev", era: "Then", title: "Or hire a developer", note: "$20K+ before anyone downloads it" },
+    { spot: "claude-code", era: "Now", title: "Design it. Build it with Claude Code.", note: "Idea to App Store in weeks" },
+  ],
+} as const;
 
 export const method = {
   badge: "The AI by Design Method",

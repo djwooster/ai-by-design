@@ -9,7 +9,8 @@ import { CTAButton } from "@/components/ui/CTAButton";
 import { MotionDemo } from "@/components/design/MotionDemo";
 import { EmailCapture } from "@/components/forms/EmailCapture";
 import { GeoIcon, iconNames } from "@/components/icons/GeoIcon";
-import { IsoPhase } from "@/components/illustrations/IsoPhase";
+import { IllustratedCard } from "@/components/illustrations/IllustratedCard";
+import { Spot, type SpotName } from "@/components/illustrations/Spot";
 import { Stagger, StaggerItem } from "@/components/motion/Reveal";
 import { Pill } from "@/components/ui/Pill";
 import { Accordion } from "@/components/ui/Accordion";
@@ -23,21 +24,24 @@ export const metadata: Metadata = {
 };
 
 const colors = [
-  { token: "--bg", note: "#05090A vampire black · base" },
-  { token: "--surface", note: "#0E191E chinese black · cards" },
-  { token: "--surface-2", note: "#152429 · raised" },
-  { token: "--border", note: "Platinum 8%" },
-  { token: "--border-strong", note: "Platinum 15%" },
-  { token: "--text-primary", note: "#DFEAE8 platinum · 16.3:1" },
-  { token: "--text-secondary", note: "#BBC9C7 jet stream · 11.7:1" },
-  { token: "--text-muted", note: "#8A9997 · 6.8:1" },
-  { token: "--accent", note: "#5AAEBB teal · the one accent · 7.8:1" },
-  { token: "--accent-hover", note: "#6DBCC8 · button hover" },
-  { token: "--accent-deep", note: "#0C525F deep teal · selection" },
-  { token: "--paper", note: "#DFEAE8 platinum · light section" },
-  { token: "--positive", note: "#9CC3A0 · live · 10.2:1" },
-  { token: "--info", note: "#B8A5C6 · in review · 8.8:1" },
-  { token: "--negative", note: "States only · 8.4:1" },
+  { token: "--bg", note: "#111111 air black · base" },
+  { token: "--surface", note: "#191919 · cards" },
+  { token: "--surface-2", note: "#222222 · raised" },
+  { token: "--black-olive", note: "#3A3A3A · palette" },
+  { token: "--dark-liver", note: "#4D4D4D · palette" },
+  { token: "--border", note: "Smoke 8%" },
+  { token: "--border-strong", note: "Smoke 14%" },
+  { token: "--text-primary", note: "#EDEEEE smoke · 16.2:1" },
+  { token: "--text-secondary", note: "#B7BABB gray · 9.7:1" },
+  { token: "--text-muted", note: "#8E9192 · 6.0:1" },
+  { token: "--accent", note: "#B4C7CC pastel blue · the one color · 10.8:1" },
+  { token: "--smoke", note: "#EDEEEE · light sections and cards" },
+  { token: "--positive", note: "#A9CBB0 · live · 10.7:1" },
+];
+
+const spotNames: SpotName[] = [
+  "learn-code", "hire-dev", "claude-code", "vision", "design", "build",
+  "test", "ship", "launch", "qa", "review", "live-build", "community",
 ];
 
 const type = [
@@ -81,7 +85,7 @@ export default function DesignPage() {
         lede="Tokens and components for ai-bydesign.dev. Dark first, one accent, hierarchy from scale, weight and tone."
       />
 
-      <Section badge="Color" title="Cool blacks, platinum and one teal.">
+      <Section badge="Color" title="Neutral, with one pastel blue.">
         <Grid className="gap-y-8">
           {colors.map((color) => (
             <Swatch key={color.token} {...color} />
@@ -180,12 +184,18 @@ export default function DesignPage() {
         </Grid>
       </Section>
 
-      <Section badge="Method illustrations" title="One drawing per phase.">
-        <Stagger className="grid grid-cols-2 gap-3 md:grid-cols-3">
-          {phases.map((phase, index) => (
-            <StaggerItem key={phase.id} className="rounded-2xl border border-line bg-surface p-5">
-              <p className="text-heading text-fg">{phase.name}</p>
-              <IsoPhase phase={phase.id} step={index} />
+      <Section badge="Illustrations" title="Spot drawings, light and dark.">
+        <Stagger className="grid grid-cols-2 gap-3 md:grid-cols-4">
+          {spotNames.map((name, i) => (
+            <StaggerItem key={name}>
+              {i % 3 === 0 ? (
+                <IllustratedCard spot={name} title={name} blue={i % 2 === 0} className="h-full" />
+              ) : (
+                <div className="h-full rounded-2xl border border-line bg-surface p-6 text-fg-secondary">
+                  <Spot name={name} />
+                  <p className="mt-4 text-ui-sm text-fg-muted">{name}</p>
+                </div>
+              )}
             </StaggerItem>
           ))}
         </Stagger>
@@ -204,12 +214,12 @@ export default function DesignPage() {
         </Grid>
       </Section>
 
-      <Section paper badge="Paper" title="Platinum, used once or twice a page.">
+      <Section light badge="Light" title="Smoke and pastel blue, for cards and one section.">
         <Grid className="gap-y-8">
           <div className="col-span-4 md:col-span-6">
             <p className="text-body text-fg-secondary">
-              The same semantic tokens, swapped for the light section, such as the guarantee.
-              Black on platinum is 16.3:1, and the accent deepens to #0C525F (7.2:1).
+              The same semantic tokens, swapped for light sections and the illustrated cards.
+              Black on smoke is 16.2:1, and the accent becomes black.
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <CTAButton placement="design-paper" />
@@ -220,7 +230,7 @@ export default function DesignPage() {
           <div className="col-span-4 md:col-span-6">
             <Card>
               <SpecLabel parts={["Phase 03", "Build"]} />
-              <p className="mt-6 text-heading text-fg">A card on paper</p>
+              <p className="mt-6 text-heading text-fg">A card on a light section</p>
               <p className="mt-1 text-ui text-fg-secondary">Surface, hairline, no shadow.</p>
             </Card>
           </div>

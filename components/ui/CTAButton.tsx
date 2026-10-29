@@ -2,7 +2,7 @@
 
 import { ButtonLink, type ButtonSize } from "@/components/ui/Button";
 import { track } from "@/lib/analytics";
-import { offer } from "@/lib/content/offer";
+import { formatPrice, offer } from "@/lib/content/offer";
 
 /**
  * "Become a founding member". Always reads the Skool checkout from config;
@@ -11,11 +11,14 @@ import { offer } from "@/lib/content/offer";
 export function CTAButton({
   placement,
   size = "md",
+  withPrice,
   className,
 }: {
   /** Where the button sits, for the click event: "header", "hero", "final"… */
   placement: string;
   size?: ButtonSize;
+  /** Adds the founding price and the struck-through launch price after the label. */
+  withPrice?: boolean;
   className?: string;
 }) {
   return (
@@ -27,6 +30,12 @@ export function CTAButton({
       onClick={() => track({ name: "cta_founding_click", placement })}
     >
       {offer.cta}
+      {withPrice && (
+        <>
+          <span className="font-semibold">{formatPrice(offer.foundingPrice)}</span>
+          <span className="line-through opacity-60">{formatPrice(offer.launchPrice)}</span>
+        </>
+      )}
     </ButtonLink>
   );
 }

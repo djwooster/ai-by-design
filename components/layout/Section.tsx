@@ -6,7 +6,7 @@ import { cx } from "@/lib/cx";
 
 /**
  * A homepage section: an optional pill badge, a headline with one accented
- * word, a lede with room under it, then the section's content. `paper`
+ * word, a lede with room under it, then the section's content. `light`
  * switches it to the light theme; `center` centers the heading block.
  */
 export function Section({
@@ -16,7 +16,7 @@ export function Section({
   accent,
   lede,
   center,
-  paper,
+  light,
   className,
   children,
 }: {
@@ -26,14 +26,14 @@ export function Section({
   accent?: string;
   lede?: React.ReactNode;
   center?: boolean;
-  paper?: boolean;
+  light?: boolean;
   className?: string;
   children?: React.ReactNode;
 }) {
   const hasHeader = Boolean(badge || title || lede);
 
   return (
-    <section id={id} className={cx("scroll-mt-20", paper && "theme-paper", className)}>
+    <section id={id} className={cx("scroll-mt-20", light && "theme-light", className)}>
       <Container className="py-24 md:py-36">
         {hasHeader && (
           <Reveal className={cx("max-w-[44rem]", center && "mx-auto text-center")}>

@@ -79,12 +79,12 @@ const stageOf = (scene: Scene) =>
   scene.kind === "terminal" ? 0 : scene.kind === "app" ? 1 : 2;
 const stageLabels = ["Claude Code", "Your app", "App Store"];
 
-export function BuildMorph({ className }: { className?: string }) {
+export function BuildMorph({ className, maxHeight }: { className?: string; maxHeight?: number }) {
   const frame = useRef<HTMLDivElement>(null);
   const inView = useInView(frame, { amount: 0.3 });
   const reduced = usePrefersReducedMotion();
   const [index, setIndex] = useState(0);
-  const scale = useStageScale(frame);
+  const scale = useStageScale(frame, maxHeight);
 
   const scene = reduced ? scenes[1] : scenes[index];
 
@@ -158,17 +158,18 @@ function SceneContent({ scene }: { scene: Scene }) {
   return <PhoneScreen>{scene.screen === "timer" ? <TimerScreen /> : <NotesScreen />}</PhoneScreen>;
 }
 
-/** Scales the fixed-size stage down to fit narrow columns. Null until measured. */
-function useStageScale(ref: React.RefObject<HTMLDivElement | null>) {
+/** Scales the fixed-size stage down to fit its column (and `maxHeight`, if set). Null until measured. */
+function useStageScale(ref: React.RefObject<HTMLDivElement | null>, maxHeight?: number) {
   const [scale, setScale] = useState<number | null>(null);
   useLayoutEffect(() => {
     const node = ref.current;
     if (!node) return;
-    const update = () => setScale(Math.min(1, node.clientWidth / STAGE.width));
+    const update = () =>
+      setScale(Math.min(1, node.clientWidth / STAGE.width, maxHeight ? maxHeight / STAGE.height : 1));
     update();
     const observer = new ResizeObserver(update);
     observer.observe(node);
     return () => observer.disconnect();
-  }, [ref]);
+  }, [ref, maxHeight]);
   return scale;
 }
