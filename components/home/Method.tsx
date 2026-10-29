@@ -18,13 +18,13 @@ function Plus({ className }: { className: string }) {
 }
 
 /*
- * The Method on a light section: six white cards joined by hairlines into one
- * sheet, with registration marks at the corners, each holding a node diagram
+ * The Method on a slightly lifted dark section: six cards joined by hairlines
+ * into one sheet, with registration marks at the corners, each holding a node diagram
  * that draws itself in as the card scrolls into view.
  */
 export function Method() {
   return (
-    <Section id="method" light badge={method.badge} title={method.title} accent={method.accent} lede={method.lede}>
+    <Section id="method" className="bg-surface" badge={method.badge} title={method.title} accent={method.accent} lede={method.lede}>
       <div className="relative">
         <Stagger
           as="ol"
@@ -35,7 +35,7 @@ export function Method() {
               key={phase.id}
               as="li"
               className="flex flex-col bg-canvas px-8 pt-10 pb-9"
-              style={{ "--bg": "var(--card-white)" } as React.CSSProperties}
+              style={{ "--bg": "var(--surface-2)" } as React.CSSProperties}
             >
               <div className="mx-auto w-full max-w-[240px] text-fg-muted">
                 <PhaseDiagram phase={phase.id} />
