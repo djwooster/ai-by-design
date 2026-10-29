@@ -47,8 +47,7 @@ export const whyNow = {
   accent: "weeks",
   body: "Two years ago, shipping an iOS app meant learning Swift or hiring a developer for $20K+. Now a designer with Claude Code can ship one in weeks. I just did.",
   cards: [
-    { spot: "learn-code", era: "Then", title: "Learn Swift first", note: "[TODO: copy] Months of tutorials before your first screen" },
-    { spot: "hire-dev", era: "Then", title: "Or hire a developer", note: "$20K+ before anyone downloads it" },
+    { spot: "hire-dev", era: "Then", title: "Learn Swift, or hire a developer", note: "Months of learning, or $20K+ before launch" },
     { spot: "claude-code", era: "Now", title: "Design it. Build it with Claude Code.", note: "Idea to App Store in weeks" },
   ],
 } as const;

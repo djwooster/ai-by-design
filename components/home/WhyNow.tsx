@@ -11,18 +11,10 @@ import { whyNow } from "@/lib/content/home";
 import { cx } from "@/lib/cx";
 
 /*
- * Text on the left; on the right, the story in three illustrated cards that
- * deal onto the table as the section scrolls in: two "then" cards, and the
- * blue "now" card landing on top (references/09).
+ * Text on the left; on the right, two illustrated cards side by side: a light
+ * "then" card and the blue "now" card, set a step lower so the pair reads as
+ * moving forward. They rise in one after the other as the section scrolls in.
  */
-
-// Where each card rests in the stack on large screens.
-const resting = [
-  { rotate: -4, z: 1, className: "lg:left-0 lg:top-0" },
-  { rotate: 3, z: 2, className: "lg:right-0 lg:top-10" },
-  { rotate: -1.5, z: 3, className: "lg:left-[16%] lg:top-[46%]" },
-];
-
 export function WhyNow() {
   return (
     <section id="why-now" className="scroll-mt-20">
@@ -37,7 +29,7 @@ export function WhyNow() {
           </Reveal>
 
           <motion.ul
-            className="relative grid grid-cols-1 gap-4 sm:grid-cols-3 lg:block lg:h-[560px]"
+            className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:items-start"
             initial="hidden"
             whileInView="shown"
             viewport={{ once: true, margin: "0px 0px -15% 0px" }}
@@ -45,16 +37,10 @@ export function WhyNow() {
             {whyNow.cards.map((card, i) => (
               <motion.li
                 key={card.title}
-                className={cx("lg:absolute lg:w-[54%]", resting[i].className)}
-                style={{ zIndex: resting[i].z }}
+                className={cx("h-full", i === 1 && "sm:mt-16")}
                 variants={{
-                  hidden: { opacity: 0, y: 40, rotate: 0 },
-                  shown: {
-                    opacity: 1,
-                    y: 0,
-                    rotate: resting[i].rotate,
-                    transition: { duration: 0.7, ease: ease.glide, delay: 0.15 + i * 0.22 },
-                  },
+                  hidden: { opacity: 0, y: 32 },
+                  shown: { opacity: 1, y: 0, transition: { duration: 0.7, ease: ease.glide, delay: 0.1 + i * 0.3 } },
                 }}
               >
                 <IllustratedCard
@@ -63,7 +49,8 @@ export function WhyNow() {
                   title={card.title}
                   note={card.note}
                   blue={card.era === "Now"}
-                  className="h-full ring-2 ring-(--air-black)"
+                  tall
+                  className="h-full min-h-[380px]"
                 />
               </motion.li>
             ))}
