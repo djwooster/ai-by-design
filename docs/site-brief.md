@@ -13,7 +13,7 @@ Oct 26, 2026 · DJ Wooster. Copied from the Notion brief on Oct 28 (written for 
 - **What members build:** one productivity iOS app, designed, built and shipped to the App Store with Claude Code, following the AI by Design Method (Vision → Design → Build → Test → Ship → Launch).
 - **Refund wording:** "If the course doesn't launch, you get every dollar back. Once it does, you have 14 days to ask for a full refund, no questions asked."
 - **Proof:** FocusMode, RE-IQ and Coast Gallery (not SourceIQ; SourceIQ appears only as a `/go/` demand test).
-- **Design system:** decided in the build prompt (dark-first graphite and sand, Geist, burnt-orange accent, Swiss numerals, isometric Method stack).
+- **Design system:** decided in the build prompt (dark-first graphite and ivory, Geist, terracotta accent with teal, sage and lavender in supporting roles, Swiss numerals, isometric Method stack).
 - **Reference:** futuredesigner.io (Kyle Skelly) for page structure, offer shape and depth of content. DJ and Claude design our own system; nothing is copied.
 - **SEO and AIO matter.** The long, structured course page and the blog should be built to rank and to be cited by LLMs.
 - **Reusable work** from djwooster.com sits in `../djwooster/themes/brand/`:

@@ -5,69 +5,78 @@
  * colors. `.theme-paper` swaps the same names for the light sections, so a
  * full light theme later is one more block like it.
  *
- * Palette (Oct 28): deep teal, teal, olive, sand, burnt orange and sage, from
- * DJ's poster reference: #2A4343 #416B66 #646756 #F1D49A #D35E36 #C0C29D.
- *
- * The dark surfaces are neutral graphite rather than teal (DJ, Oct 28).
+ * Palette (Oct 28): graphite #1A202C, ivory #F5F2EB, ocean teal #006D77,
+ * terracotta #E07A5F, sage #A3B18A, lavender #6D597A. Each has one job:
+ *   graphite  the dark base        ivory     text and the light sections
+ *   terracotta  the one action accent (CTA, links, focus, active stroke)
+ *   ocean teal  the active fill (Method layer, selection) and "live" states
+ *   sage      secondary text       lavender  "in progress" states (in review, draft)
  *
  * Contrast (WCAG AA, checked against --bg, --surface and --surface-2):
- *   text-primary 12.0–14.4 · text-secondary 8.2–9.8 · text-muted 6.2–7.4
- *   accent-fg 5.6–6.8 · on-accent on accent 4.8 · accent as a fill or ring 3.9–4.6
- * Burnt orange itself drops below 4.5:1 on the raised surfaces, so orange
- * text uses --accent-fg, a lighter step.
+ *   text-primary 11.8–14.6 · text-secondary 5.8–7.2 · text-muted 5.5–6.8
+ *   accent-fg 5.2–6.4 · positive 5.4–6.7 · info 5.8–7.2 · on-accent on accent 5.5
+ *   ivory on the teal fill 5.4
+ * Terracotta itself dips to 4.5:1 on --surface-2, so orange text uses
+ * --accent-fg, a lighter step. Ocean teal is too dark for text on graphite
+ * (2.7:1); it's a fill only, and teal text uses --positive.
  */
 :root {
-  --graphite: #161718;
-  --teal-deep: #2a4343;
-  --teal: #416b66;
-  --olive: #646756;
-  --sand: #f1d49a;
-  --orange: #d35e36;
-  --sage: #c0c29d;
+  --graphite: #1a202c;
+  --ivory: #f5f2eb;
+  --ocean-teal: #006d77;
+  --terracotta: #e07a5f;
+  --sage: #a3b18a;
+  --lavender: #6d597a;
 
   --bg: var(--graphite);
-  --surface: #1c1e20;
-  --surface-2: #24272a;
-  --border: color-mix(in srgb, var(--sand) 9%, transparent);
-  --border-strong: color-mix(in srgb, var(--sand) 18%, transparent);
+  --surface: #212836;
+  --surface-2: #29303f;
+  --border: color-mix(in srgb, var(--ivory) 9%, transparent);
+  --border-strong: color-mix(in srgb, var(--ivory) 17%, transparent);
 
-  --text-primary: #f3e5c4;
+  --text-primary: var(--ivory);
   --text-secondary: var(--sage);
-  --text-muted: #a6a98b;
+  --text-muted: #a3a8b2;
 
-  --accent: var(--orange);
-  --accent-fg: #e8845e;
-  --accent-deep: var(--teal-deep);
-  --on-accent: #111213;
+  --accent: var(--terracotta);
+  --accent-fg: #e8896f;
+  --accent-deep: var(--ocean-teal);
+  --on-accent: var(--graphite);
 
-  --paper: var(--sand);
+  --paper: var(--ivory);
   --ink: var(--graphite);
 
-  --positive: #9cc3a0;
-  --negative: #f0907e;
-  --warning: var(--sand);
+  --positive: #5fb3ba;
+  --info: #b8a5c6;
+  --warning: #e3b868;
+  --negative: #f28b82;
 
   color-scheme: dark;
 }
 
-/* Sand paper sections. Contrast on paper and its surfaces: ink 11.5–12.5 · secondary 6.5–7.1 · muted 5.1–5.5 · accent-fg 4.8–5.2 */
+/*
+ * Ivory paper sections. Contrast on paper and its surfaces: ink 12.5–14.6 ·
+ * secondary 6.0–7.0 · muted 5.1–5.9 · accent-fg 4.9–5.7 · teal and lavender 4.7–5.6.
+ * Terracotta buttons keep graphite text (5.5:1); their edge against ivory is softer (2.6:1).
+ */
 .theme-paper {
   --bg: var(--paper);
-  --surface: #edcf94;
-  --surface-2: #eacb8e;
-  --border: color-mix(in srgb, var(--ink) 12%, transparent);
-  --border-strong: color-mix(in srgb, var(--ink) 24%, transparent);
+  --surface: #ede9df;
+  --surface-2: #e6e1d5;
+  --border: color-mix(in srgb, var(--ink) 11%, transparent);
+  --border-strong: color-mix(in srgb, var(--ink) 22%, transparent);
 
   --text-primary: var(--ink);
-  --text-secondary: #2e4545;
-  --text-muted: #4a5446;
+  --text-secondary: #4a5263;
+  --text-muted: #565d6b;
 
-  --accent-fg: #933716;
+  --accent-fg: #9c452f;
   --accent-deep: var(--sage);
 
-  --positive: #2f5a3a;
-  --negative: #8e2f1e;
-  --warning: #6b4a10;
+  --positive: var(--ocean-teal);
+  --info: var(--lavender);
+  --warning: #7a5a14;
+  --negative: #9e3a2e;
 
   color-scheme: light;
   background: var(--bg);
@@ -88,6 +97,7 @@
   --color-accent-deep: var(--accent-deep);
   --color-on-accent: var(--on-accent);
   --color-positive: var(--positive);
+  --color-info: var(--info);
   --color-negative: var(--negative);
   --color-warning: var(--warning);
 

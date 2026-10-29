@@ -22,22 +22,22 @@ export const metadata: Metadata = {
 };
 
 const colors = [
-  { token: "--bg", note: "#161718 · graphite" },
-  { token: "--surface", note: "#1C1E20 · cards" },
-  { token: "--surface-2", note: "#24272A · raised" },
-  { token: "--border", note: "Sand 9%" },
-  { token: "--border-strong", note: "Sand 18%" },
-  { token: "--text-primary", note: "#F3E5C4 · 14.4:1" },
-  { token: "--text-secondary", note: "#C0C29D sage · 9.8:1" },
-  { token: "--text-muted", note: "#A6A98B · 7.4:1" },
-  { token: "--accent", note: "#D35E36 burnt orange · fills" },
-  { token: "--accent-fg", note: "#E8845E · orange text · 6.8:1" },
-  { token: "--accent-deep", note: "#2A4343 deep teal · active" },
-  { token: "--paper", note: "#F1D49A sand · light sections" },
-  { token: "--teal", note: "#416B66 · palette" },
-  { token: "--olive", note: "#646756 · palette" },
-  { token: "--positive", note: "States only · 9.2:1" },
-  { token: "--negative", note: "States only · 7.7:1" },
+  { token: "--bg", note: "#1A202C graphite · base" },
+  { token: "--surface", note: "#212836 · cards" },
+  { token: "--surface-2", note: "#29303F · raised" },
+  { token: "--border", note: "Ivory 9%" },
+  { token: "--border-strong", note: "Ivory 17%" },
+  { token: "--text-primary", note: "#F5F2EB ivory · 14.6:1" },
+  { token: "--text-secondary", note: "#A3B18A sage · 7.2:1" },
+  { token: "--text-muted", note: "#A3A8B2 · 6.8:1" },
+  { token: "--accent", note: "#E07A5F terracotta · action" },
+  { token: "--accent-fg", note: "#E8896F · orange text · 6.4:1" },
+  { token: "--accent-deep", note: "#006D77 ocean teal · active fill" },
+  { token: "--paper", note: "#F5F2EB ivory · light sections" },
+  { token: "--lavender", note: "#6D597A · in-progress fill" },
+  { token: "--positive", note: "#5FB3BA teal · live · 6.7:1" },
+  { token: "--info", note: "#B8A5C6 lavender · in review · 7.2:1" },
+  { token: "--negative", note: "States only · 6.8:1" },
 ];
 
 const type = [
@@ -80,7 +80,7 @@ export default function DesignPage() {
         lede="Tokens and components for ai-bydesign.dev. Dark first, one accent, hierarchy from scale, weight and tone."
       />
 
-      <Section numeral="01" label="Color" title="Graphite, sand and one burnt orange.">
+      <Section numeral="01" label="Color" title="Graphite, ivory and one terracotta.">
         <Grid className="gap-y-8">
           {colors.map((color) => (
             <Swatch key={color.token} {...color} />
@@ -136,7 +136,7 @@ export default function DesignPage() {
             <div className="mt-4 flex flex-wrap items-center gap-2">
               <Badge>Neutral</Badge>
               <Badge tone="accent">Founding</Badge>
-              <Badge tone="warning" dot>In App Store review</Badge>
+              <Badge tone="info" dot>In App Store review</Badge>
               <Badge tone="positive" dot>Live</Badge>
               <Badge tone="negative">Sold out</Badge>
             </div>
@@ -215,8 +215,9 @@ export default function DesignPage() {
         <Grid className="gap-y-8">
           <div className="col-span-4 md:col-span-6">
             <p className="text-body text-fg-secondary">
-              The same semantic tokens, swapped for sand sections such as the Method or the
-              guarantee. Ink on sand is 12.5:1; orange text deepens to #933716 (5.2:1).
+              The same semantic tokens, swapped for ivory sections such as the Method or the
+              guarantee. Graphite on ivory is 14.6:1; orange text deepens to #9C452F (5.7:1), and
+              the active fill turns sage.
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <CTAButton placement="design-paper" />

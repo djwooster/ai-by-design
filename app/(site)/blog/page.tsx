@@ -36,7 +36,7 @@ export default function BlogPage() {
                 </div>
                 {post.draft && (
                   <div className="col-span-4 md:col-span-2 md:justify-self-end md:pt-1">
-                    <Badge tone="warning">Draft</Badge>
+                    <Badge tone="info">Draft</Badge>
                   </div>
                 )}
               </Link>

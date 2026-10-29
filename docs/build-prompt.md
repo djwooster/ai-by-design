@@ -150,26 +150,28 @@ typography. Calm and confident; nothing shouts. Hierarchy comes from scale, weig
 later, but ship dark only.
 
 **Tokens (semantic CSS variables; components never hard-code colors):**
-Palette updated Oct 28 from DJ's poster reference: deep teal `#2A4343`, teal `#416B66`,
-olive `#646756`, sand `#F1D49A`, burnt orange `#D35E36`, sage `#C0C29D`. (It replaces the
-original near-black, cream and sea-blue palette.)
-- `--bg` `#161718` (graphite; DJ preferred a charcoal dark to teal) · `--surface` `#1C1E20` ·
-  `--surface-2` `#24272A`
-- `--border` sand at 9% opacity · `--border-strong` sand at 18%
-- `--text-primary` `#F3E5C4` (light sand) · `--text-secondary` `#C0C29D` (sage) ·
-  `--text-muted` `#A6A98B`
-- `--accent` `#D35E36` (burnt orange) for fills, rings and strokes · `--accent-fg` `#E8845E`
-  for orange text (burnt orange is 4.3:1 on the background, just short for small text) ·
-  `--accent-deep` `#2A4343` · `--on-accent` `#111213`
-- Light sections: `--paper` `#F1D49A` (sand) background, `--ink` `#161718` text, orange text
-  `#933716`, active fill sage
-- `--positive`, `--negative`, `--warning`: for states only
+Palette updated Oct 28 (DJ's second reference, replacing the original cream and sea blue and the
+poster palette): graphite `#1A202C`, ivory `#F5F2EB`, ocean teal `#006D77`, terracotta
+`#E07A5F`, sage `#A3B18A`, lavender `#6D597A`. Each color has one job.
+- `--bg` `#1A202C` (graphite) · `--surface` `#212836` · `--surface-2` `#29303F`
+- `--border` ivory at 9% opacity · `--border-strong` ivory at 17%
+- `--text-primary` `#F5F2EB` (ivory) · `--text-secondary` `#A3B18A` (sage) · `--text-muted`
+  `#A3A8B2`
+- `--accent` `#E07A5F` (terracotta): the one action accent, for fills, rings and strokes ·
+  `--accent-fg` `#E8896F` for orange text · `--on-accent` graphite
+- `--accent-deep` `#006D77` (ocean teal): the active fill (the active Method layer, selection).
+  Too dark for text on graphite; teal text uses `--positive` `#5FB3BA`
+- `--info` `#B8A5C6` (lavender, light step) for in-progress states: in review, draft
+- Light sections: `--paper` `#F5F2EB` (ivory) background, graphite text, orange text `#9C452F`,
+  active fill sage, teal and lavender at full strength for states
+- `--positive`, `--info`, `--warning`, `--negative`: for states only
 - Meet WCAG AA contrast everywhere. Verify every pairing.
 
-**Color rules:** neutral by default. Burnt orange is the only accent and appears at most once
-or twice per viewport: the primary CTA, the active Method layer, a link, a focus ring. Primary
-buttons are burnt orange with near-black (`#111213`) text; light text on orange fails contrast.
-No gradients, no glows, no decorative color.
+**Color rules:** neutral by default. Terracotta is the only action accent and appears at most
+once or twice per viewport: the primary CTA, the active Method layer, a link, a focus ring.
+Teal, sage and lavender each keep their single role above. Primary buttons are terracotta with
+graphite text; light text on terracotta fails contrast. No gradients, no glows, no decorative
+color.
 
 **Type:**
 - Geist Sans for everything; Geist Mono, with tabular numbers, for labels, metadata, prices and
