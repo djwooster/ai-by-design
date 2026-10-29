@@ -37,7 +37,7 @@ export const proof: ProofProduct[] = [
     name: "RE-IQ",
     kind: "Web app",
     summary: "A multifamily asset-management dashboard.",
-    image: null, // [TODO: image]
+    image: { src: "/images/proof/re-iq.png", alt: "RE-IQ's portfolio overview on an iPhone: revenue opportunities and the gap to budget by driver" },
     href: "https://re-iq.vercel.app",
     linkLabel: "re-iq.vercel.app",
   },
