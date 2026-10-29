@@ -5,14 +5,15 @@ import Image, { type StaticImageData } from "next/image";
 import { ease } from "@/components/motion/tokens";
 
 /**
- * A Method phase's scene, with its edges faded into the card so a slightly
- * different background tone never shows as a seam. It settles from a small
- * zoom as the card scrolls in (inheriting the card's hidden/shown variants).
+ * A Method phase's scene. The images have transparent backgrounds (run
+ * through scripts/knockout-bg.mjs), so they sit on any card with no seam. It
+ * settles from a small zoom as the card scrolls in (inheriting the card's
+ * hidden/shown variants).
  * Decorative: the phase name and outcome sit right under it.
  */
 export function PhaseImage({ src }: { src: StaticImageData }) {
   return (
-    <div className="relative aspect-[4/3] overflow-hidden [mask-image:radial-gradient(ellipse_at_center,black_72%,transparent_100%)]">
+    <div className="relative aspect-[4/3] overflow-hidden">
       <motion.div
         className="absolute inset-0"
         variants={{
