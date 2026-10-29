@@ -1,44 +1,60 @@
-import { PhaseArt } from "@/components/illustrations/PhaseArt";
+import { PhaseDiagram } from "@/components/illustrations/PhaseDiagram";
 import { Section } from "@/components/layout/Section";
 import { Stagger, StaggerItem } from "@/components/motion/Reveal";
 import { method } from "@/lib/content/home";
 import { phaseNumber, phases } from "@/lib/content/method";
-import { cx } from "@/lib/cx";
+
+/** A small "+" registration mark, centered on a grid intersection. */
+function Plus({ className }: { className: string }) {
+  return (
+    <svg
+      aria-hidden
+      viewBox="0 0 14 14"
+      className={`pointer-events-none absolute size-3.5 -translate-x-1/2 -translate-y-1/2 text-fg-muted ${className}`}
+    >
+      <path d="M7 0v14M0 7h14" stroke="currentColor" strokeWidth="1" />
+    </svg>
+  );
+}
 
 /*
- * The Method and what you'll build, as one grid of light cards on the dark
- * page (after Alfred's feature cards): a bold object drawing, the phase name
- * large, and what you'll have at the end of it. Tones alternate, and the last
- * card, Launch, is the blue one. Setting --bg per card makes the drawings'
- * opaque fills match the card exactly.
+ * The Method on a light section: six white cards joined by hairlines into one
+ * sheet, with registration marks at the corners, each holding a node diagram
+ * that draws itself in as the card scrolls into view.
  */
-const tones = ["var(--card-white)", "var(--card-tint)", "var(--smoke)", "var(--card-tint)", "var(--card-white)", null];
-
 export function Method() {
   return (
-    <Section id="method" badge={method.badge} title={method.title} accent={method.accent} lede={method.lede}>
-      <Stagger as="ol" className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {phases.map((phase, index) => {
-          const tone = tones[index];
-          return (
+    <Section id="method" light badge={method.badge} title={method.title} accent={method.accent} lede={method.lede}>
+      <div className="relative">
+        <Stagger
+          as="ol"
+          className="grid grid-cols-1 gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-3"
+        >
+          {phases.map((phase, index) => (
             <StaggerItem
               key={phase.id}
               as="li"
-              className={cx("flex min-h-[440px] flex-col rounded-[22px] p-7", tone ? "theme-light" : "theme-blue")}
-              style={tone ? ({ "--bg": tone } as React.CSSProperties) : undefined}
+              className="flex flex-col bg-canvas px-8 pt-10 pb-9"
+              style={{ "--bg": "var(--card-white)" } as React.CSSProperties}
             >
-              <div className="flex items-start justify-between">
-                <span className="font-mono text-ui-sm text-fg-muted">{phaseNumber(index)}</span>
+              <div className="mx-auto w-full max-w-[240px] text-fg-muted">
+                <PhaseDiagram phase={phase.id} />
               </div>
-              <div className="my-6 w-[78%] max-w-[260px] text-fg">
-                <PhaseArt phase={phase.id} />
-              </div>
-              <h3 className="mt-auto text-title leading-none text-fg">{phase.name}</h3>
-              <p className="mt-3 text-ui text-fg-secondary">{phase.outcome}</p>
+              <p className="mt-10 font-mono text-ui-sm text-fg-muted">{phaseNumber(index)}</p>
+              <h3 className="mt-1 text-heading font-medium text-fg">{phase.name}</h3>
+              <p className="mt-2 text-ui text-fg-secondary">{phase.outcome}</p>
             </StaggerItem>
-          );
-        })}
-      </Stagger>
+          ))}
+        </Stagger>
+
+        {/* Registration marks at the sheet's corners and, on large screens, where the cards meet. */}
+        {["top-0 left-0", "top-0 left-full", "top-full left-0", "top-full left-full"].map((at) => (
+          <Plus key={at} className={at} />
+        ))}
+        {["top-0 left-1/3", "top-0 left-2/3", "top-1/2 left-0", "top-1/2 left-1/3", "top-1/2 left-2/3", "top-1/2 left-full", "top-full left-1/3", "top-full left-2/3"].map((at) => (
+          <Plus key={at} className={`hidden lg:block ${at}`} />
+        ))}
+      </div>
     </Section>
   );
 }

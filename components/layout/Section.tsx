@@ -36,7 +36,7 @@ export function Section({
     <section id={id} className={cx("scroll-mt-20", light && "theme-light", className)}>
       <Container className="py-24 md:py-36">
         {hasHeader && (
-          <Reveal className={cx("max-w-[44rem]", center && "mx-auto text-center")}>
+          <Reveal className={cx("max-w-[60rem]", center && "mx-auto text-center")}>
             {badge && <Pill>{badge}</Pill>}
             {title && (
               <h2 className={cx("text-title text-fg", badge && "mt-6")}>

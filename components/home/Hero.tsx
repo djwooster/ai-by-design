@@ -20,7 +20,7 @@ export function Hero() {
   return (
     <div className="overflow-hidden">
       <Container className="pt-14 md:pt-20">
-        <div className="mx-auto flex max-w-[50rem] flex-col items-center text-center">
+        <div className="mx-auto flex max-w-[64rem] flex-col items-center text-center">
           <Reveal>
             <Pill>
               <span aria-hidden className="size-1.5 rounded-full bg-accent-fg" />
@@ -29,8 +29,8 @@ export function Hero() {
           </Reveal>
           <Reveal delay={0.08}>
             <h1 className="mt-7 text-hero text-fg">
-              {hero.headline[0]}
-              <br className="hidden sm:block" /> <span className="text-fg-secondary">{hero.headline[1]}</span>
+              <span className="block">{hero.headline[0]}</span>
+              <span className="block text-fg-secondary">{hero.headline[1]}</span>
             </h1>
           </Reveal>
           <DictatedText text={hero.subline} delay={0.4} className="mt-7 max-w-[36rem] text-lede text-fg-secondary" />

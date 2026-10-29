@@ -13,11 +13,15 @@ export function WhyNow() {
   return (
     <section id="why-now" className="scroll-mt-20">
       <Container className="py-24 md:py-36">
-        <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-20">
+        <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16">
           <Reveal>
             <Pill>{whyNow.badge}</Pill>
             <h2 className="mt-6 text-title text-fg">
-              <AccentText text={whyNow.title} accent={whyNow.accent} />
+              {whyNow.title.map((line) => (
+                <span key={line} className="block">
+                  <AccentText text={line} accent={whyNow.accent} />
+                </span>
+              ))}
             </h2>
             <p className="mt-6 max-w-[28rem] text-lede text-fg-secondary">{whyNow.body}</p>
 

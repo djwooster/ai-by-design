@@ -43,7 +43,7 @@ export const hero = {
 
 export const whyNow = {
   badge: "Why now",
-  title: "Shipping an app used to take a team. Now it takes weeks.",
+  title: ["Apps used to take a team.", "Now they take weeks."],
   accent: "weeks",
   body: "Two years ago, shipping an iOS app meant learning Swift or hiring a developer for $20K+. Now a designer with Claude Code can ship one in weeks. I just did.",
   compare: [
@@ -54,7 +54,7 @@ export const whyNow = {
 
 export const method = {
   badge: "The AI by Design Method",
-  title: "Six phases from idea to the App Store.",
+  title: "Six phases, idea to App Store.",
   accent: "App Store",
   lede: "[TODO: copy] You'll build one productivity app of your own, one phase at a time. Each phase ends with something real in your hands.",
 };
