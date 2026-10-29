@@ -1,7 +1,6 @@
 import { GeoIcon } from "@/components/icons/GeoIcon";
 import { Section } from "@/components/layout/Section";
 import { Stagger, StaggerItem } from "@/components/motion/Reveal";
-import { Badge } from "@/components/ui/Badge";
 import { proofSection } from "@/lib/content/home";
 import { proof } from "@/lib/content/proof";
 
@@ -18,11 +17,8 @@ export function Proof() {
         {proof.map((product) => (
           <StaggerItem key={product.id} className="flex flex-col">
             {/* [TODO: screenshot] DJ is sending real screens for each product */}
-            <div className="relative flex aspect-[4/3] items-center justify-center rounded-xl border border-line bg-surface">
+            <div className="flex aspect-[4/3] items-center justify-center rounded-xl border border-line bg-surface">
               <span className="text-ui-sm text-fg-muted">[TODO: screenshot]</span>
-              <Badge tone={product.status.tone} dot className="absolute top-3 left-3 bg-canvas">
-                {product.status.label}
-              </Badge>
             </div>
             <div className="mt-5 flex items-baseline justify-between gap-3">
               <h3 className="text-heading text-fg">{product.name}</h3>

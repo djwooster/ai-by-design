@@ -6,14 +6,13 @@ import { WordsIn } from "@/components/motion/WordsIn";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { CTAButton } from "@/components/ui/CTAButton";
-import { Pill } from "@/components/ui/Pill";
 import { hero } from "@/lib/content/home";
 import { phaseNumber, phases } from "@/lib/content/method";
 import { formatPrice, offer } from "@/lib/content/offer";
 import { site } from "@/lib/content/site";
 
 /**
- * Centered hero (references/07): status pill, headline, subline, the founding
+ * Centered hero (references/07): headline, subline, the founding
  * CTA beside "Watch intro", a trust line, then a large window holding the
  * course outline and the intro video.
  */
@@ -22,21 +21,14 @@ export function Hero() {
     <div className="overflow-hidden">
       <Container className="pt-14 md:pt-20">
         <div className="mx-auto flex max-w-[64rem] flex-col items-center text-center">
-          <Reveal>
-            <Pill>
-              <span aria-hidden className="size-1.5 rounded-full bg-accent-fg" />
-              {hero.badge}
-            </Pill>
-          </Reveal>
           <WordsIn
             as="h1"
             variant="fall"
             delay={0.15}
-            lines={[hero.headline[0], { text: hero.headline[1].replace("Claude Code", "✻ Claude Code"), className: "text-fg-secondary" }]}
-            accent="✻ Claude Code"
+            lines={[hero.headline[0], { text: hero.headline[1], className: "text-fg-secondary" }]}
+            accent="Claude Code."
             accentClassName="text-(--claude)"
-            label={hero.headline.join(" ")}
-            className="mt-7 text-hero text-fg"
+            className="text-hero text-fg"
           />
           <TypedText text={hero.subline} delay={0.9} className="mt-7 max-w-[36rem] text-lede text-fg-secondary" />
           <Reveal delay={1.15} className="mt-9 flex flex-col items-center gap-3 sm:flex-row">

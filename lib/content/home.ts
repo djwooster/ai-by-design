@@ -31,12 +31,11 @@ export const homeSections: HomeSectionId[] = [
 ];
 
 export const hero = {
-  badge: "FocusMode is in App Store review",
   headline: ["Ship your app to the App Store.", "Built with Claude Code."],
   subline:
     "I design, build and ship real software with AI. My app is in App Store review right now. Become a founding member and learn the exact process I used.",
   videoLength: "[TODO: 0:00]",
-  trust: ["Full refund if it doesn't launch", "2 live calls a week", "Starts Jan 1, 2027"],
+  trust: ["2 live calls a week", "Starts Jan 1, 2027"],
 };
 
 export const whyNow = {
@@ -94,7 +93,7 @@ export const live = {
 } as const;
 
 export const proofSection = {
-  badge: "Proof",
+  badge: "What I've built",
   title: "Real software, built the way you'll learn.",
   accent: "Real software",
   lede: "Everything DJ teaches comes from shipping these with Claude Code.",

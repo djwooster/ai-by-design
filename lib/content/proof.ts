@@ -16,7 +16,6 @@ export type ProofProduct = {
   name: string;
   kind: string;
   summary: string;
-  status: { label: string; tone: "positive" | "info" };
   href: string | null;
   linkLabel?: string;
 };
@@ -28,10 +27,6 @@ export const proof: ProofProduct[] = [
     kind: "iOS app · Web app",
     summary:
       "A focus timer with a Live Activity, voice-first session notes and Pro subscriptions. The web app is live; the iPhone app is in App Store review.",
-    status: {
-      label: focusModeStatusLabel[focusModeStatus],
-      tone: focusModeStatus === "approved" ? "positive" : "info",
-    },
     href: null, // [TODO: FocusMode web app or App Store URL]
   },
   {
@@ -39,7 +34,6 @@ export const proof: ProofProduct[] = [
     name: "RE-IQ",
     kind: "Web app",
     summary: "A multifamily asset-management dashboard.",
-    status: { label: "Live", tone: "positive" },
     href: "https://re-iq.vercel.app",
     linkLabel: "re-iq.vercel.app",
   },
@@ -48,7 +42,6 @@ export const proof: ProofProduct[] = [
     name: "Coast Gallery",
     kind: "Website",
     summary: "The website for a luxury art gallery in Laguna Beach.",
-    status: { label: "Live", tone: "positive" },
     href: "https://coast-gallery.vercel.app",
     linkLabel: "coast-gallery.vercel.app",
   },
