@@ -1,5 +1,6 @@
 import type { StaticImageData } from "next/image";
 import type { Phase } from "@/lib/content/method";
+import design from "@/public/images/method/design.png";
 import vision from "@/public/images/method/vision.png";
 
 /**
@@ -9,4 +10,5 @@ import vision from "@/public/images/method/vision.png";
  */
 export const phaseImages: Partial<Record<Phase["id"], StaticImageData>> = {
   vision,
+  design,
 };
