@@ -73,7 +73,7 @@ function Layer({ index, phase, active, compact }: { index: number; phase: Phase;
             y={anchorY}
             dominantBaseline="middle"
             fill="currentColor"
-            className="font-mono text-[9px] uppercase tracking-[0.12em]"
+            className={cx("font-mono text-[9px] uppercase tracking-[0.12em]", active && "fill-accent-fg")}
           >
             {phaseNumber(index)} · {phase.name}
           </text>

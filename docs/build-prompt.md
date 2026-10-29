@@ -150,19 +150,24 @@ typography. Calm and confident; nothing shouts. Hierarchy comes from scale, weig
 later, but ship dark only.
 
 **Tokens (semantic CSS variables; components never hard-code colors):**
-- `--bg` `#0B0E10` · `--surface` `#11161A` · `--surface-2` `#182025`
-- `--border` cream at 8% opacity · `--border-strong` cream at 16%
-- `--text-primary` `#ECE5D8` (warm cream) · `--text-secondary` and `--text-muted` as the same
-  cream at about 70% and 50% opacity
-- `--accent` `#6C9CB0` (sea blue) · `--accent-deep` `#16303C`
-- Light sections: `--paper` `#ECE5D8` background, `--ink` `#0B0E10` text, `--accent-on-paper`
-  `#3A6779`
+Palette updated Oct 28 from DJ's poster reference: deep teal `#2A4343`, teal `#416B66`,
+olive `#646756`, sand `#F1D49A`, burnt orange `#D35E36`, sage `#C0C29D`. (It replaces the
+original near-black, cream and sea-blue palette.)
+- `--bg` `#132020` (teal night) · `--surface` `#1A2C2C` · `--surface-2` `#213535`
+- `--border` sand at 9% opacity · `--border-strong` sand at 18%
+- `--text-primary` `#F3E5C4` (light sand) · `--text-secondary` `#C0C29D` (sage) ·
+  `--text-muted` `#A6A98B`
+- `--accent` `#D35E36` (burnt orange) for fills, rings and strokes · `--accent-fg` `#E8845E`
+  for orange text (burnt orange is 4.3:1 on the background, just short for small text) ·
+  `--accent-deep` `#2A4343` · `--on-accent` `#0D1616`
+- Light sections: `--paper` `#F1D49A` (sand) background, `--ink` `#132020` text, orange text
+  `#933716`, active fill sage
 - `--positive`, `--negative`, `--warning`: for states only
 - Meet WCAG AA contrast everywhere. Verify every pairing.
 
-**Color rules:** neutral by default. Sea blue is the only accent and appears at most once or
-twice per viewport: the primary CTA, the active Method layer, a link, a focus ring. Primary
-buttons are sea blue with near-black (`#0B0E10`) text; white text on sea blue fails contrast.
+**Color rules:** neutral by default. Burnt orange is the only accent and appears at most once
+or twice per viewport: the primary CTA, the active Method layer, a link, a focus ring. Primary
+buttons are burnt orange with near-black (`#0D1616`) text; light text on orange fails contrast.
 No gradients, no glows, no decorative color.
 
 **Type:**
@@ -185,7 +190,7 @@ No gradients, no glows, no decorative color.
 **Signature elements:**
 - **The isometric Method stack:** an SVG of six thin-line isometric layers (one per phase),
   drawn in cream hairlines on dark. As the visitor scrolls the Method section, the layers
-  separate and the active one highlights in sea blue, with its phase name and description
+  separate and the active one highlights in the accent, with its phase name and description
   beside it in spec-sheet style. Reusable in smaller form elsewhere.
 - **Geometric icon set:** custom icons built only from circles, arcs and lines (Braun and
   Bauhaus), for modules and shop products. Consistent stroke width.

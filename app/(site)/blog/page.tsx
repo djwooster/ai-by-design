@@ -29,7 +29,7 @@ export default function BlogPage() {
               >
                 <SpecLabel className="col-span-4 md:col-span-2 md:pt-1">{post.date}</SpecLabel>
                 <div className="col-span-4 md:col-span-8">
-                  <h2 className="text-heading text-fg transition-colors duration-150 group-hover:text-accent">
+                  <h2 className="text-heading text-fg transition-colors duration-150 group-hover:text-accent-fg">
                     {post.title}
                   </h2>
                   <p className="mt-1 text-ui text-fg-secondary">{post.summary}</p>

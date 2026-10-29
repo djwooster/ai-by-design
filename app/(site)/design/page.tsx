@@ -22,19 +22,22 @@ export const metadata: Metadata = {
 };
 
 const colors = [
-  { token: "--bg", note: "#0B0E10 · page" },
-  { token: "--surface", note: "#11161A · cards" },
-  { token: "--surface-2", note: "#182025 · raised" },
-  { token: "--border", note: "Cream 8%" },
-  { token: "--border-strong", note: "Cream 16%" },
-  { token: "--text-primary", note: "#ECE5D8 · 15.5:1" },
-  { token: "--text-secondary", note: "Cream 70% · 7.8:1" },
-  { token: "--text-muted", note: "Cream 55% · 5.2:1" },
-  { token: "--accent", note: "#6C9CB0 · 6.5:1" },
-  { token: "--accent-deep", note: "#16303C · selection" },
-  { token: "--positive", note: "States only · 9.2:1" },
-  { token: "--warning", note: "States only · 9.9:1" },
-  { token: "--negative", note: "States only · 7.5:1" },
+  { token: "--bg", note: "#132020 · teal night" },
+  { token: "--surface", note: "#1A2C2C · cards" },
+  { token: "--surface-2", note: "#213535 · raised" },
+  { token: "--border", note: "Sand 9%" },
+  { token: "--border-strong", note: "Sand 18%" },
+  { token: "--text-primary", note: "#F3E5C4 · 13.4:1" },
+  { token: "--text-secondary", note: "#C0C29D sage · 9.1:1" },
+  { token: "--text-muted", note: "#A6A98B · 6.9:1" },
+  { token: "--accent", note: "#D35E36 burnt orange · fills" },
+  { token: "--accent-fg", note: "#E8845E · orange text · 6.3:1" },
+  { token: "--accent-deep", note: "#2A4343 deep teal · active" },
+  { token: "--paper", note: "#F1D49A sand · light sections" },
+  { token: "--teal", note: "#416B66 · palette" },
+  { token: "--olive", note: "#646756 · palette" },
+  { token: "--positive", note: "States only · 8.6:1" },
+  { token: "--negative", note: "States only · 7.2:1" },
 ];
 
 const type = [
@@ -74,10 +77,10 @@ export default function DesignPage() {
       <PageHeader
         label="Internal · Design system · Stage 1"
         title="A precise instrument."
-        lede="Tokens and components for ai-bydesign.dev. Dark first, one accent, hierarchy from scale, weight and opacity."
+        lede="Tokens and components for ai-bydesign.dev. Dark first, one accent, hierarchy from scale, weight and tone."
       />
 
-      <Section numeral="01" label="Color" title="Neutral by default. One accent.">
+      <Section numeral="01" label="Color" title="Teal night, sand and one burnt orange.">
         <Grid className="gap-y-8">
           {colors.map((color) => (
             <Swatch key={color.token} {...color} />
@@ -212,8 +215,8 @@ export default function DesignPage() {
         <Grid className="gap-y-8">
           <div className="col-span-4 md:col-span-6">
             <p className="text-body text-fg-secondary">
-              The same semantic tokens, swapped for light sections such as the Method or the
-              guarantee. Ink on paper is 15.5:1; the accent darkens to #3A6779 (4.9:1).
+              The same semantic tokens, swapped for sand sections such as the Method or the
+              guarantee. Ink on sand is 11.7:1; orange text deepens to #933716 (5.2:1).
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <CTAButton placement="design-paper" />
