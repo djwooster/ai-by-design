@@ -1,14 +1,9 @@
 import type { Metadata } from "next";
 import { LegalPage } from "@/components/legal/LegalPage";
-import { offer } from "@/lib/content/offer";
+import { refunds } from "@/lib/content/legal";
 
-export const metadata: Metadata = { title: "Refund policy" };
+export const metadata: Metadata = { title: refunds.title };
 
 export default function RefundsPage() {
-  return (
-    <LegalPage title="Refund policy">
-      <p>{offer.guarantee}</p>
-      <p>[TODO: legal]</p>
-    </LegalPage>
-  );
+  return <LegalPage doc={refunds} />;
 }

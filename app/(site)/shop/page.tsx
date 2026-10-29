@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { GeoIcon, type IconName } from "@/components/icons/GeoIcon";
 import { PageHeader } from "@/components/layout/PageHeader";
-import { Card } from "@/components/ui/Card";
-import { Container, Grid } from "@/components/ui/Container";
-import { SpecLabel } from "@/components/ui/SpecLabel";
-import { formatPrice } from "@/lib/content/offer";
+import { Stagger, StaggerItem } from "@/components/motion/Reveal";
+import { CourseBand } from "@/components/shared/CourseBand";
+import { ProductCard } from "@/components/shop/ProductCard";
+import { Container } from "@/components/ui/Container";
 import { products } from "@/lib/content/products";
 
 export const metadata: Metadata = {
@@ -12,36 +12,53 @@ export const metadata: Metadata = {
   description: "[TODO: copy] Playbooks, prompt packs and starter kits for shipping apps with Claude Code.",
 };
 
+const steps: { icon: IconName; name: string; body: string }[] = [
+  { icon: "arrow", name: "Pay with Stripe", body: "[TODO: copy] Card, Apple Pay or Google Pay. No account needed." },
+  { icon: "check", name: "Get it instantly", body: "[TODO: copy] The download link lands in your inbox right away." },
+  { icon: "build", name: "Use it on your build", body: "[TODO: copy] Drop it into the project you're shipping." },
+];
+
 export default function ShopPage() {
   return (
     <>
       <PageHeader
         label="Shop · Instant delivery"
         title="Tools from real builds."
-        lede="[TODO: copy] Everything DJ uses to ship, packaged so you can use it today."
+        accent="real builds."
+        lede="[TODO: copy] Everything I use to ship, packaged so you can use it today."
       />
-      <Container className="pb-24">
-        <Grid className="gap-y-4">
-          {products.map((product, index) => (
-            <Link
-              key={product.slug}
-              href={`/shop/${product.slug}`}
-              className="group col-span-4 md:col-span-4"
-            >
-              <Card className="flex h-full flex-col transition-colors duration-150 group-hover:border-line-strong">
-                <SpecLabel parts={[String(index + 1).padStart(2, "0"), product.format]} />
-                <h2 className="mt-10 text-heading text-fg">{product.name}</h2>
-                <p className="mt-2 text-ui text-fg-secondary">{product.summary}</p>
-                <SpecLabel className="mt-auto pt-8">
-                  {product.price !== null
-                    ? formatPrice(product.price)
-                    : `${formatPrice(product.priceRange[0])}–${formatPrice(product.priceRange[1])} · [TODO: price]`}
-                </SpecLabel>
-              </Card>
-            </Link>
+
+      <Container>
+        <Stagger className="grid grid-cols-1 gap-x-4 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
+          {products.map((product) => (
+            <StaggerItem key={product.slug}>
+              <ProductCard product={product} />
+            </StaggerItem>
           ))}
-        </Grid>
+        </Stagger>
+
+        <Stagger as="ol" className="mt-24 grid grid-cols-1 border-t border-line md:grid-cols-3">
+          {steps.map((step, index) => (
+            <StaggerItem
+              key={step.name}
+              as="li"
+              className={index > 0 ? "border-line py-8 md:border-l md:px-8" : "py-8 md:pr-8"}
+            >
+              <GeoIcon name={step.icon} size={20} className="text-fg-muted" />
+              <h3 className="mt-5 text-heading text-fg">{step.name}</h3>
+              <p className="mt-1.5 max-w-[20rem] text-ui text-fg-secondary">{step.body}</p>
+            </StaggerItem>
+          ))}
+        </Stagger>
       </Container>
+
+      <div className="pt-16 md:pt-20">
+        <CourseBand
+          placement="shop"
+          title="[TODO: copy] Want the whole process?"
+          body="[TODO: copy] The course takes you from idea to App Store, with two live calls a week."
+        />
+      </div>
     </>
   );
 }

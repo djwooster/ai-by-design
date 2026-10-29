@@ -20,12 +20,15 @@ export function EmailCapture({
   tag,
   cta = "Send me the checklist",
   success = "[TODO: copy] Check your inbox. The checklist is on its way.",
+  confirmation,
   className,
 }: {
   source: string;
   tag: string;
   cta?: string;
   success?: string;
+  /** A fuller confirmation state to show in place of the one-line `success`. */
+  confirmation?: React.ReactNode;
   className?: string;
 }) {
   const [state, action, pending] = useActionState<SubscribeState, FormData>(subscribe, {
@@ -39,7 +42,17 @@ export function EmailCapture({
   return (
     <div className={cx("max-w-[28rem]", className)}>
       <AnimatePresence mode="wait" initial={false}>
-        {state.status === "success" ? (
+        {state.status === "success" && confirmation ? (
+          <motion.div
+            key="done"
+            role="status"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45, ease: ease.glide }}
+          >
+            {confirmation}
+          </motion.div>
+        ) : state.status === "success" ? (
           <motion.p
             key="done"
             role="status"
@@ -87,7 +100,9 @@ export function EmailCapture({
           </motion.form>
         )}
       </AnimatePresence>
-      <p className="mt-3 font-mono text-label uppercase text-fg-muted">No spam. Unsubscribe anytime.</p>
+      {!(state.status === "success" && confirmation) && (
+        <p className="mt-3 font-mono text-label uppercase text-fg-muted">No spam. Unsubscribe anytime.</p>
+      )}
     </div>
   );
 }
