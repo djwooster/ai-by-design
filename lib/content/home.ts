@@ -46,9 +46,9 @@ export const whyNow = {
   title: "Shipping an app used to take a team. Now it takes weeks.",
   accent: "weeks",
   body: "Two years ago, shipping an iOS app meant learning Swift or hiring a developer for $20K+. Now a designer with Claude Code can ship one in weeks. I just did.",
-  cards: [
-    { spot: "hire-dev", era: "Then", title: "Learn Swift, or hire a developer", note: "Months of learning, or $20K+ before launch" },
-    { spot: "claude-code", era: "Now", title: "Design it. Build it with Claude Code.", note: "Idea to App Store in weeks" },
+  compare: [
+    { era: "Then", text: "Learn Swift, or pay a developer $20K+" },
+    { era: "Now", text: "Design it, build it with Claude Code, ship in weeks" },
   ],
 } as const;
 

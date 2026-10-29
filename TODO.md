@@ -12,6 +12,7 @@ Find every placeholder with `grep -rn "\[TODO" app components lib`.
 - [ ] Screenshots of FocusMode, RE-IQ and Coast Gallery for the proof cards
 - [ ] A photo for the instructor section
 - [ ] Optional: generated background images for the hero and card panels
+- [ ] Why now image (`public/images/why-now-app-store.png`): regenerate or retouch without the "4.8 ★ · 12K ratings" row before launch. Invented ratings break the no-fake-numbers rule, even in a staged photo
 - [ ] Check the hero's Claude Code prompts and file names against FocusMode's real build (`components/hero/BuildMorph.tsx`)
 
 ## Config to fill
