@@ -1,8 +1,10 @@
 import { PhaseDiagram } from "@/components/illustrations/PhaseDiagram";
+import { PhaseImage } from "@/components/illustrations/PhaseImage";
 import { Section } from "@/components/layout/Section";
 import { Stagger, StaggerItem } from "@/components/motion/Reveal";
 import { method } from "@/lib/content/home";
 import { phaseNumber, phases } from "@/lib/content/method";
+import { phaseImages } from "@/lib/content/phaseImages";
 
 /** A small "+" registration mark, centered on a grid intersection. */
 function Plus({ className }: { className: string }) {
@@ -30,21 +32,32 @@ export function Method() {
           as="ol"
           className="grid grid-cols-1 gap-px overflow-hidden border border-line bg-line sm:grid-cols-2 lg:grid-cols-3"
         >
-          {phases.map((phase, index) => (
-            <StaggerItem
-              key={phase.id}
-              as="li"
-              className="flex flex-col bg-canvas px-8 pt-10 pb-9"
-              style={{ "--bg": "var(--surface-2)" } as React.CSSProperties}
-            >
-              <div className="mx-auto w-full max-w-[240px] text-fg-muted">
-                <PhaseDiagram phase={phase.id} />
-              </div>
-              <p className="mt-10 font-mono text-ui-sm text-fg-muted">{phaseNumber(index)}</p>
-              <h3 className="mt-1 text-heading font-medium text-fg">{phase.name}</h3>
-              <p className="mt-2 text-ui text-fg-secondary">{phase.outcome}</p>
-            </StaggerItem>
-          ))}
+          {phases.map((phase, index) => {
+            const image = phaseImages[phase.id];
+            return (
+              <StaggerItem
+                key={phase.id}
+                as="li"
+                className="flex flex-col bg-canvas px-8 pt-10 pb-9"
+                style={{ "--bg": "var(--surface-2)" } as React.CSSProperties}
+              >
+                {image ? (
+                  <div className="-mx-4 -mt-4">
+                    <PhaseImage src={image} />
+                  </div>
+                ) : (
+                  <div className="flex aspect-[4/3] items-center">
+                    <div className="mx-auto w-full max-w-[240px] text-fg-muted">
+                      <PhaseDiagram phase={phase.id} />
+                    </div>
+                  </div>
+                )}
+                <p className="mt-6 font-mono text-ui-sm text-fg-muted">{phaseNumber(index)}</p>
+                <h3 className="mt-1 text-heading font-medium text-fg">{phase.name}</h3>
+                <p className="mt-2 text-ui text-fg-secondary">{phase.outcome}</p>
+              </StaggerItem>
+            );
+          })}
         </Stagger>
 
         {/* Registration marks at the sheet's corners and, on large screens, where the cards meet. */}
