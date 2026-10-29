@@ -4,6 +4,13 @@ export type NavLink = {
   external?: boolean;
 };
 
+/** DJ's channels off this site, shared by the footer and the instructor section. */
+const elsewhere: NavLink[] = [
+  { label: "YouTube", href: "[TODO: YouTube URL]", external: true },
+  { label: "Skool", href: "[TODO: Skool community URL]", external: true },
+  { label: "djwooster.com", href: "https://djwooster.com", external: true },
+];
+
 export const site = {
   name: "AI by Design",
   url: "https://ai-bydesign.dev",
@@ -20,11 +27,7 @@ export const site = {
     { label: "Blog", href: "/blog" },
   ] satisfies NavLink[],
 
-  links: {
-    youtube: "[TODO: YouTube URL]",
-    skool: "[TODO: Skool community URL]",
-    personal: "https://djwooster.com",
-  },
+  elsewhere,
 
   footer: [
     {
@@ -46,11 +49,7 @@ export const site = {
     },
     {
       title: "Elsewhere",
-      links: [
-        { label: "YouTube", href: "[TODO: YouTube URL]", external: true },
-        { label: "Skool", href: "[TODO: Skool community URL]", external: true },
-        { label: "djwooster.com", href: "https://djwooster.com", external: true },
-      ],
+      links: elsewhere,
     },
     {
       title: "Legal",

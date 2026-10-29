@@ -1,62 +1,44 @@
-import { EmptyState } from "@/components/layout/EmptyState";
-import { Section } from "@/components/layout/Section";
-import { Container, Grid } from "@/components/ui/Container";
-import { CTAButton } from "@/components/ui/CTAButton";
-import { SpecLabel } from "@/components/ui/SpecLabel";
-import { homeSections } from "@/lib/content/home";
-import { formatPrice, offer } from "@/lib/content/offer";
+import { Build } from "@/components/home/Build";
+import { Checklist } from "@/components/home/Checklist";
+import { Curriculum } from "@/components/home/Curriculum";
+import { Faq } from "@/components/home/Faq";
+import { FinalCta } from "@/components/home/FinalCta";
+import { Fit } from "@/components/home/Fit";
+import { Guarantee } from "@/components/home/Guarantee";
+import { Hero } from "@/components/home/Hero";
+import { Instructor } from "@/components/home/Instructor";
+import { Live } from "@/components/home/Live";
+import { Method } from "@/components/home/Method";
+import { Offer } from "@/components/home/Offer";
+import { Proof } from "@/components/home/Proof";
+import { WhyNow } from "@/components/home/WhyNow";
+import { homeSections, type HomeSectionId } from "@/lib/content/home";
+
+/** Each section id maps to its component; the order lives in lib/content/home.ts. */
+const sections: Record<HomeSectionId, () => React.ReactNode> = {
+  "why-now": WhyNow,
+  method: Method,
+  build: Build,
+  curriculum: Curriculum,
+  live: Live,
+  proof: Proof,
+  instructor: Instructor,
+  offer: Offer,
+  guarantee: Guarantee,
+  fit: Fit,
+  faq: Faq,
+  checklist: Checklist,
+  final: FinalCta,
+};
 
 export default function HomePage() {
-  const spots = offer.foundingSpots.remaining;
-
   return (
     <>
-      <Container className="pt-16 pb-20 md:pt-28 md:pb-32">
-        <Grid className="gap-y-12">
-          <div className="col-span-4 md:col-span-7">
-            <SpecLabel parts={[offer.course, "Founding members"]} />
-            <h1 className="mt-6 text-hero">
-              <span className="text-fg">Ship your app to the App Store.</span>{" "}
-              <span className="text-fg-secondary">Built with Claude Code.</span>
-            </h1>
-            <p className="mt-6 max-w-[34rem] text-body text-fg-secondary">
-              [TODO: copy] I design, build and ship real software with AI. Become a founding
-              member and learn the exact process I&apos;m using to launch FocusMode.
-            </p>
-            <div className="mt-8">
-              <CTAButton placement="hero" size="lg" />
-              <SpecLabel
-                className="mt-4"
-                parts={[
-                  `${formatPrice(offer.foundingPrice)} founding`,
-                  `${formatPrice(offer.launchPrice)} from Jan 1, 2027`,
-                  ...(spots !== null ? [`${spots} of ${offer.foundingSpots.total} spots left`] : []),
-                  "Full refund if it doesn't launch",
-                ]}
-              />
-            </div>
-          </div>
-          <div className="col-span-4 md:col-span-5">
-            <EmptyState stage="Stage 2–3" title="FocusMode on an iPhone, and the intro video">
-              The iPhone frame with the status chip, and the video slot. [TODO: video]
-            </EmptyState>
-          </div>
-        </Grid>
-      </Container>
-
-      {homeSections.map((section) => (
-        <Section
-          key={section.id}
-          id={section.id}
-          numeral={section.numeral}
-          label={section.label}
-          paper={section.paper}
-        >
-          <EmptyState stage="Stage 3" title={section.label}>
-            {section.job}
-          </EmptyState>
-        </Section>
-      ))}
+      <Hero />
+      {homeSections.map((id) => {
+        const Section = sections[id];
+        return <Section key={id} />;
+      })}
     </>
   );
 }

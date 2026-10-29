@@ -14,6 +14,7 @@ export function Section({
   numeral,
   label,
   title,
+  lede,
   paper,
   className,
   children,
@@ -22,6 +23,7 @@ export function Section({
   numeral?: string;
   label?: string;
   title?: React.ReactNode;
+  lede?: React.ReactNode;
   paper?: boolean;
   className?: string;
   children?: React.ReactNode;
@@ -41,6 +43,7 @@ export function Section({
               <div className={numeral ? "col-span-4 md:col-span-8" : "col-span-4 md:col-span-12"}>
                 {label && <SpecLabel>{label}</SpecLabel>}
                 {title && <h2 className="mt-4 max-w-[20ch] text-title text-fg">{title}</h2>}
+                {lede && <p className="mt-5 max-w-[38rem] text-body text-fg-secondary">{lede}</p>}
               </div>
             </Grid>
           )}
