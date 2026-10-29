@@ -8,11 +8,13 @@ import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
 import { WordsIn } from "@/components/motion/WordsIn";
 import { BuyButton } from "@/components/shop/BuyButton";
 import { ProductCard } from "@/components/shop/ProductCard";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { ProductCover } from "@/components/shop/ProductCover";
 import { Container } from "@/components/ui/Container";
 import { Pill } from "@/components/ui/Pill";
 import { formatPrice } from "@/lib/content/offer";
 import { delivery, getProduct, productPrice, products } from "@/lib/content/products";
+import { productSchema } from "@/lib/seo/schema";
 
 type Params = PageProps<"/shop/[slug]">["params"];
 
@@ -42,6 +44,7 @@ async function Product({ params }: { params: Params }) {
 
   return (
     <>
+      <JsonLd data={productSchema(product)} />
       <Container className="pt-10 md:pt-14">
         <Link href="/shop" className="text-ui-sm text-fg-muted transition-colors duration-150 hover:text-fg">
           ← Shop

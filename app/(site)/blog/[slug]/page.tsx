@@ -7,12 +7,14 @@ import { PageFallback } from "@/components/layout/PageFallback";
 import { Reveal } from "@/components/motion/Reveal";
 import { WordsIn } from "@/components/motion/WordsIn";
 import { Prose } from "@/components/prose/elements";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { Badge } from "@/components/ui/Badge";
 import { Container } from "@/components/ui/Container";
 import { checklist } from "@/lib/content/home";
 import { postBodies } from "@/lib/content/postBodies";
 import { formatDate, getPost, posts } from "@/lib/content/posts";
 import { site } from "@/lib/content/site";
+import { postSchema } from "@/lib/seo/schema";
 
 type Params = PageProps<"/blog/[slug]">["params"];
 
@@ -48,6 +50,7 @@ async function Post({ params }: { params: Params }) {
 
   return (
     <article>
+      <JsonLd data={postSchema(post)} />
       <Container className="pt-10 md:pt-14">
         <div className="mx-auto max-w-[40rem]">
           <Link href="/blog" className="text-ui-sm text-fg-muted transition-colors duration-150 hover:text-fg">

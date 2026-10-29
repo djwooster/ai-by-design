@@ -22,14 +22,16 @@ Find every placeholder with `grep -rn "\[TODO" app components lib`.
 - [ ] Shop prices in `lib/content/products.ts`
 - [ ] Favicon and app icon in the site's style
 
-## Stage 5: integrations (after design approval)
-- [ ] Stripe Checkout and webhook for the shop
-- [ ] Resend delivery email with expiring download links
-- [ ] Vercel Blob for product files
-- [ ] Resend audience and the checklist email sequence
-- [ ] Vercel Analytics: replace the stub in `lib/analytics.ts`
-- [ ] SEO/AIO layer: Open Graph images, JSON-LD (`Course`, `Product`, `Person`, `FAQPage`, `Organization`), `sitemap.xml` (without `/go/*`), `robots.txt` allowing AI crawlers, `llms.txt`, blog RSS
-- [ ] Meta and Google ad pixels for `/go/*` pages
+## Stage 5: accounts and keys (the code is in; see README → Integrations)
+- [ ] Stripe: a sandbox, a restricted key (Checkout Sessions write), the webhook endpoint and its secret
+- [ ] Resend: verify the ai-bydesign.dev domain, an API key, segments for the checklist and SourceIQ, and the sequence as an automation on each
+- [ ] Write the delivery and checklist emails (`lib/email/templates.ts`, `[TODO: copy]`)
+- [ ] Vercel Blob: a private store, then upload the three product files at their `file.pathname`
+- [ ] `DOWNLOAD_SECRET`, `NEXT_PUBLIC_SITE_URL`, `CHECKLIST_URL` in Vercel
+- [ ] Turn on Web Analytics in the Vercel project
+- [ ] Meta Pixel and Google Ads IDs once ads run
+- [ ] Before launch: Stripe's go-live checklist, and a real test purchase end to end
+- [ ] `npm audit` flags zod inside `@vercel/blob`'s CLI tooling (not used at runtime); the suggested fix downgrades Blob, so wait for an upstream update
 
 ## Launch-dependent
 - [ ] Real FocusMode App Store link, and flip its status to `approved` only once Apple approves it

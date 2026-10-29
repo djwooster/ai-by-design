@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Wordmark } from "@/components/layout/Header";
+import { AdPixels } from "@/components/seo/AdPixels";
 import { Container } from "@/components/ui/Container";
 import { SmartLink } from "@/components/ui/SmartLink";
 import { site } from "@/lib/content/site";
@@ -14,6 +15,7 @@ const legal = site.footer.find((column) => column.title === "Legal")?.links ?? [
 export default function AdLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
+      <AdPixels />
       <header className="border-b border-line">
         <Container className="flex h-14 items-center">
           <Wordmark />

@@ -17,6 +17,8 @@ export type Product = {
   includes: { name: string; note: string }[];
   /** Short spec rows under the price, e.g. ["Pages", "[TODO]"]. */
   specs: [string, string][];
+  /** The file's pathname in the private Blob store, and the name it downloads as. */
+  file: { pathname: string; filename: string };
 };
 
 export const products: Product[] = [
@@ -41,6 +43,7 @@ export const products: Product[] = [
       ["Format", "PDF"],
       ["Pages", "[TODO]"],
     ],
+    file: { pathname: "products/app-store-submission-playbook.pdf", filename: "App Store Submission Playbook.pdf" }, // [TODO: upload]
   },
   {
     slug: "claude-code-prompt-pack",
@@ -62,6 +65,7 @@ export const products: Product[] = [
       ["Format", "Markdown"],
       ["Files", "[TODO]"],
     ],
+    file: { pathname: "products/claude-code-prompt-pack.zip", filename: "Claude Code Prompt Pack.zip" }, // [TODO: upload]
   },
   {
     slug: "react-native-starter-kit",
@@ -84,14 +88,18 @@ export const products: Product[] = [
       ["Format", "Git repository"],
       ["Stack", "[TODO] Expo, TypeScript"],
     ],
+    file: { pathname: "products/react-native-starter-kit.zip", filename: "React Native Starter Kit.zip" }, // [TODO: upload]
   },
 ];
 
-/** How every product arrives. Stage 5 wires it: Stripe Checkout, then a Resend email with a download link. */
+/** How every product arrives: Stripe Checkout, then an email with a download link that expires. */
+const LINK_DAYS = 7;
+
 export const delivery = {
   how: "Instant download by email",
-  // [TODO: copy] confirm the link lifetime when Resend is wired
-  note: "[TODO: copy] The link arrives the moment you pay.",
+  /** How long a download link works. */
+  linkDays: LINK_DAYS,
+  note: `The download link arrives the moment you pay and works for ${LINK_DAYS} days.`,
 };
 
 export function getProduct(slug: string) {

@@ -10,7 +10,9 @@ import { Method } from "@/components/home/Method";
 import { Offer } from "@/components/home/Offer";
 import { Proof } from "@/components/home/Proof";
 import { WhyNow } from "@/components/home/WhyNow";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { homeSections, type HomeSectionId } from "@/lib/content/home";
+import { homeSchema } from "@/lib/seo/schema";
 
 /** Each section id maps to its component; the order lives in lib/content/home.ts. */
 const sections: Record<HomeSectionId, () => React.ReactNode> = {
@@ -30,6 +32,7 @@ const sections: Record<HomeSectionId, () => React.ReactNode> = {
 export default function HomePage() {
   return (
     <>
+      <JsonLd data={homeSchema()} />
       <Hero />
       {homeSections.map((id) => {
         const Section = sections[id];
