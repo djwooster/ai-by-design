@@ -24,6 +24,9 @@
   --gray: #b7babb;
   --blue: #1f5e98;
   --white: #ffffff;
+  /* Card tones for the illustrated cards; black text on both is 14+:1. */
+  --card-white: #f6f6f4;
+  --card-tint: #dae4ee;
   --smoke: #edeeee;
 
   --bg: var(--air-black);

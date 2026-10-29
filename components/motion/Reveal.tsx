@@ -61,15 +61,17 @@ export function Stagger({
 export function StaggerItem({
   as = "div",
   className,
+  style,
   children,
 }: {
   as?: "div" | "li";
   className?: string;
+  style?: React.CSSProperties;
   children: React.ReactNode;
 }) {
   const Tag = motion[as];
   return (
-    <Tag className={className} variants={item}>
+    <Tag className={className} style={style} variants={item}>
       {children}
     </Tag>
   );
