@@ -10,13 +10,12 @@ First draft written Oct 29 (find it all with `git show` on the "copy draft" comm
   - Founding perks, and whether founding is one payment or a Skool subscription (`lib/content/home.ts`)
   - What each shop product contains (`lib/content/products.ts`)
   - The checklist items and the email sequence (`lib/content/checklist.ts`, `lib/email/templates.ts`)
-- [ ] Lesson titles for every module (`lib/content/method.ts`, still `[TODO: copy] Lesson n`)
+- [ ] Lesson titles for every module: first draft is in `lib/content/method.ts` (`[TODO: confirm]`); rewrite to match the real course
 - [ ] The three blog posts: bodies are outlines; they need your real story (`content/blog/`)
 - [ ] SourceIQ demand-test page (`lib/content/ads.ts`)
 - [ ] Legal text for `/privacy`, `/terms`, `/refunds` (`[TODO: legal]` in `lib/content/legal.ts`)
 
 ## Assets from DJ
-- [ ] Screenshots of FocusMode, RE-IQ and Coast Gallery for the proof cards
 - [ ] A photo for the instructor section
 - [ ] Optional: generated background images for the hero and card panels
 - [ ] Why now image (`public/images/why-now-app-store.png`): regenerate or retouch without the "4.8 ★ · 12K ratings" row before launch. Invented ratings break the no-fake-numbers rule, even in a staged photo
@@ -43,9 +42,9 @@ First draft written Oct 29 (find it all with `git show` on the "copy draft" comm
 ## Launch-dependent
 - [ ] Real FocusMode App Store link, and flip its status to `approved` only once Apple approves it
 - [ ] Intro video and the free lesson
+- [ ] "Meet DJ" video for /free/5-day-course
 
 ## Later
 - [ ] Light theme, if wanted (add a token block like `.theme-paper` in `app/globals.css`)
 
-## Later
 - [ ] Make the site sell more than one course: a /courses index with a page per course, and the homepage as the front door for the whole school (see memory note)
