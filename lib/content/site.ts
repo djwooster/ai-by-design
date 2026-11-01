@@ -43,6 +43,7 @@ export const site = {
       links: [
         { label: "All products", href: "/shop" },
         { label: "Free App Store checklist", href: "/free/app-store-checklist" },
+        { label: "Free 5-day email course", href: "/free/5-day-course" },
         { label: "Blog", href: "/blog" },
       ],
     },

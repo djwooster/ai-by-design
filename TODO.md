@@ -5,6 +5,7 @@ Find every placeholder with `grep -rn "\[TODO" app components lib`.
 ## Copy pass
 First draft written Oct 29 (find it all with `git show` on the "copy draft" commit). Left for DJ:
 - [ ] Read the draft through and rewrite anything that doesn't sound like you
+- [ ] Write the 5 emails for the free email course and match the day titles on /free/5-day-course
 - [ ] `[TODO: confirm]`: claims only DJ can make (`grep -rn "TODO: confirm" app components lib`)
   - Founding perks, and whether founding is one payment or a Skool subscription (`lib/content/home.ts`)
   - What each shop product contains (`lib/content/products.ts`)
@@ -30,7 +31,7 @@ First draft written Oct 29 (find it all with `git show` on the "copy draft" comm
 
 ## Stage 5: accounts and keys (the code is in; see README → Integrations)
 - [ ] Stripe: a sandbox, a restricted key (Checkout Sessions write), the webhook endpoint and its secret
-- [ ] Resend: verify the ai-bydesign.dev domain, an API key, segments for the checklist and SourceIQ, and the sequence as an automation on each
+- [ ] Resend: verify the ai-bydesign.dev domain, an API key, segments for the checklist, SourceIQ and the 5-day email course, and the sequence as an automation on each (the course automation sends Day 1 right away, then one a day)
 - [ ] Write the delivery and checklist emails (`lib/email/templates.ts`, `[TODO: copy]`)
 - [ ] Vercel Blob: a private store, then upload the three product files at their `file.pathname`
 - [ ] `DOWNLOAD_SECRET`, `NEXT_PUBLIC_SITE_URL`, `CHECKLIST_URL` in Vercel
@@ -45,3 +46,6 @@ First draft written Oct 29 (find it all with `git show` on the "copy draft" comm
 
 ## Later
 - [ ] Light theme, if wanted (add a token block like `.theme-paper` in `app/globals.css`)
+
+## Later
+- [ ] Make the site sell more than one course: a /courses index with a page per course, and the homepage as the front door for the whole school (see memory note)

@@ -17,6 +17,7 @@ const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const segments: Record<string, string | undefined> = {
   "app-store-checklist": process.env.RESEND_SEGMENT_CHECKLIST,
   "sourceiq-interest": process.env.RESEND_SEGMENT_SOURCEIQ,
+  "email-course": process.env.RESEND_SEGMENT_EMAIL_COURSE,
 };
 
 /**
@@ -28,6 +29,7 @@ export async function subscribe(_previous: SubscribeState, form: FormData): Prom
   const email = String(form.get("email") ?? "").trim();
   const tag = String(form.get("tag") ?? "");
   const source = String(form.get("source") ?? "");
+  const firstName = String(form.get("firstName") ?? "").trim() || undefined;
 
   if (!EMAIL.test(email)) {
     return { status: "error", message: "That email doesn't look right. Check it and try again." };
@@ -40,7 +42,7 @@ export async function subscribe(_previous: SubscribeState, form: FormData): Prom
   }
 
   const segment = segments[tag];
-  const contact = await resend.contacts.create({ email, segments: segment ? [{ id: segment }] : undefined });
+  const contact = await resend.contacts.create({ email, firstName, segments: segment ? [{ id: segment }] : undefined });
   if (contact.error) {
     // Already on the list: just add them to this tag's segment too.
     const exists = /already exists/i.test(contact.error.message);

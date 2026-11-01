@@ -42,6 +42,7 @@ export function GET() {
     "## Free",
     "",
     `- [App Store submission checklist](${url("/free/app-store-checklist")})`,
+    `- [5-day email course: build your first app](${url("/free/5-day-course")})`,
     "",
     "## Blog",
     "",
