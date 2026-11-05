@@ -1,0 +1,40 @@
+Subject: Day 3: let Claude write your prompt
+Preview: How I write Claude Code prompts that come back great on the first try.
+Body:
+Hey {{{NAME}}},
+
+You have a vision and a map of your app. Today you turn them into the prompt that builds it.
+
+Here's the trick that changed how I work: I almost never write my Claude Code prompts from scratch. I write them with Claude.
+
+I open a Claude chat, refine the vision until it's clear, then give Claude an example of a Claude Code prompt I like. It writes a new one for my app, in the same structure and style. The first build that comes back is usually really good, and every round of changes after that gets easier.
+
+1. Get the example (2 min)
+
+Download the example prompt from today's page (link below). It's the structure I use for my own builds: what we're building, how to approach it, a working agreement, every screen, the design direction and the tech.
+
+2. Have Claude write your prompt (15 min)
+
+Go back to the Claude chat from Days 1 and 2, attach the example, and paste this:
+
+"Using my vision, my screen flow and my references from this chat, write a prompt for Claude Code to build the first version of my app with Expo. Follow the structure and level of detail of the example I attached. Include: what we're building and who it's for; every screen in my flow and what's on it; the design direction (colors, fonts, spacing and the feel of my references); and a working agreement: build in stages, get it running before polishing, stop after each stage with a short summary, and ask me before any big decision. Leave Claude Code room to suggest design ideas within that direction."
+
+3. Read it like a designer (8 min)
+
+Before you use it, check three things:
+
+- Every screen from your flow is in it. If a screen is missing, Claude Code won't build it.
+- A stranger could picture the app from the design section alone. If it says "modern and clean," push for specifics: which colors, how much space, what it should feel like.
+- It still leaves room. You want a clear direction, not a pixel-by-pixel spec. That room is where Claude Code can surprise you.
+
+If something's off, tell Claude what to change, in plain words. You're the creative director.
+
+Why the working agreement matters: without one, Claude Code tries to build everything at once, and you end up with a pile of code you can't follow. Building in stages means you see it working early, and you stay in control.
+
+Save the final prompt in a text file. Tomorrow, you build.
+
+[link: Download the example Claude Code prompt → https://ai-bydesign.dev/free/5-day-course/day-3]
+
+DJ
+
+P.S. For tomorrow you'll need a Mac or Windows computer, about 30 minutes, and Expo Go on your phone. Not sure about your prompt? Hit reply and paste it in. I read everything.

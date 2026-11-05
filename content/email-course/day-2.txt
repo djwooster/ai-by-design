@@ -1,0 +1,51 @@
+Subject: Day 2: think in flows, not screens
+Preview: Map your whole app on one page, and learn the words Claude Code listens to.
+Body:
+Hey {{{NAME}}},
+
+Yesterday you wrote your vision. Today you zoom out.
+
+Most people building with AI start with one screen. "Make me a home screen." Then another. Then they try to connect them, and nothing fits: buttons lead nowhere, the same thing looks different on two screens, and every fix breaks something else.
+
+I think in experiences, not screens. Before I build anything, I map the whole flow, start to finish, so I know which pieces have to fit together. It's the habit from my design career that helps me most when building with AI.
+
+1. Map your flow (15 min)
+
+Go back to yesterday's Claude chat, so it remembers your vision, and paste this:
+
+"Map the full user flow for the first version of my app, from opening it for the first time to finishing the main task. List every screen, what's on it, and what the user taps to get to the next one. Use the fewest screens possible, and point out anything that could be cut."
+
+Then sketch it: one box per screen, arrows between them. Paper, Figma, whatever's fastest.
+
+Three things I check on every flow:
+
+- The main path first. Map the path someone takes to do the main thing. Settings, profiles and edge cases come later.
+- First time vs. every time. What does someone see the very first time they open the app, and what do they see on day ten? Often those are different screens.
+- Count the taps. How many taps from opening the app to doing the main thing? Every tap you remove makes the app feel better.
+
+A simple timer might be three boxes: set it, focus, done. Yours might be five. If it's fifteen, your first version is too big. Go back and cut.
+
+2. Learn ten words (10 min)
+
+You don't need to code, but a little design and front-end vocabulary is what lets you steer Claude Code precisely:
+
+- Screen: one full view of your app.
+- Component: a reusable piece, like a button or a card.
+- Navigation: how people move between screens (tabs, back and forth, a sheet that slides up).
+- Layout: how things are arranged on a screen.
+- State: how something looks in different situations: pressed, loading, error.
+- Empty state: what a screen shows before there's anything in it.
+- Design tokens: your named colors, font sizes and spacing, so everything stays consistent.
+- Typography: your fonts, sizes and weights.
+- Spacing: the gaps between things, usually on a scale like 4, 8, 16, 24.
+- Transition: how things move from one state or screen to the next.
+
+Here's why it matters. "Make it look nicer" gets you a guess. "Add more spacing between the cards, make the main button full width, and give it a pressed state" gets you exactly what you meant. Same effort, completely different result.
+
+Last step: next to each box in your flow, note its main components and any states it needs. That page is half of tomorrow's prompt.
+
+[link: Get the flow template and word list → https://ai-bydesign.dev/free/5-day-course/day-2]
+
+DJ
+
+P.S. Reply with a photo of your flow. I'd love to see what you're building.

@@ -1,0 +1,49 @@
+Subject: Day 5: make it yours (and what comes next)
+Preview: One round of polish, the road to the App Store, and an invitation.
+Body:
+Hey {{{NAME}}},
+
+Last day. You have an app running on your phone. Today you make it a little more yours, and see what stands between you and the App Store.
+
+1. One round of polish (15 min)
+
+Open your app on your phone and put your Day 1 screenshots next to it. Write down the three things that bother you most. Be specific, using your words from Day 2: "the buttons need a pressed state," "there's not enough spacing between the cards," "the font feels generic."
+
+Then fix them one at a time. Take a screenshot on your phone, paste it into Claude Code, and say what's wrong and what you want instead. One change per message works much better than ten at once.
+
+That loop (look, describe, refine) is most of building an app. You just did your first lap.
+
+2. The road to the App Store (5 min)
+
+Here's what's between your build and the App Store:
+
+- TestFlight: a way to put your app on other people's phones before launch. You need Apple's developer account ($99/year) and a real build, which Expo's build service can make for you.
+- Your App Store listing: name, description, screenshots, privacy details and a support link.
+- App Review: Apple checks your app before it goes live.
+
+I'll be honest about that last part, because I'm in the middle of it. FocusMode is in App Store review right now. Building the app wasn't the hard part. Submission was: lots of small, tedious steps, and Apple explains very little along the way. What got me through wasn't knowing everything. It was being resourceful, plus a bit of grit. I shared screenshots of App Store Connect with Claude and had it walk me through each step.
+
+3. Where this goes next
+
+These five days were a small version of the method I use for everything I build: Vision, Design, Build, Test, Ship, Launch. You just did the first half.
+
+My course, Ship Your App with Claude Code, takes you through all six phases, from an idea to a productivity app you designed, built and submitted to the App Store, with me alongside you.
+
+It starts January 1, 2027, and I'm opening it to founding members first:
+
+- $99 for the first 150 members ($249 once it starts)
+- The course and community on Skool, with lessons releasing in phases from January 1
+- Two live calls a week with me: questions, reviews of your app, building live. All recorded.
+- If the course doesn't launch, you get every dollar back. Once it does, you have 14 days to ask for a full refund.
+
+I'm building it with the first members, so what you get stuck on shapes what I teach.
+
+It's not for you if you want a drag-and-drop no-code tool, you're already an experienced iOS engineer, or you're looking to get rich quick.
+
+If you made it through these five days, even partly, you're exactly who I'm building it for.
+
+[link: Become a founding member → https://ai-bydesign.dev/?utm_source=email-course&utm_medium=email&utm_campaign=day-5#offer]
+
+DJ
+
+P.S. Whatever you decide, keep going on your app. Hit reply and tell me how far you got. I read everything.

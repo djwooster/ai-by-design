@@ -5,7 +5,8 @@ Find every placeholder with `grep -rn "\[TODO" app components lib`.
 ## Copy pass
 First draft written Oct 29 (find it all with `git show` on the "copy draft" commit). Left for DJ:
 - [ ] Read the draft through and rewrite anything that doesn't sound like you
-- [ ] Write the 5 emails for the free email course and match the day titles on /free/5-day-course
+- [ ] Email course: review the test sends, add `MAILING_ADDRESS` to `.env.local`, re-run the sync, then turn on the "5-day email course" automation in Resend
+- [ ] Email course lesson pages: the Day 3 example prompt, a printable Day 2 flow template, and the Day 4 video (`lib/content/emailCourse.ts`)
 - [ ] `[TODO: confirm]`: claims only DJ can make (`grep -rn "TODO: confirm" app components lib`)
   - Founding perks, and whether founding is one payment or a Skool subscription (`lib/content/home.ts`)
   - What each shop product contains (`lib/content/products.ts`)

@@ -62,7 +62,7 @@ export async function subscribe(_previous: SubscribeState, form: FormData): Prom
 
   const event = events[tag];
   if (event) {
-    const sent = await resend.events.send({ event, email, payload: { source } });
+    const sent = await resend.events.send({ event, email, payload: { source, firstName: firstName ?? "there" } });
     if (sent.error) console.error("[subscribe] event", sent.error, { event });
   }
 
