@@ -1,5 +1,4 @@
 import { BuildMorph } from "@/components/hero/BuildMorph";
-import { GeoIcon } from "@/components/icons/GeoIcon";
 import { Reveal } from "@/components/motion/Reveal";
 import { TypedText } from "@/components/motion/TypedText";
 import { WordsIn } from "@/components/motion/WordsIn";
@@ -33,10 +32,9 @@ export function Hero() {
           <TypedText text={hero.subline} delay={0.9} className="mt-7 max-w-[36rem] text-lede text-fg-secondary" />
           <Reveal delay={1.15} className="mt-9 flex flex-col items-center gap-3 sm:flex-row">
             <CTAButton placement="hero" size="lg" withPrice />
-            <ButtonLink href="#intro" variant="secondary" size="lg">
-              <GeoIcon name="video" size={18} />
-              Watch intro
-              <span className="text-fg-muted">{hero.videoLength}</span>
+            <ButtonLink href="/free/5-day-course" variant="secondary" size="lg">
+              Free 5-day course
+              <span className="text-fg-muted">→</span>
             </ButtonLink>
           </Reveal>
           <Reveal delay={1.3}>
