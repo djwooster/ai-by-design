@@ -18,13 +18,15 @@ export function Checklist() {
               <p className="mt-5 max-w-[28rem] text-lede text-fg-secondary">{checklist.body}</p>
             </div>
             <div>
-              <EmailCapture source="home" tag="app-store-checklist" />
-              <Link
-                href="/free/app-store-checklist"
-                className="mt-5 inline-flex text-ui-sm text-fg-muted transition-colors duration-150 hover:text-fg"
-              >
-                What&apos;s in it →
-              </Link>
+              <EmailCapture source="home" tag="email-course" cta="Send me Day 1" success="Check your inbox. Day 1 is on its way." />
+              <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-ui-sm text-fg-muted">
+                <Link href="/free/5-day-course" className="transition-colors duration-150 hover:text-fg">
+                  What&apos;s in it →
+                </Link>
+                <Link href="/free/app-store-checklist" className="transition-colors duration-150 hover:text-fg">
+                  Or get the App Store checklist →
+                </Link>
+              </div>
             </div>
           </div>
         </Reveal>

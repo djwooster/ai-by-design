@@ -151,10 +151,10 @@ export const faqSection = {
 };
 
 export const checklist = {
-  badge: "Free",
-  title: "Not ready yet? Get the App Store submission checklist.",
-  accent: "checklist",
-  body: "Every step between a finished build and a submitted app, in the order you'll need them. Free, in your inbox.",
+  badge: "Free 5-day email course",
+  title: "Not ready yet? Start with the free 5-day course.",
+  accent: "5-day course.",
+  body: "Five short emails, 15–30 minutes a day, from an app idea to your app running on your phone. Three tools, one clear path.",
 };
 
 export const finalCta = {
