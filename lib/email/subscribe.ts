@@ -10,14 +10,21 @@ export type SubscribeState =
 
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-/**
- * Each sign-up tag's Resend segment. The rest of a sequence is a Resend
- * automation that starts when a contact joins the segment.
- */
+/** Each sign-up tag's Resend segment: who's on which list. */
 const segments: Record<string, string | undefined> = {
   "app-store-checklist": process.env.RESEND_SEGMENT_CHECKLIST,
   "sourceiq-interest": process.env.RESEND_SEGMENT_SOURCEIQ,
   "email-course": process.env.RESEND_SEGMENT_EMAIL_COURSE,
+};
+
+/**
+ * The event each sign-up sends. A Resend automation is triggered by an event,
+ * not by joining a segment, so each sequence starts on one of these.
+ */
+const events: Record<string, string> = {
+  "app-store-checklist": "checklist.signed_up",
+  "sourceiq-interest": "sourceiq.signed_up",
+  "email-course": "email_course.signed_up",
 };
 
 /**
@@ -51,6 +58,12 @@ export async function subscribe(_previous: SubscribeState, form: FormData): Prom
       console.error("[subscribe]", added?.error ?? contact.error, { tag, source });
       return { status: "error", message: "Something went wrong on my end. Try again in a moment." };
     }
+  }
+
+  const event = events[tag];
+  if (event) {
+    const sent = await resend.events.send({ event, email, payload: { source } });
+    if (sent.error) console.error("[subscribe] event", sent.error, { event });
   }
 
   if (tag === "app-store-checklist") {

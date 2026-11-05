@@ -30,7 +30,7 @@ First draft written Oct 29 (find it all with `git show` on the "copy draft" comm
 
 ## Stage 5: accounts and keys (the code is in; see README → Integrations)
 - [ ] Stripe: a sandbox, a restricted key (Checkout Sessions write), the webhook endpoint and its secret
-- [ ] Resend: verify the ai-bydesign.dev domain, an API key, segments for the checklist, SourceIQ and the 5-day email course, and the sequence as an automation on each (the course automation sends Day 1 right away, then one a day)
+- [ ] Resend: verify the ai-bydesign.dev domain, an API key, segments for the checklist, SourceIQ and the 5-day email course, and each sequence as an automation triggered by its sign-up event (the course: `email_course.signed_up`, Day 1 right away, then one a day)
 - [ ] Write the delivery and checklist emails (`lib/email/templates.ts`, `[TODO: copy]`)
 - [ ] Vercel Blob: a private store, then upload the three product files at their `file.pathname`
 - [ ] `DOWNLOAD_SECRET`, `NEXT_PUBLIC_SITE_URL`, `CHECKLIST_URL` in Vercel

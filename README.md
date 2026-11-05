@@ -40,7 +40,7 @@ Each one reads its keys from the environment (`.env.example` lists them all). Wi
   - Locally: `stripe listen --forward-to localhost:3003/api/stripe/webhook` prints the webhook secret.
   - In production: add the endpoint in the Stripe Dashboard for `checkout.session.completed`, `checkout.session.async_payment_succeeded` and `checkout.session.async_payment_failed`.
   - Upload each product file to the Blob store (private) at the `file.pathname` in `products.ts`.
-- **Email list: Resend.** Sign-ups join the Resend segment for their tag (`lib/email/subscribe.ts`); checklist sign-ups get the checklist email right away. Build the rest of each sequence as a Resend automation on its segment.
+- **Email list: Resend.** Sign-ups join the Resend segment for their tag (`lib/email/subscribe.ts`); checklist sign-ups get the checklist email right away. Each sign-up also sends a Resend event (`email_course.signed_up`, `checklist.signed_up`, `sourceiq.signed_up`); build each sequence as a Resend automation triggered by its event.
 - **Analytics: Vercel Analytics.** Named events in `lib/analytics.ts`: founding CTA clicks (with placement), email sign-ups, product clicks, checkout starts.
 - **SEO and AI search:** per-page metadata, Open Graph images (`lib/seo/og.tsx`), JSON-LD (`lib/seo/schema.ts`), `/sitemap.xml`, `/robots.txt` (AI crawlers allowed), `/llms.txt` and `/rss.xml`, all built from the content files.
 - **Ad pixels:** Meta and Google Ads load on `/go/*` only, when their IDs are set.
