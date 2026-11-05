@@ -1,5 +1,8 @@
 Subject: Day 2: think in flows, not screens
 Preview: Map your whole app on one page, and learn the words Claude Code listens to.
+Theme: Design
+Title: Think in flows, not screens.
+# Image: /images/email/day-2.png | alt text   (optional; remove the # to show it)
 Body:
 Hey {{{NAME}}},
 

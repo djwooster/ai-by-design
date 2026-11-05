@@ -1,5 +1,8 @@
 Subject: Day 4: your app, on your phone
 Preview: About 30 minutes from an empty folder to your app running on your iPhone.
+Theme: Build
+Title: Your app, on your phone.
+# Image: /images/email/day-4.png | alt text   (optional; remove the # to show it)
 Body:
 Hey {{{NAME}}},
 
@@ -17,23 +20,23 @@ The terminal is just a window where you type commands instead of clicking. You'l
 
 2. Build (15 min)
 
-Type claude to start Claude Code, then paste the prompt you saved yesterday.
+Type `claude` to start Claude Code, then paste the prompt you saved yesterday.
 
 Claude Code will set up an Expo project and start on the first stage. It asks permission before running commands or creating files. Read what it's asking, then approve. When it stops and summarizes a stage, that's your working agreement doing its job. Tell it to keep going when you're ready.
 
 3. Open it on your phone (5 min)
 
-When the first stage is ready, ask Claude Code: "How do I run this on my iPhone with Expo Go?" It's usually npx expo start. A QR code appears. Scan it with your iPhone camera, and your app opens in Expo Go.
+When the first stage is ready, ask Claude Code: "How do I run this on my iPhone with Expo Go?" It's usually `npx expo start`. A QR code appears. Scan it with your iPhone camera, and your app opens in Expo Go.
 
 That moment, seeing something you imagined running on your own phone, never gets old.
 
-If it doesn't connect, check that your phone and computer are on the same Wi-Fi, or try npx expo start --tunnel. If you see an error, copy it into Claude Code and ask it to fix it. That's not cheating. That's the workflow.
+If it doesn't connect, check that your phone and computer are on the same Wi-Fi, or try `npx expo start --tunnel`. If you see an error, copy it into Claude Code and ask it to fix it. That's not cheating. That's the workflow.
 
 4. Take the tour (5 min)
 
 Ask Claude Code: "Give me a tour of this project's files and folders, like I've never coded before. What should I touch, and what should I leave alone?"
 
-You'll learn where your screens live, where images and fonts go, and why the giant node_modules folder is one you never open. You don't need to memorize it. You just need to know your way around your own house.
+You'll learn where your screens live, where images and fonts go, and why the giant `node_modules` folder is one you never open. You don't need to memorize it. You just need to know your way around your own house.
 
 [link: Get the Day 4 setup guide and troubleshooting → https://ai-bydesign.dev/free/5-day-course/day-4]
 

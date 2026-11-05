@@ -1,5 +1,8 @@
 Subject: Day 1: the only 3 tools you need
 Preview: Ignore the noise. Three tools, a few screenshots, and one clear paragraph.
+Theme: Tools + vision
+Title: The only three tools you need.
+# Image: /images/email/day-1.png | alt text   (optional; remove the # to show it)
 Body:
 Hey {{{NAME}}},
 
