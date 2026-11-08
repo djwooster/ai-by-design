@@ -23,7 +23,7 @@ const must = (result, what) => {
 
 // --- Parsing and rendering --------------------------------------------------
 
-const SITE = "https://ai-bydesign.dev";
+const SITE = "https://www.ai-bydesign.dev";
 
 function parse(day) {
   const raw = readFileSync(new URL(`../content/email-course/day-${day}.txt`, import.meta.url), "utf8");
