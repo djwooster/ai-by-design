@@ -377,6 +377,83 @@ function day5() {
   );
 }
 
+// Day 1, inside "Collect what you like": a folder of saved screenshots, one of
+// each kind, with the one-line note that turns each into words. The
+// screenshots keep their own colors in both themes; only the window changes.
+function moodboard() {
+  const shot = (background, ...children) =>
+    h({ width: 290, height: 270, borderRadius: 16, overflow: "hidden", background, alignItems: "center", justifyContent: "center", border: `2px solid ${c.line}` }, ...children);
+  const key = (bg, w = 30) => h({ width: w, height: 22, borderRadius: 6, background: bg, boxShadow: "0 3px 0 rgba(0,0,0,0.18)" });
+  const lcd = "#FF6A2B";
+
+  // A desk gadget: warm gray body, a small orange readout, one big knob.
+  const vibe = shot(
+    "linear-gradient(160deg, #E4E1DA, #C9C5BC)",
+    h(
+      { flexDirection: "column", gap: 18, width: 232, padding: 20, borderRadius: 22, background: "#EFEDE7", boxShadow: "0 4px 0 #D3CFC6, 0 18px 30px rgba(60,50,40,0.28)" },
+      h(
+        { alignItems: "center", justifyContent: "space-between" },
+        h({ width: 118, height: 62, borderRadius: 10, background: "#1A1A1A", alignItems: "center", justifyContent: "center", fontFamily: "Mono", fontSize: 30, color: lcd, letterSpacing: "0.04em" }, "25:00"),
+        h(
+          { width: 64, height: 64, borderRadius: 999, background: "linear-gradient(160deg, #3A3A3A, #1E1E1E)", boxShadow: "0 6px 12px rgba(0,0,0,0.3)", justifyContent: "center", paddingTop: 8 },
+          h({ width: 4, height: 16, borderRadius: 2, background: "#EFEDE7" }),
+        ),
+      ),
+      h({ gap: 10 }, key("#D8D5CE"), key("#D8D5CE"), key("#D8D5CE"), key(lcd, 58)),
+    ),
+  );
+
+  // An app screen: dark, one big number, a quiet chart.
+  const bars = [38, 62, 46, 80, 54, 96, 30];
+  const screen = shot(
+    "#0E0F12",
+    h(
+      { flexDirection: "column", width: "100%", height: "100%", padding: "28px 28px 0" },
+      h({ fontSize: 16, color: "#8E9192" }, "This week"),
+      h({ fontSize: 46, letterSpacing: "-0.04em", color: "#FFFFFF", marginTop: 4 }, "4h 20m"),
+      h({ alignItems: "center", gap: 8, marginTop: 6 }, h({ width: 8, height: 8, borderRadius: 999, background: "#4ADE80" }), h({ fontSize: 15, color: "#4ADE80" }, "+18% vs last week")),
+      h(
+        { alignItems: "flex-end", gap: 12, height: 86, marginTop: 20 },
+        ...bars.map((v, i) => h({ width: 22, height: v, borderRadius: 6, background: i === 5 ? "#5B9BD8" : "#26282D" })),
+      ),
+      h({ gap: 12, marginTop: 8 }, ...["M", "T", "W", "T", "F", "S", "S"].map((d) => h({ width: 22, justifyContent: "center", fontSize: 13, color: "#5A5D5E" }, d))),
+    ),
+  );
+
+  // A detail: one chunky button you want to press.
+  const detail = shot(
+    "linear-gradient(180deg, #F2F1EE, #E3E1DC)",
+    h(
+      { flexDirection: "column", alignItems: "center", gap: 26 },
+      h(
+        { width: 176, height: 76, borderRadius: 18, background: "linear-gradient(180deg, #343434, #222222)", alignItems: "center", justifyContent: "center", gap: 12, boxShadow: "0 8px 0 #111111, 0 22px 30px rgba(0,0,0,0.28)" },
+        h({ width: 10, height: 10, borderRadius: 999, background: lcd, boxShadow: `0 0 10px ${lcd}` }),
+        h({ fontFamily: "Mono", fontSize: 20, letterSpacing: "0.16em", color: "#F2F1EE" }, "START"),
+      ),
+      h({ gap: 10 }, key("#FFFFFF", 52), key("#FFFFFF", 52)),
+    ),
+  );
+
+  const kinds = [
+    ["01 · The vibe", "“Feels like an object on a desk.”", vibe],
+    ["02 · Screens", "“Lots of empty space.”", screen],
+    ["03 · Details", "“Chunky buttons that feel physical.”", detail],
+  ];
+  return h(
+    { width: "100%", height: "100%", padding: 34, background: c.bg, fontFamily: "Geist", color: c.fg },
+    win(
+      "~/Pictures/app-inspiration",
+      { flex: 1 },
+      h(
+        { gap: 22, alignSelf: "center" },
+        ...kinds.map(([label, note, image]) =>
+          h({ flexDirection: "column", gap: 12, width: 290 }, image, mono(label, { fontSize: 16, marginTop: 6 }), h({ fontSize: 21, lineHeight: 1.35, color: c.fg }, note)),
+        ),
+      ),
+    ),
+  );
+}
+
 const [sans, monoFont] = await Promise.all([readFile("assets/fonts/Geist-Medium.ttf"), readFile("assets/fonts/GeistMono-Regular.ttf")]);
 const fonts = [
   { name: "Geist", data: sans, weight: 500, style: "normal" },
@@ -384,11 +461,20 @@ const fonts = [
 ];
 
 await mkdir(OUT, { recursive: true });
+// The header images are full width; figures sit inside the 536px text column.
+const images = [
+  ["day-1", day1, W, H],
+  ["day-2", day2, W, H],
+  ["day-3", day3, W, H],
+  ["day-4", day4, W, H],
+  ["day-5", day5, W, H],
+  ["day-1-moodboard", moodboard, 1072, 580],
+];
 for (const [suffix, palette] of [["", dark], ["-light", light]]) {
   c = palette;
-  for (const [index, draw] of [day1, day2, day3, day4, day5].entries()) {
-    const image = new ImageResponse(draw(), { width: W, height: H, fonts });
-    const file = `${OUT}/day-${index + 1}${suffix}.png`;
+  for (const [name, draw, width, height] of images) {
+    const image = new ImageResponse(draw(), { width, height, fonts });
+    const file = `${OUT}/${name}${suffix}.png`;
     await writeFile(file, Buffer.from(await image.arrayBuffer()));
     console.log(`wrote ${file}`);
   }

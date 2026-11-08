@@ -66,6 +66,7 @@ const inline = (s) =>
   );
 
 const LINK = /^\[link: (.+?) → (\S+)\]$/;
+const FIGURE = /^\[image: (\S+) \| (.+)\]$/;
 const STEP = /^(\d)\. (.+?)(?: \((\d+ min)\))?$/;
 
 const p = (html, extra = "") =>
@@ -103,6 +104,13 @@ function button(label, href) {
 </td></tr></table>`;
 }
 
+/** An illustration inside the text: light by default, dark where the inbox knows. */
+function figure(src, alt) {
+  const url = SITE + src;
+  const img = (href, attrs) => `<img src="${href}" alt="${escape(alt)}" width="536" ${attrs}>`;
+  return `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:8px 0 24px;width:100%"><tr><td>${img(url.replace(/\.png$/, "-light.png"), 'class="img-light" style="display:block;width:100%;height:auto;border:0;border-radius:12px"')}<!--[if !mso]><!-->${img(url, 'class="img-dark" style="display:none;width:100%;height:auto;border:0;border-radius:12px;max-height:0;overflow:hidden"')}<!--<![endif]--></td></tr></table>`;
+}
+
 function signature() {
   return `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:8px 0 24px"><tr>
 <td style="width:44px;height:44px;background:${C.ink};border-radius:999px;color:#FFFFFF;font-size:15px;font-weight:600;text-align:center;vertical-align:middle">DJ</td>
@@ -119,6 +127,8 @@ function block(text) {
   const lines = text.split("\n");
   const link = text.match(LINK);
   if (link) return button(link[1], link[2]);
+  const fig = text.match(FIGURE);
+  if (fig) return figure(fig[1], fig[2]);
   if (text === "DJ") return signature();
   if (text.startsWith("P.S.")) return postscript(text);
   if (lines.every((line) => line.startsWith("- "))) return list(lines);
@@ -175,7 +185,7 @@ ${blocks}
 }
 
 function text({ body }) {
-  const plain = body.replace(/^\[link: (.+?) → (\S+)\]$/gm, "$1: $2").replace(/`/g, "");
+  const plain = body.replace(/^\[link: (.+?) → (\S+)\]$/gm, "$1: $2").replace(/^\[image: .+\]\n\n/gm, "").replace(/`/g, "");
   const address = ADDRESS || "[TODO: mailing address]";
   return `${plain}\n\n---\nYou're getting this because you signed up for the free 5-day course at ai-bydesign.dev.\n${address}\nUnsubscribe: {{{RESEND_UNSUBSCRIBE_URL}}}`;
 }
