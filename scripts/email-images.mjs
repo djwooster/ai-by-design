@@ -377,113 +377,153 @@ function day5() {
   );
 }
 
-// Day 1, inside "Collect what you like": screenshotting something you like on
-// the web, on its way to your inspiration folder. The web page keeps its own
-// colors in both themes; the browser and the screen around it change.
+// Day 1, inside "Collect what you like": screenshotting a product you like on
+// the web. The web page keeps its own colors in both themes; the browser
+// chrome and the screen around it change.
 function capture() {
   const lcd = "#FF6A2B";
-  const ink = "#1A1A1A";
-  const key = (bg, w = 30) => h({ width: w, height: 22, borderRadius: 6, background: bg, boxShadow: "0 3px 0 rgba(0,0,0,0.18)" });
+  const ink = "#16161A";
+  const sub = "#6E6D73";
+  const hair = "#E7E5E0";
+  const paper = "#FBFAF8";
+  const key = (bg, w = 30) => h({ width: w, height: 22, borderRadius: 6, background: bg, boxShadow: "0 3px 0 rgba(0,0,0,0.16)" });
   const abs = (x, y, w, hgt, style, ...children) => h({ position: "absolute", left: x, top: y, width: w, height: hgt, ...style }, ...children);
+  const icon = (d, color, size = 18, width = 1.7) => svg(size, size, path(d, { stroke: color, strokeWidth: width }));
 
-  // The browser: a product page for a desk timer.
-  const B = { x: 24, y: 24, w: 860, h: 520 };
-  const pad = 44;
-  const textW = 340;
-  const gap = 32;
-  const tile = { w: 400, h: 292 };
+  const B = { x: 24, y: 24, w: 1024, h: 520 };
+  const CHROME = 52;
+  const NAV = 64;
+  const pad = 56;
+  const textW = 380;
+  const gap = 44;
+  const tile = { w: 484, h: 304 };
+
+  // Browser chrome, Safari-like: lights, sidebar and arrows, the domain, actions.
   const chrome = h(
-    { alignItems: "center", height: 64, padding: "0 22px", gap: 10, background: c.raised, borderBottom: `2px solid ${c.line}` },
-    ...[0, 1, 2].map(() => h({ width: 14, height: 14, borderRadius: 999, background: c.edge })),
+    { alignItems: "center", height: CHROME, padding: "0 18px", gap: 8, background: c.raised, borderBottom: `1px solid ${c.line}` },
+    h({ width: 12, height: 12, borderRadius: 999, background: "#FF5F57" }),
+    h({ width: 12, height: 12, borderRadius: 999, background: "#FEBC2E" }),
+    h({ width: 12, height: 12, borderRadius: 999, background: "#28C840", marginRight: 18 }),
+    icon("M3 4h12v10H3zM7 4v10", c.muted),
+    h({ width: 8 }),
+    icon("M11 4L6 9l5 5", c.muted),
+    icon("M7 4l5 5-5 5", c.faint),
     h(
       { flex: 1, justifyContent: "center" },
       h(
-        { alignItems: "center", gap: 10, width: 440, height: 38, borderRadius: 10, background: c.surface, border: `2px solid ${c.line}`, justifyContent: "center", fontSize: 17, color: c.muted },
-        svg(14, 16, path("M3 7V5a4 4 0 0 1 8 0v2M2 7h10v8H2z", { stroke: c.muted, strokeWidth: 1.8 })),
-        "tinyobjects.studio/timer-one",
+        { alignItems: "center", gap: 8, width: 360, height: 32, borderRadius: 9, background: c.surface, border: `1px solid ${c.line}`, justifyContent: "center", fontSize: 15, color: c.secondary },
+        svg(11, 13, path("M2.5 6V4.5a3 3 0 0 1 6 0V6M1.5 6h8v6h-8z", { stroke: c.muted, strokeWidth: 1.4 })),
+        "tinyobjects.studio",
       ),
     ),
-    h({ width: 42 }),
+    icon("M9 2v9M5.5 5.5L9 2l3.5 3.5M4 9v6h10V9", c.muted),
+    h({ width: 10 }),
+    icon("M9 4v10M4 9h10", c.muted),
   );
+
+  // Site nav: mark and wordmark, links, sign in and a small dark button.
   const nav = h(
-    { alignItems: "center", justifyContent: "space-between", height: 72, padding: `0 ${pad}px` },
-    h({ fontSize: 21, letterSpacing: "-0.03em", color: ink }, "tiny objects"),
-    h({ gap: 28, fontSize: 16, color: "#6B6862" }, h({}, "Shop"), h({}, "Journal"), h({}, "About"), h({ color: ink }, "Cart (0)")),
-  );
-  const hero = h(
-    { flex: 1, alignItems: "center", padding: `0 ${pad}px 40px`, gap },
+    { alignItems: "center", height: NAV, padding: `0 ${pad}px`, borderBottom: `1px solid ${hair}` },
     h(
-      { flexDirection: "column", width: textW },
-      h({ fontFamily: "Mono", fontSize: 14, letterSpacing: "0.14em", color: lcd }, "NEW · DESK TIMER"),
-      h({ fontSize: 58, letterSpacing: "-0.045em", color: ink, marginTop: 12 }, "Timer One."),
-      h({ fontSize: 20, lineHeight: 1.45, color: "#6B6862", marginTop: 12 }, "A focus timer you can feel. One knob, one button, nothing else."),
-      h({ gap: 12, marginTop: 28 }, h({ padding: "14px 22px", borderRadius: 12, background: ink, color: "#F7F6F3", fontSize: 17 }, "Pre-order · $129"), h({ padding: "14px 18px", borderRadius: 12, border: "2px solid #D8D4CC", color: ink, fontSize: 17 }, "Details")),
+      { alignItems: "center", gap: 10, width: 220 },
+      h({ width: 22, height: 22, borderRadius: 6, background: ink, alignItems: "center", justifyContent: "center" }, h({ width: 8, height: 8, borderRadius: 999, background: lcd })),
+      h({ fontSize: 17, letterSpacing: "-0.02em", color: ink }, "Tiny Objects"),
+    ),
+    h({ flex: 1, justifyContent: "center", gap: 28, fontSize: 14, color: sub }, h({}, "Products"), h({}, "Journal"), h({}, "Studio"), h({}, "Support")),
+    h(
+      { width: 220, justifyContent: "flex-end", alignItems: "center", gap: 16, fontSize: 14 },
+      h({ color: sub }, "Sign in"),
+      h({ padding: "7px 13px", borderRadius: 8, background: ink, color: paper, fontSize: 14 }, "Pre-order"),
+    ),
+  );
+
+  // Hero: announcement pill, headline, copy, two buttons, the small print.
+  const copy = h(
+    { flexDirection: "column", width: textW },
+    h(
+      { alignSelf: "flex-start", alignItems: "center", gap: 8, padding: "5px 12px 5px 6px", borderRadius: 999, border: `1px solid ${hair}`, background: "#FFFFFF", fontSize: 13, color: sub },
+      h({ padding: "2px 8px", borderRadius: 999, background: "#FFF0E8", color: "#D9531E", fontSize: 12 }, "New"),
+      "Timer One is here",
+      h({ color: "#A6A4AB" }, "→"),
+    ),
+    h({ fontSize: 46, lineHeight: 1.02, letterSpacing: "-0.05em", color: ink, marginTop: 18 }, "Focus you can feel."),
+    h({ fontSize: 16, lineHeight: 1.5, color: sub, marginTop: 14, width: 330 }, "A desk timer with one knob and one button. Nothing to set up, nothing to check."),
+    h(
+      { gap: 10, marginTop: 22 },
+      h({ padding: "11px 18px", borderRadius: 10, background: ink, color: paper, fontSize: 15, boxShadow: "0 1px 2px rgba(0,0,0,0.25)" }, "Pre-order · $129"),
+      h({ alignItems: "center", gap: 6, padding: "11px 16px", borderRadius: 10, border: `1px solid ${hair}`, background: "#FFFFFF", color: ink, fontSize: 15 }, "Watch the film", h({ color: "#A6A4AB" }, "›")),
     ),
     h(
-      { width: tile.w, height: tile.h, borderRadius: 20, background: "linear-gradient(160deg, #E4E1DA, #C9C5BC)", alignItems: "center", justifyContent: "center" },
+      { alignItems: "center", gap: 18, marginTop: 20, fontSize: 13, color: "#8D8B92" },
+      h({ alignItems: "center", gap: 6 }, svg(14, 14, path("M2 7.5l3 3 7-7", { stroke: "#8D8B92", strokeWidth: 1.6 })), "Ships in March"),
+      h({ alignItems: "center", gap: 6 }, svg(14, 14, path("M2 7.5l3 3 7-7", { stroke: "#8D8B92", strokeWidth: 1.6 })), "30-day returns"),
+    ),
+  );
+
+  // Product photo: the gadget on a warm sweep, with swatches and carousel dots.
+  const photo = h(
+    { position: "relative", width: tile.w, height: tile.h, borderRadius: 16, border: `1px solid ${hair}`, background: "radial-gradient(circle at 50% 38%, #F1EEE8, #D6D1C7 75%)", alignItems: "center", justifyContent: "center" },
+    h(
+      { flexDirection: "column", gap: 18, width: 232, padding: 20, borderRadius: 22, background: "#EFEDE7", boxShadow: "0 4px 0 #D3CFC6, 0 24px 36px rgba(60,50,40,0.25)" },
       h(
-        { flexDirection: "column", gap: 18, width: 232, padding: 20, borderRadius: 22, background: "#EFEDE7", boxShadow: "0 4px 0 #D3CFC6, 0 18px 30px rgba(60,50,40,0.28)" },
+        { alignItems: "center", justifyContent: "space-between" },
+        h({ width: 118, height: 62, borderRadius: 10, background: "#1A1A1A", alignItems: "center", justifyContent: "center", fontFamily: "Mono", fontSize: 30, color: lcd, letterSpacing: "0.04em" }, "25:00"),
         h(
-          { alignItems: "center", justifyContent: "space-between" },
-          h({ width: 118, height: 62, borderRadius: 10, background: ink, alignItems: "center", justifyContent: "center", fontFamily: "Mono", fontSize: 30, color: lcd, letterSpacing: "0.04em" }, "25:00"),
-          h(
-            { width: 64, height: 64, borderRadius: 999, background: "linear-gradient(160deg, #3A3A3A, #1E1E1E)", boxShadow: "0 6px 12px rgba(0,0,0,0.3)", justifyContent: "center", paddingTop: 8 },
-            h({ width: 4, height: 16, borderRadius: 2, background: "#EFEDE7" }),
-          ),
+          { width: 64, height: 64, borderRadius: 999, background: "linear-gradient(160deg, #3A3A3A, #1E1E1E)", boxShadow: "0 6px 12px rgba(0,0,0,0.3)", justifyContent: "center", paddingTop: 8 },
+          h({ width: 4, height: 16, borderRadius: 2, background: "#EFEDE7" }),
         ),
-        h({ gap: 10 }, key("#D8D5CE"), key("#D8D5CE"), key("#D8D5CE"), key(lcd, 58)),
       ),
+      h({ gap: 10 }, key("#D8D5CE"), key("#D8D5CE"), key("#D8D5CE"), key(lcd, 58)),
+    ),
+    h(
+      { position: "absolute", left: 16, bottom: 16, alignItems: "center", gap: 8, padding: "6px 10px 6px 6px", borderRadius: 999, background: "rgba(255,255,255,0.8)", fontSize: 12, color: sub },
+      h({ width: 16, height: 16, borderRadius: 999, background: "#EFEDE7", border: `2px solid ${ink}` }),
+      h({ width: 16, height: 16, borderRadius: 999, background: "#2A2A2A" }),
+      "Sand",
+    ),
+    h(
+      { position: "absolute", bottom: 22, left: tile.w / 2 - 26, gap: 6 },
+      h({ width: 16, height: 6, borderRadius: 3, background: "rgba(22,22,26,0.7)" }),
+      ...[0, 1, 2].map(() => h({ width: 6, height: 6, borderRadius: 3, background: "rgba(22,22,26,0.22)" })),
     ),
   );
+
+  const heroH = B.h - 2 - CHROME - 1 - NAV - 1;
+  const hero = h({ height: heroH, alignItems: "center", padding: `0 ${pad}px`, gap }, copy, photo);
   const browser = abs(
     B.x, B.y, B.w, B.h,
-    { flexDirection: "column", borderRadius: 24, overflow: "hidden", border: `2px solid ${c.line}`, background: "#F7F6F3" },
+    { flexDirection: "column", borderRadius: 14, overflow: "hidden", border: `1px solid ${c.edge}`, background: paper, boxShadow: "0 24px 60px rgba(0,0,0,0.25)" },
     chrome,
     nav,
     hero,
   );
 
-  // The screenshot: the product photo selected, the rest of the screen dimmed.
-  // Its position follows the layout above, 6px outside the photo.
+  // The screenshot: the photo selected, the rest of the screen dimmed, handles
+  // on the corners and edges like macOS.
   const sel = {
-    x: B.x + 2 + pad + textW + gap - 6,
-    y: B.y + 2 + 64 + 72 + (B.h - 4 - 64 - 72 - 40 - tile.h) / 2 - 6,
-    w: tile.w + 12,
-    h: tile.h + 12,
+    x: B.x + 1 + pad + textW + gap - 8,
+    y: B.y + 1 + CHROME + 1 + NAV + 1 + (heroH - tile.h) / 2 - 8,
+    w: tile.w + 16,
+    h: tile.h + 16,
   };
   const right = sel.x + sel.w;
   const bottom = sel.y + sel.h;
-  const dim = (x, y, w, hgt) => abs(x, y, w, hgt, { background: "rgba(0,0,0,0.45)" });
-  const handle = (x, y) => abs(x - 6, y - 6, 12, 12, { borderRadius: 3, background: "#FFFFFF", boxShadow: "0 1px 4px rgba(0,0,0,0.4)" });
-  const crosshair = abs(
-    right - 22, bottom - 22, 44, 44, {},
-    svg(44, 44, path("M22 2v14M22 28v14M2 22h14M28 22h14", { stroke: "#111111", strokeWidth: 5 }), path("M22 2v14M22 28v14M2 22h14M28 22h14", { stroke: "#FFFFFF", strokeWidth: 2.5 })),
-  );
-  const size = h(
-    { position: "absolute", left: right - 150, top: bottom + 14, padding: "6px 12px", borderRadius: 8, background: "rgba(17,17,17,0.85)", fontFamily: "Mono", fontSize: 16, color: "#FFFFFF" },
-    `${sel.w * 2} × ${sel.h * 2}`,
-  );
-
-  // The preview in the corner, on its way to the folder.
-  const preview = h(
-    { position: "absolute", right: 22, bottom: 70, flexDirection: "column", alignItems: "flex-end", gap: 10 },
-    h(
-      { width: 156, height: 116, borderRadius: 12, border: "4px solid #FFFFFF", boxShadow: "0 16px 32px rgba(0,0,0,0.45)", background: "linear-gradient(160deg, #E4E1DA, #C9C5BC)", alignItems: "center", justifyContent: "center" },
-      h(
-        { flexDirection: "column", gap: 7, width: 96, padding: 9, borderRadius: 10, background: "#EFEDE7", boxShadow: "0 2px 0 #D3CFC6" },
-        h({ justifyContent: "space-between", alignItems: "center" }, h({ width: 48, height: 26, borderRadius: 5, background: ink }), h({ width: 26, height: 26, borderRadius: 999, background: "#2A2A2A" })),
-        h({ gap: 4 }, ...[0, 1, 2].map(() => h({ width: 12, height: 8, borderRadius: 2, background: "#D8D5CE" })), h({ width: 24, height: 8, borderRadius: 2, background: lcd })),
-      ),
-    ),
-  );
-  const saved = h(
-    { position: "absolute", right: 22, bottom: 22, alignItems: "center", gap: 10, padding: "9px 14px", borderRadius: 10, background: "rgba(17,17,17,0.85)", border: "1px solid rgba(255,255,255,0.18)", fontSize: 16, color: "#FFFFFF" },
-    svg(20, 16, path("M1.5 3.5a2 2 0 0 1 2-2h4l2 2h7a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z", { stroke: "#FFFFFF", strokeWidth: 1.6 })),
-    "Saved to Inspiration",
-  );
-
   const W1 = 1072;
   const H1 = 568;
+  const dim = (x, y, w, hgt) => abs(x, y, w, hgt, { background: "rgba(0,0,0,0.38)" });
+  const handle = (x, y) => abs(x - 5, y - 5, 10, 10, { borderRadius: 999, background: "#FFFFFF", boxShadow: "0 0 0 1px rgba(0,0,0,0.25), 0 1px 3px rgba(0,0,0,0.35)" });
+  const midX = sel.x + sel.w / 2;
+  const midY = sel.y + sel.h / 2;
+  const crosshair = abs(
+    right - 20, bottom - 20, 40, 40, {},
+    svg(40, 40, path("M20 2v12M20 26v12M2 20h12M26 20h12", { stroke: "rgba(0,0,0,0.6)", strokeWidth: 4 }), path("M20 2v12M20 26v12M2 20h12M26 20h12", { stroke: "#FFFFFF", strokeWidth: 2 })),
+  );
+  const size = h(
+    { position: "absolute", left: right + 12, top: bottom + 6, flexDirection: "column", gap: 2, fontFamily: "Mono", fontSize: 13, color: "#FFFFFF", padding: "5px 8px", borderRadius: 6, background: "rgba(0,0,0,0.6)" },
+    h({}, `${sel.w * 2}`),
+    h({}, `${sel.h * 2}`),
+  );
+
   return h(
     { position: "relative", width: "100%", height: "100%", background: c.bg, fontFamily: "Geist", color: c.fg },
     browser,
@@ -491,9 +531,12 @@ function capture() {
     dim(0, bottom, W1, H1 - bottom),
     dim(0, sel.y, sel.x, sel.h),
     dim(right, sel.y, W1 - right, sel.h),
-    abs(sel.x, sel.y, sel.w, sel.h, { border: "2px solid #FFFFFF" }),
-    handle(sel.x, sel.y), handle(right, sel.y), handle(sel.x, bottom), handle(right, bottom),
-    crosshair, size, saved, preview,
+    abs(sel.x, sel.y, sel.w, sel.h, { border: "1px solid rgba(255,255,255,0.95)" }),
+    handle(sel.x, sel.y), handle(midX, sel.y), handle(right, sel.y),
+    handle(sel.x, midY), handle(right, midY),
+    handle(sel.x, bottom), handle(midX, bottom), handle(right, bottom),
+    crosshair,
+    size,
   );
 }
 
