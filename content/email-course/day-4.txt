@@ -2,7 +2,7 @@ Subject: Day 4: your app, on your phone
 Preview: About 30 minutes from an empty folder to your app running on your iPhone.
 Theme: Build
 Title: Your app, on your phone.
-# Image: /images/email/day-4.png | alt text   (optional; remove the # to show it)
+Image: /images/email/day-4.png | A terminal running Claude Code and Expo, and the app live on a phone
 Body:
 Hey {{{NAME}}},
 

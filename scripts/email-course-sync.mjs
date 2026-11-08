@@ -153,10 +153,14 @@ function footer() {
 
 function html(email) {
   const blocks = email.body.split(/\n{2,}/).map(block).join("\n");
+  // Light by default; inboxes that know the reader is in dark mode (Apple Mail
+  // and a few others) swap in the dark version. Outlook desktop never sees it.
+  const img = (src, attrs) => `<img src="${src}" alt="${escape(email.image.alt)}" width="600" ${attrs}>`;
   const image = email.image
-    ? `<tr><td><img src="${email.image.src}" alt="${escape(email.image.alt)}" width="600" style="display:block;width:100%;height:auto;border:0"></td></tr>`
+    ? `<tr><td>${img(email.image.src.replace(/\.png$/, "-light.png"), 'class="img-light" style="display:block;width:100%;height:auto;border:0"')}<!--[if !mso]><!-->${img(email.image.src, 'class="img-dark" style="display:none;width:100%;height:auto;border:0;max-height:0;overflow:hidden"')}<!--<![endif]--></td></tr>`
     : "";
-  return `<!doctype html><html><head><meta name="color-scheme" content="light"><meta name="supported-color-schemes" content="light"></head>
+  return `<!doctype html><html><head><meta name="color-scheme" content="light dark"><meta name="supported-color-schemes" content="light dark">
+<style>@media (prefers-color-scheme: dark) { .img-light { display: none !important; } .img-dark { display: block !important; max-height: none !important; } }</style></head>
 <body style="margin:0;background:${C.smoke};padding:32px 12px;font-family:${SANS}">
 <div style="display:none;max-height:0;overflow:hidden">${escape(email.preview)}</div>
 <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;max-width:600px;margin:0 auto;background:#FFFFFF;border-radius:16px;overflow:hidden">

@@ -2,7 +2,7 @@ Subject: Day 5: make it yours (and what comes next)
 Preview: One round of polish, the road to the App Store, and an invitation.
 Theme: Refine + what's next
 Title: Make it yours.
-# Image: /images/email/day-5.png | alt text   (optional; remove the # to show it)
+Image: /images/email/day-5.png | Three polish notes on an app screen, and the road to the App Store
 Body:
 Hey {{{NAME}}},
 

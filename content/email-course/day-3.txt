@@ -2,7 +2,7 @@ Subject: Day 3: let Claude write your prompt
 Preview: How I write Claude Code prompts that come back great on the first try.
 Theme: Prompt
 Title: Let Claude write your prompt.
-# Image: /images/email/day-3.png | alt text   (optional; remove the # to show it)
+Image: /images/email/day-3.png | Claude turning your vision and flow into a Claude Code prompt
 Body:
 Hey {{{NAME}}},
 
