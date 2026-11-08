@@ -2,13 +2,14 @@ Subject: Day 5: make it yours (and what comes next)
 Preview: One round of polish, the road to the App Store, and an invitation.
 Theme: Refine + what's next
 Title: Make it yours.
-Image: /images/email/day-5.png | Three polish notes on an app screen, and the road to the App Store
 Body:
 Hey {{{NAME}}},
 
 Last day. You have an app running on your phone. Today you make it a little more yours, and see what stands between you and the App Store.
 
 1. One round of polish (15 min)
+
+[image: /images/email/day-5-polish.png | An app screen with three numbered polish notes]
 
 Open your app on your phone and put your Day 1 screenshots next to it. Write down the three things that bother you most. Be specific, using your words from Day 2: "the buttons need a pressed state," "there's not enough spacing between the cards," "the font feels generic."
 
@@ -17,6 +18,8 @@ Then fix them one at a time. Take a screenshot on your phone, paste it into Clau
 That loop (look, describe, refine) is most of building an app. You just did your first lap.
 
 2. The road to the App Store (5 min)
+
+[image: /images/email/day-5-road.png | The road to the App Store: on your phone, TestFlight, listing, App Review, live]
 
 Here's what's between your build and the App Store:
 
@@ -27,6 +30,8 @@ Here's what's between your build and the App Store:
 I'll be honest about that last part, because I'm in the middle of it. FocusMode is in App Store review right now. Building the app wasn't the hard part. Submission was: lots of small, tedious steps, and Apple explains very little along the way. What got me through wasn't knowing everything. It was being resourceful, plus a bit of grit. I shared screenshots of App Store Connect with Claude and had it walk me through each step.
 
 3. Where this goes next
+
+[image: /images/email/day-5-next.png | The six phases: these five days covered vision, design and build]
 
 These five days were a small version of the method I use for everything I build: Vision, Design, Build, Test, Ship, Launch. You just did the first half.
 

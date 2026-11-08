@@ -2,7 +2,6 @@ Subject: Day 4: your app, on your phone
 Preview: About 30 minutes from an empty folder to your app running on your iPhone.
 Theme: Build
 Title: Your app, on your phone.
-Image: /images/email/day-4.png | A terminal running Claude Code and Expo, and the app live on a phone
 Body:
 Hey {{{NAME}}},
 
@@ -12,6 +11,8 @@ This is the part that feels technical. It's really just a few steps in order, an
 
 1. Set up (10 min)
 
+[image: /images/email/day-4-setup.png | Setup checklist: Node.js, Claude Code and an empty folder open in the terminal]
+
 - Install Node.js (the LTS version) from nodejs.org. It's what runs your app on your computer while you build.
 - Install Claude Code. The install steps are on today's page.
 - Make a new, empty folder for your app, and open your terminal in it.
@@ -20,11 +21,15 @@ The terminal is just a window where you type commands instead of clicking. You'l
 
 2. Build (15 min)
 
+[image: /images/email/day-4-build.png | Claude Code asking permission before it runs a command]
+
 Type `claude` to start Claude Code, then paste the prompt you saved yesterday.
 
 Claude Code will set up an Expo project and start on the first stage. It asks permission before running commands or creating files. Read what it's asking, then approve. When it stops and summarizes a stage, that's your working agreement doing its job. Tell it to keep going when you're ready.
 
 3. Open it on your phone (5 min)
+
+[image: /images/email/day-4-phone.png | A terminal running Expo with a QR code, and the app live on a phone]
 
 When the first stage is ready, ask Claude Code: "How do I run this on my iPhone with Expo Go?" It's usually `npx expo start`. A QR code appears. Scan it with your iPhone camera, and your app opens in Expo Go.
 
@@ -33,6 +38,8 @@ That moment, seeing something you imagined running on your own phone, never gets
 If it doesn't connect, check that your phone and computer are on the same Wi-Fi, or try `npx expo start --tunnel`. If you see an error, copy it into Claude Code and ask it to fix it. That's not cheating. That's the workflow.
 
 4. Take the tour (5 min)
+
+[image: /images/email/day-4-tour.png | The project's files, marked as yours to change or to leave alone]
 
 Ask Claude Code: "Give me a tour of this project's files and folders, like I've never coded before. What should I touch, and what should I leave alone?"
 

@@ -82,7 +82,7 @@ const win = (title, style, ...children) =>
       ...[0, 1, 2].map(() => h({ width: 14, height: 14, borderRadius: 999, background: c.edge })),
       h({ marginLeft: 14, fontFamily: "Mono", fontSize: 19, color: c.muted }, title),
     ),
-    h({ flexDirection: "column", padding: 28, flex: 1 }, ...children),
+    h({ flexDirection: "column", padding: 28, flexGrow: 1 }, ...children),
   );
 
 /** An iPhone outline; children fill the screen. */
@@ -219,37 +219,6 @@ function day2() {
   );
 }
 
-// Day 3: Claude writes the prompt; you read it like a designer.
-function day3() {
-  const section = (title, ...rest) => h({ flexDirection: "column", gap: 10 }, mono(title, { fontSize: 16, letterSpacing: "0.06em", textTransform: "none" }), ...rest);
-  const checks = ["Every screen is in it", "The design is specific", "It leaves room to surprise"];
-  return scene(
-    h(
-      { alignItems: "center", gap: 44 },
-      win(
-        "Claude",
-        { width: 640, height: 500 },
-        h(
-          { alignSelf: "flex-end", flexShrink: 0, width: 440, padding: "14px 20px", borderRadius: 18, background: c.blue, color: "#FFFFFF", fontSize: 20, lineHeight: 1.4 },
-          "Turn my vision and flow into a Claude Code prompt.",
-        ),
-        h(
-          { flexDirection: "column", flexShrink: 0, gap: 16, marginTop: 20, padding: "20px 24px", borderRadius: 16, background: c.bg, border: `2px solid ${c.line}` },
-          section("## Vision", bar(420), bar(300)),
-          section("## Screens", h({ gap: 8 }, ...["Open", "Set", "Focus", "Done"].map((s) => h({ padding: "5px 12px", borderRadius: 8, background: c.raised, fontSize: 16, color: c.secondary }, s)))),
-          section("## Design", bar(380)),
-          section("## Working agreement", bar(330)),
-        ),
-      ),
-      h(
-        { flexDirection: "column", gap: 22, width: 330 },
-        mono("Read it like a designer", { color: c.muted, marginBottom: 6 }),
-        ...checks.map((label) => h({ alignItems: "center", gap: 16 }, checkCircle(40), h({ fontSize: 24, color: c.fg }, label))),
-      ),
-    ),
-  );
-}
-
 /** A QR-looking block: three finder squares and a fixed, seeded pattern. */
 function qr(size) {
   const n = 25;
@@ -320,18 +289,11 @@ function day4() {
   );
 }
 
-// Day 5: one round of polish, then the road to the App Store.
-function day5() {
+// Day 5 · 1: one round of polish, three notes pinned to the screen.
+function polish() {
   const pin = (n, style) =>
     h({ position: "absolute", width: 34, height: 34, borderRadius: 999, background: c.blueText, color: c.bg, fontSize: 18, alignItems: "center", justifyContent: "center", border: `3px solid ${c.bg}`, ...style }, n);
   const notes = ["More space between the cards", "A pressed state on the button", "A font with more character"];
-  const road = [
-    ["On your phone", "You are here"],
-    ["TestFlight", ""],
-    ["App Store listing", ""],
-    ["App Review", ""],
-    ["Live", ""],
-  ];
   return scene(
     h(
       { alignItems: "center", gap: 52 },
@@ -348,32 +310,324 @@ function day5() {
         pin("3", { top: 58, right: 40 }),
       ),
       h(
-        { flexDirection: "column", gap: 18, width: 300 },
+        { flexDirection: "column", gap: 18, width: 380 },
         mono("Polish", { color: c.muted, marginBottom: 4 }),
         ...notes.map((note, i) =>
           h({ alignItems: "flex-start", gap: 14 }, h({ width: 30, height: 30, flexShrink: 0, borderRadius: 999, background: c.raised, border: `2px solid ${c.blueText}`, color: c.blueText, fontSize: 16, alignItems: "center", justifyContent: "center" }, String(i + 1)), h({ fontSize: 22, lineHeight: 1.35, color: c.fg }, note)),
         ),
       ),
+    ),
+  );
+}
+
+// Day 1 · 3: writing the vision with Claude, references attached.
+function vision() {
+  const thumb = (bg, ...children) => h({ width: 62, height: 62, borderRadius: 10, background: bg, alignItems: "center", justifyContent: "center", border: `2px solid ${c.line}` }, ...children);
+  const thumbs = [
+    thumb("#D6D1C7", h({ alignItems: "center", gap: 3, width: 40, height: 26, padding: 4, borderRadius: 5, background: "#EFEDE7" }, h({ width: 18, height: 12, borderRadius: 2, background: "#1A1A1A" }), h({ width: 10, height: 10, borderRadius: 99, background: "#2A2A2A" }))),
+    thumb("#0E0F12", h({ alignItems: "flex-end", gap: 3, height: 26 }, ...[10, 16, 12, 22, 14].map((v, i) => h({ width: 5, height: v, borderRadius: 2, background: i === 3 ? "#5B9BD8" : "#2E3036" })))),
+    thumb("#ECEAE6", h({ width: 38, height: 16, borderRadius: 5, background: "#2A2A2A", boxShadow: "0 3px 0 #111111" })),
+  ];
+  const no = svg(22, 22, path("M6 6l10 10M16 6L6 16", { stroke: c.faint, strokeWidth: 2.4 }));
+  const scope = (inScope, label) =>
+    h({ alignItems: "center", gap: 12, fontSize: 19, color: inScope ? c.fg : c.muted }, inScope ? check(22) : no, h({ textDecoration: inScope ? "none" : "line-through" }, label));
+  return scene(
+    h(
+      { alignItems: "center", gap: 36 },
+      win(
+        "Claude",
+        { width: 600, height: 470 },
+        h(
+          { alignSelf: "flex-end", flexDirection: "column", alignItems: "flex-end", gap: 10, flexShrink: 0 },
+          h({ gap: 8 }, ...thumbs),
+          h({ width: 420, padding: "14px 18px", borderRadius: 18, background: c.blue, color: "#FFFFFF", fontSize: 19, lineHeight: 1.45 }, "I want to build an iPhone app: a focus timer. Ask me questions one at a time."),
+        ),
+        h(
+          { alignItems: "flex-start", gap: 12, marginTop: 20, flexShrink: 0 },
+          h({ width: 30, height: 30, borderRadius: 999, background: c.raised, border: `2px solid ${c.line}`, alignItems: "center", justifyContent: "center" }, h({ width: 8, height: 8, borderRadius: 99, background: c.blueText })),
+          h({ width: 440, fontSize: 19, lineHeight: 1.5, color: c.fg, paddingTop: 2 }, "Love the references. They all feel physical. Who is it for, and when do they reach for it?"),
+        ),
+      ),
       card(
-        { width: 320, padding: "28px 28px 30px", gap: 0 },
-        mono("Road to the App Store", { color: c.muted, fontSize: 15, letterSpacing: "0.08em", marginBottom: 22 }),
-        ...road.map(([label, note], i) =>
+        { width: 400, padding: "30px 30px 32px", gap: 14 },
+        mono("Vision"),
+        h({ fontSize: 23, lineHeight: 1.42, letterSpacing: "-0.01em" }, "A focus timer that feels like a small device on your desk. One big button, the time left always visible, nothing else."),
+        h({ height: 2, background: c.line, marginTop: 6, marginBottom: 6 }),
+        mono("First version", { color: c.muted, fontSize: 15 }),
+        scope(true, "Start a session"),
+        scope(true, "See the time left"),
+        scope(false, "Accounts"),
+        scope(false, "Stats and streaks"),
+      ),
+    ),
+  );
+}
+
+// Day 2 · 2: one screen, labeled with the words that steer Claude Code.
+function words() {
+  const PW = 270;
+  const PX = 401;
+  const label = (text, x, y, side) =>
+    h(
+      { position: "absolute", top: y - 19, left: side === "left" ? x - 210 : x, width: 210, alignItems: "center", flexDirection: side === "left" ? "row" : "row-reverse" },
+      h({ padding: "7px 14px", borderRadius: 999, background: c.surface, border: `2px solid ${c.line}`, fontSize: 19, color: c.fg }, text),
+      h({ flex: 1, height: 2, background: c.blueText }),
+      h({ width: 10, height: 10, borderRadius: 99, background: c.blueText }),
+    );
+  const screen = phone(
+    PW,
+    512,
+    { position: "absolute", left: PX, top: 0 },
+    h({ alignItems: "center", justifyContent: "space-between", marginTop: -6 }, svg(20, 20, path("M13 4l-6 6 6 6", { stroke: c.secondary, strokeWidth: 2.4 })), h({ fontSize: 17, color: c.secondary }, "New session"), h({ width: 20 })),
+    mono("Minutes", { fontSize: 14, color: c.muted, marginTop: 26 }),
+    h({ fontSize: 92, lineHeight: 1, letterSpacing: "-0.05em", marginTop: 6 }, "25"),
+    h({ gap: 8, marginTop: 14 }, ...["15", "25", "45"].map((m, i) => h({ padding: "7px 12px", borderRadius: 10, fontSize: 16, color: i === 1 ? c.fg : c.muted, border: `2px solid ${i === 1 ? c.blueText : c.line}` }, m))),
+    h(
+      { flexDirection: "column", alignItems: "center", gap: 8, marginTop: 26, padding: "18px 0", borderRadius: 14, border: `2px dashed ${c.edge}` },
+      h({ fontSize: 15, color: c.muted }, "No sessions yet"),
+      bar(90, { height: 8 }),
+    ),
+    h({ flex: 1 }),
+    button("Start", { height: 50, background: "#174A79", boxShadow: "0 0 0 4px rgba(91,155,216,0.35)" }),
+  );
+  return scene(
+    h(
+      { position: "relative", width: 1072, height: 512 },
+      screen,
+      label("Navigation", PX + 20, 56, "left"),
+      label("Typography", PX + 30, 150, "left"),
+      label("Spacing", PX + 4, 322, "left"),
+      label("Component", PX + 188, 237, "right"),
+      label("Empty state", PX + PW - 30, 318, "right"),
+      label("State: pressed", PX + PW - 30, 462, "right"),
+      // The side padding, measured.
+      h({ position: "absolute", left: PX + 4, top: 321, width: 22, height: 2, background: c.blueText }),
+      h({ position: "absolute", left: PX + 25, top: 315, width: 2, height: 14, background: c.blueText }),
+    ),
+  );
+}
+
+// Day 3 · 1: the example prompt, copied.
+function example() {
+  const sections = ["What we're building", "How to approach it", "Working agreement", "Screens", "Design direction", "Tech"];
+  let n = 0;
+  const line = (...children) => h({ alignItems: "center", gap: 22, height: 31 }, h({ width: 26, justifyContent: "flex-end", fontFamily: "Mono", fontSize: 15, color: c.faint }, String(++n)), ...children);
+  return scene(
+    h(
+      { position: "relative" },
+      win(
+        "example-prompt.md",
+        { width: 800 },
+        ...sections.flatMap((title, i) => [
+          line(h({ fontFamily: "Mono", fontSize: 19, color: c.blueText }, `## ${title}`)),
+          line(bar([420, 360, 480, 300, 440, 260][i])),
+        ]),
+      ),
+      h(
+        { position: "absolute", right: -36, top: 74, alignItems: "center", gap: 10, padding: "12px 18px", borderRadius: 12, background: c.fg, color: c.bg, fontSize: 18, boxShadow: "0 12px 30px rgba(0,0,0,0.3)" },
+        check(22, c.bg),
+        "Copied",
+      ),
+    ),
+  );
+}
+
+// Day 3 · 2: Claude writes the prompt from the example.
+function writes() {
+  const doc = (size = 22, color = c.blueText) => svg(size, size, path("M5 2h8l5 5v13H5zM13 2v5h5", { stroke: color, strokeWidth: 1.8 }));
+  return scene(
+    win(
+      "Claude",
+      { width: 860 },
+      h(
+        { alignSelf: "flex-end", flexDirection: "column", alignItems: "flex-end", gap: 10 },
+        h({ alignItems: "center", gap: 10, padding: "10px 14px", borderRadius: 12, border: `2px solid ${c.line}`, background: c.raised, fontSize: 17, color: c.secondary }, doc(), "example-prompt.md"),
+        h({ width: 520, padding: "14px 18px", borderRadius: 18, background: c.blue, color: "#FFFFFF", fontSize: 19, lineHeight: 1.45 }, "Using my vision, my screen flow and my references, write a prompt for Claude Code. Follow the example."),
+      ),
+      h({ fontSize: 19, lineHeight: 1.5, color: c.fg, marginTop: 24 }, "Here's your Claude Code prompt, in the same structure as the example:"),
+      h(
+        { alignItems: "center", gap: 18, marginTop: 16, padding: 20, borderRadius: 16, border: `2px solid ${c.line}`, background: c.raised },
+        h({ width: 52, height: 52, borderRadius: 12, background: c.surface, border: `2px solid ${c.line}`, alignItems: "center", justifyContent: "center" }, doc(26)),
+        h({ flexDirection: "column", gap: 6, flex: 1 }, h({ fontSize: 20 }, "Focus timer: Claude Code prompt"), mono("6 sections · 4 screens", { fontSize: 14, color: c.muted })),
+        h({ padding: "10px 16px", borderRadius: 10, background: c.blue, color: "#FFFFFF", fontSize: 16 }, "Copy"),
+      ),
+    ),
+  );
+}
+
+// Day 3 · 3: reading the prompt like a designer, with margin comments.
+function review() {
+  const amber = "#E8A33A";
+  const comment = (ok, text) =>
+    h(
+      { gap: 14, padding: "16px 18px", borderRadius: 14, background: c.surface, border: `2px solid ${c.line}`, borderLeft: `4px solid ${ok ? c.blueText : amber}` },
+      ok ? checkCircle(28) : h({ width: 28, height: 28, flexShrink: 0, borderRadius: 999, background: amber, alignItems: "center", justifyContent: "center", color: "#111111", fontSize: 18 }, "!"),
+      h({ flex: 1, fontSize: 18, lineHeight: 1.4, color: c.fg }, text),
+    );
+  const heading = (t) => mono(`## ${t}`, { fontSize: 16, letterSpacing: "0.04em", textTransform: "none", marginTop: 18, marginBottom: 10 });
+  return scene(
+    h(
+      { alignItems: "center", gap: 28 },
+      card(
+        { width: 600, padding: "28px 32px 32px" },
+        h({ fontSize: 26, letterSpacing: "-0.02em" }, "Focus timer prompt"),
+        heading("Screens"),
+        h({ gap: 8 }, ...["Open", "Set", "Focus", "Done"].map((t) => h({ padding: "6px 12px", borderRadius: 8, background: c.raised, fontSize: 16, color: c.secondary }, t))),
+        heading("Design direction"),
+        h({ alignSelf: "flex-start", padding: "2px 6px", borderRadius: 4, background: "rgba(232,163,58,0.28)", fontSize: 19, color: c.fg }, "Modern and clean."),
+        bar(380, { marginTop: 12 }),
+        heading("Working agreement"),
+        bar(420),
+        bar(300, { marginTop: 10 }),
+      ),
+      h(
+        { flexDirection: "column", gap: 14, width: 380 },
+        comment(true, "All four screens are in it."),
+        comment(false, "“Modern and clean” is too vague. Which colors? How much space?"),
+        comment(true, "Clear direction, with room for ideas."),
+      ),
+    ),
+  );
+}
+
+// Day 4 · 1: the setup, checked off, and an empty folder ready.
+function setup() {
+  const item = (title, note) =>
+    h({ gap: 16, alignItems: "center" }, checkCircle(34), h({ flexDirection: "column", gap: 4 }, h({ fontSize: 21 }, title), h({ fontSize: 16, color: c.muted }, note)));
+  const term = (...children) => h({ alignItems: "center", gap: 12, fontFamily: "Mono", fontSize: 20 }, ...children);
+  return scene(
+    h(
+      { alignItems: "center", gap: 36 },
+      card(
+        { width: 400, padding: "30px 30px 34px", gap: 22 },
+        mono("Set up · 10 min"),
+        item("Node.js (LTS)", "Runs your app while you build"),
+        item("Claude Code", "Installed and signed in"),
+        item("An empty folder", "Your app's new home"),
+      ),
+      win(
+        "Terminal",
+        { width: 560, height: 330 },
+        h(
+          { flexDirection: "column", gap: 16 },
+          term(h({ color: c.muted }, "~"), h({ color: c.blueText }, "$"), h({ color: c.fg }, "mkdir my-app")),
+          term(h({ color: c.muted }, "~"), h({ color: c.blueText }, "$"), h({ color: c.fg }, "cd my-app")),
+          term(h({ color: c.muted }, "~/my-app"), h({ color: c.blueText }, "$"), h({ width: 12, height: 24, background: c.blueText })),
+        ),
+      ),
+    ),
+  );
+}
+
+// Day 4 · 2: Claude Code asks before it runs anything.
+function build() {
+  const t = (style, ...children) => h({ fontFamily: "Mono", fontSize: 19, lineHeight: 1.5, ...style }, ...children);
+  const caret = svg(14, 18, path("M3 3l7 6-7 6", { stroke: c.blueText, strokeWidth: 2.4 }));
+  return scene(
+    win(
+      "Terminal · claude",
+      { width: 900 },
+      t({ color: c.muted }, "> [Pasted text · 84 lines]"),
+      h({ alignItems: "flex-start", gap: 12, marginTop: 16 }, h({ width: 10, height: 10, borderRadius: 99, background: c.blueText, marginTop: 10 }), t({ color: c.fg, width: 780 }, "I'll start with stage 1: an Expo project and your four screens.")),
+      h(
+        { flexDirection: "column", gap: 8, marginTop: 22, padding: "20px 24px", borderRadius: 14, border: `2px solid ${c.blueText}` },
+        t({ color: c.muted, fontSize: 16 }, "Bash command"),
+        t({ color: c.fg }, "npx create-expo-app@latest my-app"),
+        t({ color: c.secondary, marginTop: 10 }, "Do you want to proceed?"),
+        h({ alignItems: "center", gap: 10 }, caret, t({ color: c.blueText }, "1. Yes")),
+        t({ color: c.secondary, paddingLeft: 24 }, "2. Yes, and don't ask again for npx"),
+        t({ color: c.secondary, paddingLeft: 24 }, "3. No, and tell Claude what to change"),
+      ),
+    ),
+  );
+}
+
+// Day 4 · 4: the project tour. What to touch, what to leave alone.
+function tour() {
+  const folder = (color) => svg(22, 22, path("M2.5 6a2 2 0 0 1 2-2h4.5l2 2.5h7a2 2 0 0 1 2 2V17a2 2 0 0 1-2 2h-13.5a2 2 0 0 1-2-2z", { stroke: color, strokeWidth: 1.8 }));
+  const file = (color) => svg(22, 22, path("M6 2.5h7l4.5 4.5v12.5H6zM13 2.5V7h4.5", { stroke: color, strokeWidth: 1.8 }));
+  const rows = [
+    [folder, "app/", "Your screens live here", true],
+    [folder, "components/", "Reusable pieces: buttons, cards", true],
+    [folder, "assets/", "Images and fonts", true],
+    [file, "app.json", "Your app's name, icon and settings", true],
+    [file, "package.json", "The ingredient list. Claude Code manages it.", false],
+    [folder, "node_modules/", "Thousands of files. Never open it.", false],
+  ];
+  return scene(
+    win(
+      "my-app",
+      { width: 900 },
+      ...rows.map(([ico, name, note, touch], i) =>
+        h(
+          { alignItems: "center", gap: 16, height: 58, borderTop: i ? `2px solid ${c.line}` : "none", opacity: name === "node_modules/" ? 0.55 : 1 },
+          ico(touch ? c.blueText : c.muted),
+          h({ width: 210, fontFamily: "Mono", fontSize: 19, color: c.fg }, name),
+          h({ flex: 1, fontSize: 18, color: c.secondary }, note),
+          h({ padding: "5px 12px", borderRadius: 999, fontSize: 15, color: touch ? c.blueText : c.muted, border: `2px solid ${touch ? c.blueText : c.edge}` }, touch ? "Yours" : "Leave it"),
+        ),
+      ),
+    ),
+  );
+}
+
+// Day 5 · 2: the road from your phone to the App Store.
+function road() {
+  const steps = [
+    ["On your phone", "You are here"],
+    ["TestFlight", "Needs a $99/yr Apple account"],
+    ["Listing", "Screenshots, privacy, support"],
+    ["App Review", "Apple checks your app"],
+    ["Live", "On the App Store"],
+  ];
+  return scene(
+    card(
+      { width: 1040, padding: "34px 36px 36px" },
+      mono("Road to the App Store", { color: c.muted, marginBottom: 26 }),
+      h(
+        {},
+        ...steps.map(([label, note], i) =>
           h(
-            { gap: 16 },
+            { flexDirection: "column", width: 194, gap: 14 },
             h(
-              { flexDirection: "column", alignItems: "center", width: 30 },
-              i === 0 ? checkCircle(30) : h({ width: 30, height: 30, borderRadius: 999, border: `3px solid ${c.edge}` }),
-              ...(i < road.length - 1 ? [h({ width: 3, height: 26, background: i === 0 ? c.blueText : c.edge })] : []),
+              { alignItems: "center" },
+              i === 0 ? checkCircle(36) : h({ width: 36, height: 36, borderRadius: 999, border: `3px solid ${c.edge}` }),
+              ...(i < steps.length - 1 ? [h({ flex: 1, height: 3, background: i === 0 ? c.blueText : c.edge, marginLeft: 8, marginRight: 8 })] : []),
             ),
-            h(
-              { flexDirection: "column", gap: 4, paddingTop: 2 },
-              h({ fontSize: 21, color: i === 0 ? c.fg : c.secondary }, label),
-              ...(note ? [mono(note, { fontSize: 13 })] : []),
-            ),
+            h({ fontSize: 21, color: i === 0 ? c.fg : c.secondary }, label),
+            h({ fontSize: 15, lineHeight: 1.4, color: i === 0 ? c.blueText : c.muted, width: 170 }, note),
           ),
         ),
       ),
     ),
+  );
+}
+
+// Day 5 · 3: the six phases. Five days covered the first three.
+function phases() {
+  const names = ["Vision", "Design", "Build", "Test", "Ship", "Launch"];
+  const TW = 154;
+  const G = 16;
+  const span = 3 * TW + 2 * G;
+  const bracket = (text, color) =>
+    h(
+      { flexDirection: "column", alignItems: "center", width: span, gap: 12 },
+      h({ width: span, height: 14, borderLeft: `2px solid ${color}`, borderRight: `2px solid ${color}`, borderBottom: `2px solid ${color}` }),
+      h({ fontSize: 19, color }, text),
+    );
+  return scene(
+    h(
+      { gap: G },
+      ...names.map((name, i) =>
+        card(
+          { width: TW, height: 168, padding: 20, justifyContent: "space-between", borderColor: i < 3 ? c.blueText : c.line },
+          mono(String(i + 1).padStart(2, "0"), { fontSize: 15, color: i < 3 ? c.blueText : c.muted }),
+          h({ fontSize: 24, letterSpacing: "-0.02em", color: i < 3 ? c.fg : c.secondary }, name),
+          i < 3 ? checkCircle(28) : h({ width: 28, height: 28, borderRadius: 999, border: `3px solid ${c.edge}` }),
+        ),
+      ),
+    ),
+    h({ gap: 2 * G, marginTop: 14 }, bracket("These five days", c.blueText), bracket("Ship Your App with Claude Code", c.muted)),
   );
 }
 
@@ -547,14 +801,23 @@ const fonts = [
 ];
 
 await mkdir(OUT, { recursive: true });
-// The header images are full width; figures sit inside the 536px text column.
+// One image per section of the five emails, shown full width under its heading.
 const images = [
-  ["day-1", day1, W, H],
-  ["day-2", day2, W, H],
-  ["day-3", day3, W, H],
-  ["day-4", day4, W, H],
-  ["day-5", day5, W, H],
+  ["day-1-tools", day1, W, H],
   ["day-1-screenshot", capture, 1072, 568],
+  ["day-1-vision", vision, W, 600],
+  ["day-2-flow", day2, W, H],
+  ["day-2-words", words, W, H],
+  ["day-3-example", example, W, 600],
+  ["day-3-claude", writes, W, 600],
+  ["day-3-review", review, W, 600],
+  ["day-4-setup", setup, W, 560],
+  ["day-4-build", build, W, 600],
+  ["day-4-phone", day4, W, H],
+  ["day-4-tour", tour, W, 560],
+  ["day-5-polish", polish, W, 600],
+  ["day-5-road", road, W, 420],
+  ["day-5-next", phases, W, 460],
 ];
 for (const [suffix, palette] of [["", dark], ["-light", light]]) {
   c = palette;

@@ -2,7 +2,6 @@ Subject: Day 1: the only 3 tools you need
 Preview: Ignore the noise. Three tools, a few screenshots, and one clear paragraph.
 Theme: Tools + vision
 Title: The only three tools you need.
-Image: /images/email/day-1.png | Three tools: Claude to think, Claude Code to build, Expo Go to preview on your phone
 Body:
 Hey {{{NAME}}},
 
@@ -14,6 +13,8 @@ If you've looked into building an app with AI, you've probably felt overwhelmed:
 
 1. Your three tools (5 min)
 
+[image: /images/email/day-1-tools.png | Three tools: Claude to think, Claude Code to build, Expo Go to preview on your phone]
+
 - Claude: your thinking partner. You'll use it to shape your idea, plan your app and write your prompts. This is the part most people skip, and it's the part that makes everything else work.
 - Claude Code: the builder. It writes and edits the code on your computer, and explains what it did when you ask. We'll set it up on Day 4.
 - Expo Go: a free iPhone app that opens the app you're building, live, while you work on it. Change something on your computer and you see it on your phone seconds later.
@@ -23,6 +24,8 @@ Why these and not the others? No-code app builders get you a demo fast, but you 
 Today: get a Claude plan that includes Claude Code, and install Expo Go on your phone. Ignore every other tool for now.
 
 2. Collect what you like (15 min)
+
+[image: /images/email/day-1-screenshot.png | Taking a screenshot of a well-designed desk timer on a product page]
 
 Clarity is the whole game. Before you write a single prompt, you need to know what you want, and you get there by looking at things you like.
 
@@ -36,9 +39,9 @@ Your turn: save 5–10 screenshots into one folder. Aim for three kinds:
 
 For each one, write one line about what you like. "Chunky buttons that feel physical." "Lots of empty space." Those lines are worth more than the screenshots, because they turn your taste into words Claude can use.
 
-[image: /images/email/day-1-screenshot.png | Taking a screenshot of a well-designed desk timer on a product page, saved to an inspiration folder]
-
 3. Write your vision with Claude (10 min)
+
+[image: /images/email/day-1-vision.png | A Claude chat with reference screenshots, and the one-paragraph vision it produced]
 
 Open Claude, paste this, and fill in the brackets:
 

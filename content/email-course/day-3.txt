@@ -2,7 +2,6 @@ Subject: Day 3: let Claude write your prompt
 Preview: How I write Claude Code prompts that come back great on the first try.
 Theme: Prompt
 Title: Let Claude write your prompt.
-Image: /images/email/day-3.png | Claude turning your vision and flow into a Claude Code prompt
 Body:
 Hey {{{NAME}}},
 
@@ -14,15 +13,21 @@ I open a Claude chat, refine the vision until it's clear, then give Claude an ex
 
 1. Get the example (2 min)
 
+[image: /images/email/day-3-example.png | The example prompt's six sections, copied]
+
 Download the example prompt from today's page (link below). It's the structure I use for my own builds: what we're building, how to approach it, a working agreement, every screen, the design direction and the tech.
 
 2. Have Claude write your prompt (15 min)
+
+[image: /images/email/day-3-claude.png | Claude writing a Claude Code prompt from the attached example]
 
 Go back to the Claude chat from Days 1 and 2, attach the example, and paste this:
 
 "Using my vision, my screen flow and my references from this chat, write a prompt for Claude Code to build the first version of my app with Expo. Follow the structure and level of detail of the example I attached. Include: what we're building and who it's for; every screen in my flow and what's on it; the design direction (colors, fonts, spacing and the feel of my references); and a working agreement: build in stages, get it running before polishing, stop after each stage with a short summary, and ask me before any big decision. Leave Claude Code room to suggest design ideas within that direction."
 
 3. Read it like a designer (8 min)
+
+[image: /images/email/day-3-review.png | Margin comments on the prompt: two checks and one note that the design direction is too vague]
 
 Before you use it, check three things:
 

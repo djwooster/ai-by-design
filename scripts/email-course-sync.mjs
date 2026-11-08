@@ -37,7 +37,7 @@ function parse(day) {
     preview: field("Preview"),
     theme: field("Theme"),
     title: field("Title"),
-    image: src ? { src: src.startsWith("http") ? src : SITE + src, alt } : null,
+    image: src ? { src, alt } : null,
     body: body.trim(),
   };
 }
@@ -104,11 +104,15 @@ function button(label, href) {
 </td></tr></table>`;
 }
 
-/** An illustration inside the text: light by default, dark where the inbox knows. */
-function figure(src, alt) {
-  const url = SITE + src;
-  const img = (href, attrs) => `<img src="${href}" alt="${escape(alt)}" width="536" ${attrs}>`;
-  return `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:8px 0 24px;width:100%"><tr><td>${img(url.replace(/\.png$/, "-light.png"), 'class="img-light" style="display:block;width:100%;height:auto;border:0;border-radius:12px"')}<!--[if !mso]><!-->${img(url, 'class="img-dark" style="display:none;width:100%;height:auto;border:0;border-radius:12px;max-height:0;overflow:hidden"')}<!--<![endif]--></td></tr></table>`;
+/**
+ * An image, full width: light by default, and the dark version where the
+ * inbox knows the reader is in dark mode (Apple Mail and a few others).
+ * Outlook desktop never sees the dark one.
+ */
+function picture(src, alt) {
+  const url = src.startsWith("http") ? src : SITE + src;
+  const img = (href, attrs) => `<img src="${href}" alt="${escape(alt)}" width="600" ${attrs}>`;
+  return `${img(url.replace(/\.png$/, "-light.png"), 'class="img-light" style="display:block;width:100%;height:auto;border:0"')}<!--[if !mso]><!-->${img(url, 'class="img-dark" style="display:none;width:100%;height:auto;border:0;max-height:0;overflow:hidden"')}<!--<![endif]-->`;
 }
 
 function signature() {
@@ -127,8 +131,6 @@ function block(text) {
   const lines = text.split("\n");
   const link = text.match(LINK);
   if (link) return button(link[1], link[2]);
-  const fig = text.match(FIGURE);
-  if (fig) return figure(fig[1], fig[2]);
   if (text === "DJ") return signature();
   if (text.startsWith("P.S.")) return postscript(text);
   if (lines.every((line) => line.startsWith("- "))) return list(lines);
@@ -162,13 +164,22 @@ function footer() {
 }
 
 function html(email) {
-  const blocks = email.body.split(/\n{2,}/).map(block).join("\n");
-  // Light by default; inboxes that know the reader is in dark mode (Apple Mail
-  // and a few others) swap in the dark version. Outlook desktop never sees it.
-  const img = (src, attrs) => `<img src="${src}" alt="${escape(email.image.alt)}" width="600" ${attrs}>`;
-  const image = email.image
-    ? `<tr><td>${img(email.image.src.replace(/\.png$/, "-light.png"), 'class="img-light" style="display:block;width:100%;height:auto;border:0"')}<!--[if !mso]><!-->${img(email.image.src, 'class="img-dark" style="display:none;width:100%;height:auto;border:0;max-height:0;overflow:hidden"')}<!--<![endif]--></td></tr>`
-    : "";
+  // Section images break out of the padded text column to the card's full
+  // width, so the body is rows: runs of text, and images between them.
+  const rows = [[]];
+  for (const text of email.body.split(/\n{2,}/)) {
+    const fig = text.match(FIGURE);
+    if (fig) rows.push(`<tr><td style="padding:4px 0 28px">${picture(fig[1], fig[2])}</td></tr>`, []);
+    else rows.at(-1).push(block(text));
+  }
+  const body = rows
+    .map((row, i) => {
+      if (typeof row === "string") return row;
+      if (!row.length) return "";
+      return `<tr><td style="padding:${i === 0 ? 32 : 0}px 32px ${i === rows.length - 1 ? 32 : 0}px">\n${row.join("\n")}\n</td></tr>`;
+    })
+    .join("\n");
+  const image = email.image ? `<tr><td>${picture(email.image.src, email.image.alt)}</td></tr>` : "";
   return `<!doctype html><html><head><meta name="color-scheme" content="light dark"><meta name="supported-color-schemes" content="light dark">
 <style>@media (prefers-color-scheme: dark) { .img-light { display: none !important; } .img-dark { display: block !important; max-height: none !important; } }</style></head>
 <body style="margin:0;background:${C.smoke};padding:32px 12px;font-family:${SANS}">
@@ -176,9 +187,7 @@ function html(email) {
 <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;max-width:600px;margin:0 auto;background:#FFFFFF;border-radius:16px;overflow:hidden">
 ${header(email)}
 ${image}
-<tr><td style="padding:32px">
-${blocks}
-</td></tr>
+${body}
 </table>
 <div style="max-width:600px;margin:0 auto">${footer()}</div>
 </body></html>`;
