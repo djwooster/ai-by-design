@@ -36,7 +36,7 @@ Your turn: save 5–10 screenshots into one folder. Aim for three kinds:
 
 For each one, write one line about what you like. "Chunky buttons that feel physical." "Lots of empty space." Those lines are worth more than the screenshots, because they turn your taste into words Claude can use.
 
-[image: /images/email/day-1-moodboard.png | A folder of saved inspiration: a desk gadget for the vibe, a dark app screen, and a chunky button, each with a one-line note]
+[image: /images/email/day-1-moodboard.png | Taking a screenshot of a well-designed desk gadget on a page of saved app inspiration]
 
 3. Write your vision with Claude (10 min)
 
