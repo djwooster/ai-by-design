@@ -377,133 +377,123 @@ function day5() {
   );
 }
 
-// Day 1, inside "Collect what you like": taking a screenshot of UI you like. A
-// page of inspiration, the screenshot selection dragged over the best tile,
-// and the preview landing in the corner. The tiles keep their own colors in
-// both themes; only the window changes.
-function moodboard() {
-  const BW = 1000;
-  const BH = 490;
-  const at = (x, y, w, hgt, style, ...children) =>
-    h({ position: "absolute", left: x, top: y, width: w, height: hgt, borderRadius: 14, overflow: "hidden", alignItems: "center", justifyContent: "center", ...style }, ...children);
-  const key = (bg, w = 30) => h({ width: w, height: 22, borderRadius: 6, background: bg, boxShadow: "0 3px 0 rgba(0,0,0,0.18)" });
+// Day 1, inside "Collect what you like": screenshotting something you like on
+// the web, on its way to your inspiration folder. The web page keeps its own
+// colors in both themes; the browser and the screen around it change.
+function capture() {
   const lcd = "#FF6A2B";
+  const ink = "#1A1A1A";
+  const key = (bg, w = 30) => h({ width: w, height: 22, borderRadius: 6, background: bg, boxShadow: "0 3px 0 rgba(0,0,0,0.18)" });
+  const abs = (x, y, w, hgt, style, ...children) => h({ position: "absolute", left: x, top: y, width: w, height: hgt, ...style }, ...children);
 
-  // A dark stats screen.
-  const bars = [38, 62, 46, 80, 54, 96, 30];
-  const stats = at(
-    28, 24, 290, 230,
-    { background: "#0E0F12", flexDirection: "column", alignItems: "flex-start", justifyContent: "flex-start", padding: "24px 26px" },
-    h({ fontSize: 15, color: "#8E9192" }, "This week"),
-    h({ fontSize: 40, letterSpacing: "-0.04em", color: "#FFFFFF", marginTop: 2 }, "4h 20m"),
-    h({ alignItems: "flex-end", gap: 12, height: 96, marginTop: 22 }, ...bars.map((v, i) => h({ width: 22, height: v, borderRadius: 6, background: i === 5 ? "#5B9BD8" : "#26282D" }))),
-  );
-  // A poster: one warm shape on paper.
-  const poster = at(
-    28, 274, 290, 172,
-    { background: "#EDE6DA", flexDirection: "column", gap: 14 },
-    h({ width: 84, height: 84, borderRadius: 999, background: "linear-gradient(160deg, #FF8A4C, #E5532A)" }),
-    h({ width: 120, height: 6, borderRadius: 3, background: "#2B2B2B" }),
-  );
-  // The desk gadget: the one being captured.
-  const gadget = at(
-    344, 24, 300, 300,
-    { background: "linear-gradient(160deg, #E4E1DA, #C9C5BC)" },
+  // The browser: a product page for a desk timer.
+  const B = { x: 24, y: 24, w: 860, h: 520 };
+  const pad = 44;
+  const textW = 340;
+  const gap = 32;
+  const tile = { w: 400, h: 292 };
+  const chrome = h(
+    { alignItems: "center", height: 64, padding: "0 22px", gap: 10, background: c.raised, borderBottom: `2px solid ${c.line}` },
+    ...[0, 1, 2].map(() => h({ width: 14, height: 14, borderRadius: 999, background: c.edge })),
     h(
-      { flexDirection: "column", gap: 18, width: 232, padding: 20, borderRadius: 22, background: "#EFEDE7", boxShadow: "0 4px 0 #D3CFC6, 0 18px 30px rgba(60,50,40,0.28)" },
+      { flex: 1, justifyContent: "center" },
       h(
-        { alignItems: "center", justifyContent: "space-between" },
-        h({ width: 118, height: 62, borderRadius: 10, background: "#1A1A1A", alignItems: "center", justifyContent: "center", fontFamily: "Mono", fontSize: 30, color: lcd, letterSpacing: "0.04em" }, "25:00"),
-        h(
-          { width: 64, height: 64, borderRadius: 999, background: "linear-gradient(160deg, #3A3A3A, #1E1E1E)", boxShadow: "0 6px 12px rgba(0,0,0,0.3)", justifyContent: "center", paddingTop: 8 },
-          h({ width: 4, height: 16, borderRadius: 2, background: "#EFEDE7" }),
-        ),
+        { alignItems: "center", gap: 10, width: 440, height: 38, borderRadius: 10, background: c.surface, border: `2px solid ${c.line}`, justifyContent: "center", fontSize: 17, color: c.muted },
+        svg(14, 16, path("M3 7V5a4 4 0 0 1 8 0v2M2 7h10v8H2z", { stroke: c.muted, strokeWidth: 1.8 })),
+        "tinyobjects.studio/timer-one",
       ),
-      h({ gap: 10 }, key("#D8D5CE"), key("#D8D5CE"), key("#D8D5CE"), key(lcd, 58)),
+    ),
+    h({ width: 42 }),
+  );
+  const nav = h(
+    { alignItems: "center", justifyContent: "space-between", height: 72, padding: `0 ${pad}px` },
+    h({ fontSize: 21, letterSpacing: "-0.03em", color: ink }, "tiny objects"),
+    h({ gap: 28, fontSize: 16, color: "#6B6862" }, h({}, "Shop"), h({}, "Journal"), h({}, "About"), h({ color: ink }, "Cart (0)")),
+  );
+  const hero = h(
+    { flex: 1, alignItems: "center", padding: `0 ${pad}px 40px`, gap },
+    h(
+      { flexDirection: "column", width: textW },
+      h({ fontFamily: "Mono", fontSize: 14, letterSpacing: "0.14em", color: lcd }, "NEW · DESK TIMER"),
+      h({ fontSize: 58, letterSpacing: "-0.045em", color: ink, marginTop: 12 }, "Timer One."),
+      h({ fontSize: 20, lineHeight: 1.45, color: "#6B6862", marginTop: 12 }, "A focus timer you can feel. One knob, one button, nothing else."),
+      h({ gap: 12, marginTop: 28 }, h({ padding: "14px 22px", borderRadius: 12, background: ink, color: "#F7F6F3", fontSize: 17 }, "Pre-order · $129"), h({ padding: "14px 18px", borderRadius: 12, border: "2px solid #D8D4CC", color: ink, fontSize: 17 }, "Details")),
+    ),
+    h(
+      { width: tile.w, height: tile.h, borderRadius: 20, background: "linear-gradient(160deg, #E4E1DA, #C9C5BC)", alignItems: "center", justifyContent: "center" },
+      h(
+        { flexDirection: "column", gap: 18, width: 232, padding: 20, borderRadius: 22, background: "#EFEDE7", boxShadow: "0 4px 0 #D3CFC6, 0 18px 30px rgba(60,50,40,0.28)" },
+        h(
+          { alignItems: "center", justifyContent: "space-between" },
+          h({ width: 118, height: 62, borderRadius: 10, background: ink, alignItems: "center", justifyContent: "center", fontFamily: "Mono", fontSize: 30, color: lcd, letterSpacing: "0.04em" }, "25:00"),
+          h(
+            { width: 64, height: 64, borderRadius: 999, background: "linear-gradient(160deg, #3A3A3A, #1E1E1E)", boxShadow: "0 6px 12px rgba(0,0,0,0.3)", justifyContent: "center", paddingTop: 8 },
+            h({ width: 4, height: 16, borderRadius: 2, background: "#EFEDE7" }),
+          ),
+        ),
+        h({ gap: 10 }, key("#D8D5CE"), key("#D8D5CE"), key("#D8D5CE"), key(lcd, 58)),
+      ),
     ),
   );
-  // A palette strip.
-  const swatches = at(
-    344, 344, 300, 102,
-    { background: "#FFFFFF", gap: 0, alignItems: "stretch", justifyContent: "flex-start" },
-    ...["#1A1A1A", "#EFEDE7", "#C9C5BC", "#FF6A2B", "#5B9BD8"].map((color) => h({ flex: 1, background: color })),
-  );
-  // A light list screen.
-  const row = (done, w) =>
-    h(
-      { alignItems: "center", gap: 12 },
-      h({ width: 22, height: 22, borderRadius: 7, border: done ? "none" : "2px solid #D3D6D6", background: done ? "#111111" : "#FFFFFF", alignItems: "center", justifyContent: "center" }, ...(done ? [check(16, "#FFFFFF")] : [])),
-      h({ width: w, height: 10, borderRadius: 5, background: done ? "#D3D6D6" : "#2B2D2E" }),
-    );
-  const list = at(
-    668, 24, 304, 196,
-    { background: "#FFFFFF", flexDirection: "column", alignItems: "flex-start", justifyContent: "flex-start", gap: 16, padding: "24px 26px", border: "2px solid #E2E4E4" },
-    h({ fontSize: 24, letterSpacing: "-0.03em", color: "#111111", marginBottom: 2 }, "Today"),
-    row(true, 150),
-    row(false, 180),
-    row(false, 120),
-  );
-  // A chunky button.
-  const button = at(
-    668, 240, 304, 206,
-    { background: "linear-gradient(180deg, #F2F1EE, #E3E1DC)" },
-    h(
-      { width: 176, height: 76, borderRadius: 18, background: "linear-gradient(180deg, #343434, #222222)", alignItems: "center", justifyContent: "center", gap: 12, boxShadow: "0 8px 0 #111111, 0 22px 30px rgba(0,0,0,0.28)" },
-      h({ width: 10, height: 10, borderRadius: 999, background: lcd, boxShadow: `0 0 10px ${lcd}` }),
-      h({ fontFamily: "Mono", fontSize: 20, letterSpacing: "0.16em", color: "#F2F1EE" }, "START"),
-    ),
+  const browser = abs(
+    B.x, B.y, B.w, B.h,
+    { flexDirection: "column", borderRadius: 24, overflow: "hidden", border: `2px solid ${c.line}`, background: "#F7F6F3" },
+    chrome,
+    nav,
+    hero,
   );
 
-  // The selection, just around the gadget, and everything outside it dimmed.
-  const sel = { x: 338, y: 18, w: 312, h: 312 };
-  const dim = (x, y, w, hgt) => h({ position: "absolute", left: x, top: y, width: w, height: hgt, background: "rgba(0,0,0,0.5)" });
-  const handle = (x, y) => h({ position: "absolute", left: x - 6, top: y - 6, width: 12, height: 12, borderRadius: 3, background: "#FFFFFF", boxShadow: "0 1px 4px rgba(0,0,0,0.4)" });
+  // The screenshot: the product photo selected, the rest of the screen dimmed.
+  // Its position follows the layout above, 6px outside the photo.
+  const sel = {
+    x: B.x + 2 + pad + textW + gap - 6,
+    y: B.y + 2 + 64 + 72 + (B.h - 4 - 64 - 72 - 40 - tile.h) / 2 - 6,
+    w: tile.w + 12,
+    h: tile.h + 12,
+  };
   const right = sel.x + sel.w;
   const bottom = sel.y + sel.h;
-  const crosshair = h(
-    { position: "absolute", left: right - 22, top: bottom - 22 },
-    svg(
-      44,
-      44,
-      path("M22 2v14M22 28v14M2 22h14M28 22h14", { stroke: "#111111", strokeWidth: 5 }),
-      path("M22 2v14M22 28v14M2 22h14M28 22h14", { stroke: "#FFFFFF", strokeWidth: 2.5 }),
-    ),
+  const dim = (x, y, w, hgt) => abs(x, y, w, hgt, { background: "rgba(0,0,0,0.45)" });
+  const handle = (x, y) => abs(x - 6, y - 6, 12, 12, { borderRadius: 3, background: "#FFFFFF", boxShadow: "0 1px 4px rgba(0,0,0,0.4)" });
+  const crosshair = abs(
+    right - 22, bottom - 22, 44, 44, {},
+    svg(44, 44, path("M22 2v14M22 28v14M2 22h14M28 22h14", { stroke: "#111111", strokeWidth: 5 }), path("M22 2v14M22 28v14M2 22h14M28 22h14", { stroke: "#FFFFFF", strokeWidth: 2.5 })),
   );
   const size = h(
-    { position: "absolute", left: right + 16, top: bottom + 10, padding: "6px 12px", borderRadius: 8, background: "rgba(17,17,17,0.85)", fontFamily: "Mono", fontSize: 16, color: "#FFFFFF" },
-    "648 × 648",
-  );
-  // The preview that slides in after the capture.
-  const preview = h(
-    { position: "absolute", right: 24, bottom: 34, width: 132, height: 132, borderRadius: 12, border: "4px solid #FFFFFF", boxShadow: "0 16px 32px rgba(0,0,0,0.45)", background: "linear-gradient(160deg, #E4E1DA, #C9C5BC)", alignItems: "center", justifyContent: "center" },
-    h(
-      { flexDirection: "column", gap: 7, width: 96, padding: 9, borderRadius: 10, background: "#EFEDE7", boxShadow: "0 2px 0 #D3CFC6" },
-      h({ justifyContent: "space-between", alignItems: "center" }, h({ width: 48, height: 26, borderRadius: 5, background: "#1A1A1A" }), h({ width: 26, height: 26, borderRadius: 999, background: "#2A2A2A" })),
-      h({ gap: 4 }, ...[0, 1, 2].map(() => h({ width: 12, height: 8, borderRadius: 2, background: "#D8D5CE" })), h({ width: 24, height: 8, borderRadius: 2, background: lcd })),
-    ),
+    { position: "absolute", left: right - 150, top: bottom + 14, padding: "6px 12px", borderRadius: 8, background: "rgba(17,17,17,0.85)", fontFamily: "Mono", fontSize: 16, color: "#FFFFFF" },
+    `${sel.w * 2} × ${sel.h * 2}`,
   );
 
-  return h(
-    { width: "100%", height: "100%", padding: 34, background: c.bg, fontFamily: "Geist", color: c.fg },
-    card(
-      { overflow: "hidden", flex: 1 },
+  // The preview in the corner, on its way to the folder.
+  const preview = h(
+    { position: "absolute", right: 22, bottom: 70, flexDirection: "column", alignItems: "flex-end", gap: 10 },
+    h(
+      { width: 156, height: 116, borderRadius: 12, border: "4px solid #FFFFFF", boxShadow: "0 16px 32px rgba(0,0,0,0.45)", background: "linear-gradient(160deg, #E4E1DA, #C9C5BC)", alignItems: "center", justifyContent: "center" },
       h(
-        { alignItems: "center", gap: 10, padding: "18px 24px", borderBottom: `2px solid ${c.line}`, background: c.raised },
-        ...[0, 1, 2].map(() => h({ width: 14, height: 14, borderRadius: 999, background: c.edge })),
-        h({ marginLeft: 14, fontFamily: "Mono", fontSize: 19, color: c.muted }, "Inspiration"),
-      ),
-      h(
-        { position: "relative", width: BW, height: BH },
-        stats, poster, gadget, swatches, list, button,
-        dim(0, 0, BW, sel.y),
-        dim(0, bottom, BW, BH - bottom),
-        dim(0, sel.y, sel.x, sel.h),
-        dim(right, sel.y, BW - right, sel.h),
-        h({ position: "absolute", left: sel.x, top: sel.y, width: sel.w, height: sel.h, border: "2px solid #FFFFFF" }),
-        handle(sel.x, sel.y), handle(right, sel.y), handle(sel.x, bottom), handle(right, bottom),
-        crosshair, size, preview,
+        { flexDirection: "column", gap: 7, width: 96, padding: 9, borderRadius: 10, background: "#EFEDE7", boxShadow: "0 2px 0 #D3CFC6" },
+        h({ justifyContent: "space-between", alignItems: "center" }, h({ width: 48, height: 26, borderRadius: 5, background: ink }), h({ width: 26, height: 26, borderRadius: 999, background: "#2A2A2A" })),
+        h({ gap: 4 }, ...[0, 1, 2].map(() => h({ width: 12, height: 8, borderRadius: 2, background: "#D8D5CE" })), h({ width: 24, height: 8, borderRadius: 2, background: lcd })),
       ),
     ),
+  );
+  const saved = h(
+    { position: "absolute", right: 22, bottom: 22, alignItems: "center", gap: 10, padding: "9px 14px", borderRadius: 10, background: "rgba(17,17,17,0.85)", border: "1px solid rgba(255,255,255,0.18)", fontSize: 16, color: "#FFFFFF" },
+    svg(20, 16, path("M1.5 3.5a2 2 0 0 1 2-2h4l2 2h7a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z", { stroke: "#FFFFFF", strokeWidth: 1.6 })),
+    "Saved to Inspiration",
+  );
+
+  const W1 = 1072;
+  const H1 = 568;
+  return h(
+    { position: "relative", width: "100%", height: "100%", background: c.bg, fontFamily: "Geist", color: c.fg },
+    browser,
+    dim(0, 0, W1, sel.y),
+    dim(0, bottom, W1, H1 - bottom),
+    dim(0, sel.y, sel.x, sel.h),
+    dim(right, sel.y, W1 - right, sel.h),
+    abs(sel.x, sel.y, sel.w, sel.h, { border: "2px solid #FFFFFF" }),
+    handle(sel.x, sel.y), handle(right, sel.y), handle(sel.x, bottom), handle(right, bottom),
+    crosshair, size, saved, preview,
   );
 }
 
@@ -521,7 +511,7 @@ const images = [
   ["day-3", day3, W, H],
   ["day-4", day4, W, H],
   ["day-5", day5, W, H],
-  ["day-1-moodboard", moodboard, 1072, 610],
+  ["day-1-screenshot", capture, 1072, 568],
 ];
 for (const [suffix, palette] of [["", dark], ["-light", light]]) {
   c = palette;
