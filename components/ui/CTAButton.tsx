@@ -5,7 +5,7 @@ import { track } from "@/lib/analytics";
 import { formatPrice, offer } from "@/lib/content/offer";
 
 /**
- * "Become a founding member". Always reads the Skool checkout from config;
+ * "Join on Skool". Always reads the Skool checkout from config;
  * until it's set, it scrolls to the founding offer instead.
  */
 export function CTAButton({

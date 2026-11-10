@@ -9,7 +9,9 @@ export const offer = {
   course: "Ship Your App with Claude Code",
   promise:
     "Design, build and ship a productivity iOS app to the App Store with Claude Code, following the AI by Design Method.",
-  cta: "Become a founding member",
+  cta: "Join on Skool",
+  /** Sits under the main buttons so the hop to Skool isn't a surprise. */
+  checkoutNote: "You'll check out on Skool, where the course and community live.",
 
   /** The Skool checkout. Until it's set, every founding CTA points at the offer section. */
   checkoutUrl: null as string | null, // [TODO: Skool URL]

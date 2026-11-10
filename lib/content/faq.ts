@@ -24,6 +24,11 @@ export const faq: Faq[] = [
     answer: `${offer.liveCallsPerWeek} calls a week in Skool: Q&A, members' app reviews and live builds. Every call is recorded, so you can catch up anytime.`,
   },
   {
+    id: "skool",
+    question: "Why do I check out on Skool?",
+    answer: "The course, the community and the live calls all live in Skool, so you join and pay there. One account for everything, and the app keeps you in the loop between calls.",
+  },
+  {
     id: "refund",
     question: "What if the course doesn't launch?",
     answer: offer.guarantee,

@@ -14,7 +14,7 @@ export function FinalCta() {
           <p className="mt-5 text-lede text-fg-secondary">{finalCta.body}</p>
           <CTAButton placement="final" size="lg" className="mt-9" />
           <p className="mt-4 text-ui-sm text-fg-muted">
-            {formatPrice(offer.foundingPrice)} founding · Full refund if it doesn&apos;t launch
+            {formatPrice(offer.foundingPrice)} founding · Checkout on Skool · Full refund if it doesn&apos;t launch
           </p>
         </Reveal>
       </Container>

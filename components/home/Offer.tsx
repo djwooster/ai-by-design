@@ -60,6 +60,7 @@ export function Offer() {
               <CTAButton placement="offer" size="lg" />
               <span className="text-ui-sm text-fg-muted">Full refund if it doesn&apos;t launch</span>
             </div>
+            <p className="mt-4 text-ui-sm text-fg-muted">{offer.checkoutNote}</p>
           </div>
         </Reveal>
 
