@@ -7,7 +7,7 @@ export type NavLink = {
 /** DJ's channels off this site, shared by the footer and the instructor section. */
 const elsewhere: NavLink[] = [
   { label: "YouTube", href: "[TODO: YouTube URL]", external: true },
-  { label: "Skool", href: "[TODO: Skool community URL]", external: true },
+  { label: "Skool", href: "https://www.skool.com/ai-by-design", external: true },
   { label: "djwooster.com", href: "https://djwooster.com", external: true },
 ];
 

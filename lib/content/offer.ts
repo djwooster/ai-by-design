@@ -14,7 +14,7 @@ export const offer = {
   checkoutNote: "You'll check out on Skool, where the course and community live.",
 
   /** The Skool checkout. Until it's set, every founding CTA points at the offer section. */
-  checkoutUrl: null as string | null, // [TODO: Skool URL]
+  checkoutUrl: "https://www.skool.com/ai-by-design/about" as string | null,
 
   foundingPrice: 99,
   launchPrice: 249,
